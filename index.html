@@ -17,263 +17,277 @@
 <body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout : un carnet de route en chapitres — bandeau "contours de volcan", sommaire collant, puis jours, logements, plongée, budget. */
+/* Layout : un magazine de voyage ensoleillé — grande photo d'ouverture, mosaïque d'images, puis le carnet de route en cartes claires. Thème clair unique, choisi volontairement. */
 :root{
-  --bg:#EDF3EF; --paper:#F9FBFA; --ink:#10241C; --muted:#4D6158; --line:#C8D6CE;
-  --hero:#103326; --hero-ink:#EAF4EE; --hero-muted:#A8C4B5; --contour:#1B4636;
-  --accent:#0A7B7E; --accent-soft:#D2EAE9; --sun:#B85E17; --sun-soft:#F6E2CF;
-  --land:#DAE6DD; --sea:#D3E6EA; --land-line:#9DB5A6;
-  --r-cv:#66753A; --r-mv:#3A765D; --r-gu:#A3751A; --r-ar:#A3452A; --r-pa:#2A6799; --r-road:#5A6A62;
-  --warn:#9A5B00;
+  color-scheme:light;
+  --bg:#FFFFFF; --tint:#EFF8F6; --paper:#FFFFFF; --ink:#12302A; --muted:#566B65; --line:#DCE8E3;
+  --accent:#0B8F92; --accent-bright:#13B5B1; --accent-soft:#DDF3F1;
+  --sun:#D24E28; --coral:#FF7452; --sun-soft:#FFEDE5; --gold:#FFC53D;
+  --hero-ink:#FFFFFF;
+  --land:#E3F1E5; --sea:#D6EEF3; --land-line:#9DC6AA;
+  --r-cv:#6E8F2E; --r-mv:#248062; --r-gu:#C98A0E; --r-ar:#D2492E; --r-pa:#1C7DBA; --r-road:#5F716B;
+  --warn:#B36400;
+  --shadow:0 1px 2px rgba(18,48,42,.06), 0 6px 20px rgba(18,48,42,.07);
   --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --f-body:"Literata", Georgia, "Times New Roman", serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0B1712; --paper:#12211A; --ink:#E2EDE6; --muted:#98AEA2; --line:#25392E;
-    --hero:#07120D; --hero-ink:#E2EDE6; --hero-muted:#8DAC9C; --contour:#15302A;
-    --accent:#4FC5C2; --accent-soft:#12312F; --sun:#F0A052; --sun-soft:#3A2715;
-    --land:#1A2C23; --sea:#0E1E24; --land-line:#3C5A4A;
-    --r-cv:#B5C27E; --r-mv:#7CC4A4; --r-gu:#E2B65A; --r-ar:#E88E6E; --r-pa:#7DB1DE; --r-road:#A3B4AB;
-    --warn:#F0B35A;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0B1712; --paper:#12211A; --ink:#E2EDE6; --muted:#98AEA2; --line:#25392E;
-  --hero:#07120D; --hero-ink:#E2EDE6; --hero-muted:#8DAC9C; --contour:#15302A;
-  --accent:#4FC5C2; --accent-soft:#12312F; --sun:#F0A052; --sun-soft:#3A2715;
-  --land:#1A2C23; --sea:#0E1E24; --land-line:#3C5A4A;
-  --r-cv:#B5C27E; --r-mv:#7CC4A4; --r-gu:#E2B65A; --r-ar:#E88E6E; --r-pa:#7DB1DE; --r-road:#A3B4AB;
-  --warn:#F0B35A;
-  color-scheme:dark;
-}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{
-  background:var(--bg); color:var(--ink);
-  font-family:var(--f-body); font-size:16px; line-height:1.62;
-  -webkit-font-smoothing:antialiased;
-}
+body{background:var(--bg); color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
 body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
 a{color:var(--accent); text-underline-offset:3px}
 a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
-h1,h2,h3,h4{font-family:var(--f-display); text-wrap:balance; line-height:1.12; margin:0}
+:focus-visible{outline:3px solid var(--accent-bright); outline-offset:2px; border-radius:6px}
+h1,h2,h3,h4{font-family:var(--f-display); text-wrap:balance; line-height:1.1; margin:0}
 p{margin:0}
+b, strong{font-weight:700}
 .mono{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
-.wrap{max-width:1140px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
-.prose{max-width:68ch}
-.eyebrow{font-family:var(--f-mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.wrap{max-width:1180px; margin:0 auto; padding-left:max(18px, env(safe-area-inset-left,0px)); padding-right:max(18px, env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono); font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:500}
+img.fail{visibility:hidden}
 
-/* ---------- Bandeau ---------- */
-.hero{
-  background-color:var(--hero); color:var(--hero-ink);
-  background-image:
-    repeating-radial-gradient(circle at 86% 18%, transparent 0 26px, var(--contour) 26px 27.5px),
-    repeating-radial-gradient(circle at 8% 112%, transparent 0 30px, var(--contour) 30px 31.5px);
-}
-.hero-in{padding-block:clamp(40px,7vw,84px) clamp(32px,5vw,56px); display:grid; gap:28px}
-.hero .eyebrow{color:var(--hero-muted)}
-.hero h1{font-size:clamp(2.7rem, 8.4vw, 6rem); font-weight:800; letter-spacing:-.02em; line-height:.98; font-variation-settings:"opsz" 96}
-.hero h1 em{font-style:normal; color:var(--accent)}
-.hero-lede{font-size:clamp(1.02rem,1.6vw,1.2rem); max-width:60ch; color:var(--hero-ink)}
-.facts{display:flex; flex-wrap:wrap; gap:8px 22px; font-family:var(--f-mono); font-size:.86rem; color:var(--hero-muted)}
-.facts b{color:var(--hero-ink); font-weight:500}
-.ribbon{display:flex; flex-wrap:wrap; align-items:center; gap:6px 4px; font-family:var(--f-mono); font-size:.82rem}
-.ribbon .stop{border:1px solid var(--contour); background:color-mix(in srgb, var(--hero) 70%, #000 30%); padding:5px 10px; border-radius:999px; color:var(--hero-ink); white-space:nowrap}
-.ribbon .stop i{font-style:normal; color:var(--hero-muted)}
-.ribbon .arr{color:var(--hero-muted)}
-.ribbon .stop.join{border-color:var(--sun); color:var(--sun)}
-
-.seg{display:inline-flex; flex-wrap:wrap; gap:4px; padding:4px; border-radius:12px; background:color-mix(in srgb, var(--hero) 60%, #000 40%); border:1px solid var(--contour)}
-.seg button{font-family:var(--f-display); font-size:.95rem; font-weight:600; border:0; border-radius:9px; padding:9px 14px; cursor:pointer; background:transparent; color:var(--hero-muted)}
-.seg button[aria-pressed="true"]{background:var(--hero-ink); color:var(--hero)}
+/* ---------- Ouverture photo ---------- */
+.hero{position:relative; color:var(--hero-ink); background:#0E4A43; overflow:hidden; display:flex; align-items:flex-end; min-height:clamp(560px, 82vh, 760px)}
+.hero-slides{position:absolute; inset:0}
+.hero-slides img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.04); transition:opacity 1.8s ease, transform 8s ease}
+.hero-slides img.on{opacity:1; transform:scale(1)}
+@media (prefers-reduced-motion: reduce){.hero-slides img{transition:none; transform:none}}
+.hero::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(4,32,28,.28) 0%, rgba(4,32,28,.12) 30%, rgba(4,32,28,.55) 62%, rgba(4,32,28,.88) 100%); pointer-events:none}
+.hero-in{position:relative; z-index:2; padding-block:120px 34px; display:grid; gap:20px; width:100%}
+.badge{justify-self:start; font-family:var(--f-display); font-weight:800; font-size:1rem; background:var(--gold); color:#3A2600; padding:6px 14px; border-radius:999px; transform:rotate(-2deg)}
+.hero .eyebrow{color:#BFF1EC}
+.hero h1{font-size:clamp(2.8rem, 8.4vw, 6.2rem); font-weight:800; letter-spacing:-.025em; line-height:.96; font-variation-settings:"opsz" 96; text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hero h1 em{font-style:normal; color:var(--gold)}
+.hero-lede{font-size:clamp(1.05rem,1.7vw,1.25rem); max-width:58ch; color:#F2FBF9}
+.hero-cap{font-family:var(--f-mono); font-size:.74rem; color:rgba(255,255,255,.75); justify-self:end; text-align:right}
+.facts{display:flex; flex-wrap:wrap; gap:8px 22px; font-family:var(--f-mono); font-size:.86rem; color:rgba(255,255,255,.82)}
+.facts b{color:#fff; font-weight:500}
+.ribbon{display:flex; flex-wrap:wrap; align-items:center; gap:6px 4px; font-family:var(--f-mono); font-size:.8rem}
+.ribbon .stop{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:5px 11px; border-radius:999px; color:#fff; white-space:nowrap; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px)}
+.ribbon .stop i{font-style:normal; color:rgba(255,255,255,.75)}
+.ribbon .arr{color:rgba(255,255,255,.7)}
+.ribbon .stop.join{background:var(--gold); border-color:var(--gold); color:#3A2600}
+.ribbon .stop.join i{color:#6B4B00}
+.seg{display:inline-flex; flex-wrap:wrap; gap:4px; padding:4px; border-radius:14px; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px)}
+.seg button{font-family:var(--f-display); font-size:.95rem; font-weight:700; border:0; border-radius:10px; padding:9px 14px; cursor:pointer; background:transparent; color:#fff}
+.seg button[aria-pressed="true"]{background:#fff; color:var(--ink)}
 .seg button small{font-weight:500; opacity:.75; margin-left:6px; font-size:.78rem}
 .date-row{display:flex; flex-wrap:wrap; align-items:center; gap:12px 18px}
-.date-row .d{font-family:var(--f-mono); font-size:.9rem; color:var(--hero-ink)}
+.date-row .d{font-family:var(--f-mono); font-size:.9rem; color:#fff}
+.dl-row{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center}
+.dl{font-family:var(--f-display); font-weight:700; font-size:.92rem; border:1px solid rgba(255,255,255,.5); background:transparent; color:#fff; padding:9px 14px; border-radius:10px; cursor:pointer}
+.dl:hover{background:rgba(255,255,255,.14)}
+.dl-msg{font-family:var(--f-mono); font-size:.8rem; color:rgba(255,255,255,.85)}
 
 /* ---------- Sommaire ---------- */
-.toc{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--bg); border-bottom:1px solid var(--line)}
+.toc{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); box-shadow:0 2px 12px rgba(18,48,42,.05)}
 .toc .wrap{overflow-x:auto; scrollbar-width:none}
 .toc .wrap::-webkit-scrollbar{display:none}
 .toc ul{list-style:none; margin:0; padding:10px 0; display:flex; gap:4px; white-space:nowrap}
-.toc a{display:block; font-family:var(--f-display); font-weight:600; font-size:.9rem; color:var(--muted); text-decoration:none; padding:6px 10px; border-radius:8px}
-.toc a:hover{color:var(--ink); background:var(--paper)}
+.toc a{display:block; font-family:var(--f-display); font-weight:700; font-size:.92rem; color:var(--muted); text-decoration:none; padding:7px 12px; border-radius:999px}
+.toc a:hover{color:var(--ink); background:var(--accent-soft)}
 
 /* ---------- Sections ---------- */
-section{padding-block:clamp(44px,6vw,76px); border-bottom:1px solid var(--line)}
-.sec-head{display:grid; gap:10px; margin-bottom:28px}
-.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem); font-weight:750; letter-spacing:-.01em}
-.sec-head p{color:var(--muted); max-width:66ch}
-h3{font-size:1.25rem; font-weight:700}
+main > section{padding-block:clamp(48px,6.5vw,88px)}
+main > section:nth-of-type(even){background:var(--tint)}
+.sec-head{display:grid; gap:12px; margin-bottom:30px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-.015em}
+.sec-head p{color:var(--muted); max-width:66ch; font-size:1.05rem}
+.sec-head p b{color:var(--ink)}
+h3{font-size:1.25rem; font-weight:750}
 .grid2{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap:20px}
-.grid3{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap:18px}
-.panel{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:20px; display:grid; gap:12px; align-content:start; min-width:0}
-.panel h3{font-size:1.12rem}
-.list{margin:0; padding-left:1.1em; display:grid; gap:6px}
-.kv{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:.95rem}
-.kv dt{font-family:var(--f-mono); font-size:.8rem; color:var(--muted); padding-top:2px}
+.grid3{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap:20px}
+.panel{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; display:grid; gap:12px; align-content:start; min-width:0; box-shadow:var(--shadow)}
+.panel h3{font-size:1.15rem}
+.list{margin:0; padding-left:1.1em; display:grid; gap:7px}
+.kv{display:grid; grid-template-columns:auto 1fr; gap:7px 14px; font-size:.97rem}
+.kv dt{font-family:var(--f-mono); font-size:.78rem; color:var(--accent); padding-top:3px}
 .kv dd{margin:0}
-.callout{border-left:3px solid var(--sun); background:var(--sun-soft); padding:14px 16px; border-radius:0 10px 10px 0; display:grid; gap:6px}
-.callout.teal{border-color:var(--accent); background:var(--accent-soft)}
-.tag{display:inline-block; font-family:var(--f-mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); white-space:nowrap}
-.tag.reco{border-color:var(--accent); color:var(--accent)}
-.small{font-size:.88rem; color:var(--muted)}
+.callout{border-left:4px solid var(--coral); background:var(--sun-soft); padding:16px 18px; border-radius:0 14px 14px 0; display:grid; gap:6px}
+.callout.teal{border-color:var(--accent-bright); background:var(--accent-soft)}
+.tag{display:inline-block; font-family:var(--f-mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); white-space:nowrap; background:var(--paper)}
+.tag.reco{border-color:var(--accent); background:var(--accent); color:#fff}
+.small{font-size:.9rem; color:var(--muted)}
 
-/* Carte */
-.map-wrap{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:28px; align-items:start}
+/* ---------- Mosaïque ---------- */
+.mosaic{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); grid-auto-rows:210px; grid-auto-flow:dense; gap:12px}
+@media (max-width: 760px){.mosaic{grid-template-columns:repeat(2, minmax(0,1fr)); grid-auto-rows:170px; gap:10px}}
+.tile{position:relative; margin:0; border-radius:18px; overflow:hidden; background:linear-gradient(135deg, var(--accent-bright), #2F9E6A)}
+.tile.w2{grid-column:span 2}
+.tile.h2{grid-row:span 2}
+.tile img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease}
+.tile:hover img{transform:scale(1.05)}
+@media (prefers-reduced-motion: reduce){.tile img{transition:none}.tile:hover img{transform:none}}
+.tile figcaption{position:absolute; inset:auto 0 0 0; padding:40px 14px 12px; background:linear-gradient(180deg, transparent, rgba(4,32,28,.82)); color:#fff; display:grid; gap:1px}
+.tile figcaption b{font-family:var(--f-display); font-size:1.05rem; line-height:1.15}
+.tile figcaption span{font-family:var(--f-mono); font-size:.72rem; color:rgba(255,255,255,.85)}
+
+/* ---------- Carte ---------- */
+.map-wrap{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:30px; align-items:start}
 @media (max-width: 860px){.map-wrap{grid-template-columns:1fr}}
-.map-box{background:var(--sea); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+.map-box{background:var(--sea); border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--shadow)}
 .map-box svg{display:block; width:100%; height:auto}
 .legend{display:flex; flex-wrap:wrap; gap:8px 18px; font-family:var(--f-mono); font-size:.76rem; color:var(--muted); padding:12px 16px; border-top:1px solid var(--line); background:var(--paper)}
 .legend span{display:inline-flex; align-items:center; gap:8px}
 .legend .ln{width:26px; height:0; border-top:3px solid var(--accent)}
 .legend .ln.p2{border-color:var(--sun)}
 .legend .ln.trip{border-top:2px dashed var(--muted)}
-.why{display:grid; gap:14px; counter-reset:none}
-.why li{list-style:none}
-.why{padding:0; margin:0}
-.why strong{font-family:var(--f-display); font-weight:700}
+.why{display:grid; gap:14px; padding:0; margin:0}
+.why li{list-style:none; padding-left:16px; border-left:3px solid var(--accent-soft)}
+.why strong{font-family:var(--f-display); font-weight:800; color:var(--ink)}
 
-/* Comparatif dates */
-.cmp{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap:18px}
-.cmp .panel.win{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset}
-.pm{display:grid; gap:6px; margin:0; padding:0; list-style:none}
-.pm li{display:grid; grid-template-columns:20px 1fr; gap:6px}
+/* ---------- Dates ---------- */
+.cmp{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap:20px}
+.cmp .panel.win{border:2px solid var(--accent)}
+.pm{display:grid; gap:7px; margin:0; padding:0; list-style:none}
+.pm li{display:grid; grid-template-columns:22px 1fr; gap:6px}
 .pm li::before{font-family:var(--f-mono); font-weight:500}
 .pm li.plus::before{content:"+"; color:var(--accent)}
 .pm li.minus::before{content:"–"; color:var(--sun)}
 
-/* Jours */
-.phase{display:grid; gap:6px; margin:40px 0 18px; padding-bottom:14px; border-bottom:2px solid var(--ink)}
-.phase:first-of-type{margin-top:0}
-.phase h3{font-size:clamp(1.4rem,2.6vw,1.9rem); font-weight:800}
+/* ---------- Jour par jour ---------- */
+.phase{display:grid; gap:6px; margin:48px 0 18px}
+.phase h3{font-size:clamp(1.5rem,2.8vw,2.1rem); font-weight:800}
 .phase .meta{font-family:var(--f-mono); font-size:.85rem; color:var(--muted)}
-.days{display:grid; gap:0}
-.day{display:grid; grid-template-columns:118px minmax(0,1fr); gap:20px; padding:22px 0; border-bottom:1px solid var(--line)}
-@media (max-width: 620px){.day{grid-template-columns:1fr; gap:10px}}
-.day-date{display:flex; flex-direction:column; gap:2px}
+.days{display:grid; gap:14px}
+.chapter{position:relative; margin:18px 0 4px; height:clamp(170px, 24vw, 260px); border-radius:22px; overflow:hidden; background:linear-gradient(120deg, #0E4A43, var(--accent-bright))}
+.chapter img{width:100%; height:100%; object-fit:cover; display:block}
+.chapter::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(4,32,28,.78) 0%, rgba(4,32,28,.35) 55%, rgba(4,32,28,0) 100%)}
+.chapter figcaption{position:absolute; z-index:1; left:0; bottom:0; top:0; display:flex; flex-direction:column; justify-content:flex-end; gap:4px; padding:22px 24px; color:#fff; max-width:560px}
+.chapter figcaption .eyebrow{color:var(--gold)}
+.chapter figcaption b{font-family:var(--f-display); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; line-height:1}
+.chapter figcaption span:last-child{font-size:.98rem; color:rgba(255,255,255,.9)}
+.day{display:grid; grid-template-columns:110px minmax(0,1fr); gap:20px; padding:20px 22px; background:var(--paper); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow)}
+@media (max-width: 620px){.day{grid-template-columns:1fr; gap:10px; padding:18px}}
+.day-date{display:flex; flex-direction:column; gap:3px}
 @media (max-width: 620px){.day-date{flex-direction:row; align-items:baseline; gap:12px}}
-.dnum{font-family:var(--f-display); font-weight:800; font-size:2rem; line-height:1; color:var(--ink)}
+.dnum{font-family:var(--f-display); font-weight:800; font-size:2.2rem; line-height:1; color:var(--accent)}
 .ddate{font-family:var(--f-mono); font-size:.82rem; color:var(--muted); text-transform:capitalize}
-.day-body{display:grid; gap:10px; min-width:0}
+.day-body{display:grid; gap:11px; min-width:0}
 .day-top{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
-.region{--r:var(--r-road); font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; color:var(--r); background:color-mix(in srgb, var(--r) 13%, transparent); border:1px solid color-mix(in srgb, var(--r) 35%, transparent)}
+.region{--r:var(--r-road); font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:999px; color:#fff; background:var(--r); font-weight:500}
 .region.cv{--r:var(--r-cv)} .region.mv{--r:var(--r-mv)} .region.gu{--r:var(--r-gu)} .region.ar{--r:var(--r-ar)} .region.pa{--r:var(--r-pa)} .region.rd{--r:var(--r-road)}
-.drive{font-family:var(--f-mono); font-size:.76rem; color:var(--muted)}
-.day h4{font-size:1.28rem; font-weight:700}
-.opts{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.drive{font-family:var(--f-mono); font-size:.78rem; color:var(--muted)}
+.day h4{font-size:1.35rem; font-weight:800}
+.opts{list-style:none; margin:0; padding:0; display:grid; gap:9px}
 .opts li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:10px; align-items:baseline}
-.who{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:6px; border:1px solid var(--line); color:var(--muted); white-space:nowrap; min-width:7.6em; text-align:center}
-.who.all{color:var(--ink)}
+.who{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; padding:3px 8px; border-radius:7px; border:1px solid var(--line); color:var(--muted); white-space:nowrap; min-width:7.6em; text-align:center; background:var(--paper)}
+.who.all{color:var(--ink); background:#F3F6F5}
 .who.kids{border-color:var(--accent); color:var(--accent); background:var(--accent-soft)}
 .who.colin{border-color:var(--r-pa); color:var(--r-pa)}
 .who.parents{border-color:var(--r-mv); color:var(--r-mv)}
-.who.adults{border-color:var(--sun); color:var(--sun)}
+.who.adults{border-color:var(--sun); color:var(--sun); background:var(--sun-soft)}
 .who.sis{border-color:var(--r-ar); color:var(--r-ar)}
-.eat{font-size:.95rem}
-.eat b, .note b{font-family:var(--f-display); font-weight:700}
-.note{font-size:.88rem; color:var(--muted); border-left:2px solid var(--line); padding-left:10px}
+.eat{font-size:.97rem; background:#FFF8E6; border-radius:12px; padding:10px 14px}
+.eat b, .note b{font-family:var(--f-display); font-weight:800}
+.note{font-size:.9rem; color:var(--muted); border-left:3px solid var(--line); padding-left:12px}
 .note.warn{border-color:var(--warn)}
-.dec-note{font-size:.88rem; color:var(--sun); font-family:var(--f-display); font-weight:600}
-.price{font-family:var(--f-mono); font-size:.86em; color:var(--sun); white-space:nowrap}
+.dec-note{font-size:.9rem; color:var(--sun); font-family:var(--f-display); font-weight:700}
+.price{font-family:var(--f-mono); font-size:.86em; color:var(--sun); font-weight:500}
 
-/* Logements */
-.lodge .top{display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap}
-.lodge .n{font-family:var(--f-mono); font-size:.8rem; color:var(--muted)}
-.lodge .budget{font-family:var(--f-mono); font-size:.95rem; color:var(--ink)}
-.lodge .budget b{color:var(--sun); font-weight:500}
-.phase-label{font-family:var(--f-display); font-weight:700; font-size:1.05rem; margin:8px 0 12px; display:flex; gap:10px; align-items:center}
-
-/* Restaurants */
-.resto-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:18px}
-.resto-col h3{font-size:1.05rem; padding-bottom:8px; border-bottom:2px solid var(--r); color:var(--ink)}
-.resto-col{--r:var(--r-road); display:grid; gap:12px; align-content:start; min-width:0}
-.resto-col.mv{--r:var(--r-mv)} .resto-col.gu{--r:var(--r-gu)} .resto-col.ar{--r:var(--r-ar)} .resto-col.pa{--r:var(--r-pa)}
-.resto{display:grid; gap:3px}
-.resto .nm{font-family:var(--f-display); font-weight:700}
-.resto .nm .star{color:var(--sun)}
-.resto p{font-size:.92rem; color:var(--muted)}
-.resto .tg{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--r)}
-
-/* Tables */
-.tscroll{overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--paper)}
-table{border-collapse:collapse; width:100%; min-width:560px; font-size:.93rem}
-th,td{padding:10px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line)}
-th{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:500}
-tr:last-child td{border-bottom:0}
-td .mono{font-size:.88rem}
-
-/* Budget */
-.budget-layout{display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:24px; align-items:start}
-@media (max-width: 920px){.budget-layout{grid-template-columns:1fr}}
-.bgroup{display:grid; gap:0; margin-bottom:18px; background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden}
-.bgroup h3{font-size:.98rem; padding:12px 16px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
-.bgroup h3 span{font-family:var(--f-mono); font-weight:400; font-size:.78rem; color:var(--muted)}
-.brow{display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:8px 14px; align-items:center; padding:10px 16px; border-bottom:1px solid var(--line)}
-.brow:last-child{border-bottom:0}
-@media (max-width: 560px){.brow{grid-template-columns:minmax(0,1fr) auto}.brow .qty{grid-column:1 / -1; justify-self:start}}
-.brow .lbl{display:flex; gap:10px; align-items:flex-start; cursor:pointer; min-width:0}
-.brow .lbl input{margin-top:5px; accent-color:var(--accent); width:16px; height:16px; flex:none}
-.brow .lbl span{display:grid; gap:1px; min-width:0}
-.brow .lbl small{color:var(--muted); font-size:.8rem}
-.brow.off .lbl span > b, .brow.off .sub{opacity:.45}
-.brow .lbl b{font-weight:500}
-.qty{display:flex; gap:10px; align-items:center; font-family:var(--f-mono); font-size:.78rem; color:var(--muted); flex-wrap:wrap}
-.qty label{display:inline-flex; align-items:center; gap:5px}
-.num{width:4.6em; font-family:var(--f-mono); font-size:.88rem; padding:5px 6px; border:1px solid var(--line); border-radius:7px; background:var(--bg); color:var(--ink)}
-.num.wide{width:6.4em}
-.sub{font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right; min-width:5.5em; font-size:.92rem}
-.summary{position:sticky; top:calc(env(safe-area-inset-top,0px) + 64px); background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:20px; display:grid; gap:14px}
-@media (max-width: 920px){.summary{position:static}}
-.total{font-family:var(--f-display); font-weight:800; font-size:2.3rem; line-height:1; font-variant-numeric:tabular-nums}
-.total-usd{font-family:var(--f-mono); color:var(--muted); font-size:.88rem}
-.stack{display:flex; height:14px; border-radius:7px; overflow:hidden; background:var(--line)}
-.stack i{display:block; height:100%}
-.blines{display:grid; gap:7px; margin:0; padding:0; list-style:none; font-size:.9rem}
-.blines li{display:grid; grid-template-columns:12px 1fr auto; gap:8px; align-items:center}
-.blines .sw{width:10px; height:10px; border-radius:3px}
-.blines .v{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
-.c1{background:var(--accent)} .c2{background:var(--sun)} .c3{background:var(--r-pa)} .c4{background:var(--r-mv)} .c5{background:var(--r-gu)}
-.btn{font-family:var(--f-display); font-weight:600; font-size:.9rem; border:1px solid var(--line); background:var(--bg); color:var(--ink); padding:8px 12px; border-radius:9px; cursor:pointer}
-.btn:hover{border-color:var(--accent)}
-
-/* Choix */
-.choicebar{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--paper)}
-.choicebar .dot{width:8px; height:8px; border-radius:50%; background:var(--muted); display:inline-block; margin-right:8px}
-.choicebar[data-mode="shared"] .dot{background:var(--accent)}
+/* ---------- Choix ---------- */
+.choicebar{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:12px 16px; border:1px solid var(--line); border-radius:14px; background:var(--paper); box-shadow:var(--shadow)}
+.choicebar .dot{width:9px; height:9px; border-radius:50%; background:var(--muted); display:inline-block; margin-right:8px}
+.choicebar[data-mode="shared"] .dot{background:#2FB36B}
 .choicebar[data-mode="readonly"] .dot, .choicebar[data-mode="error"] .dot{background:var(--warn)}
 .opts li[data-opt]{grid-template-columns:auto minmax(0,1fr) auto}
-.pick{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.02em; padding:4px 9px; border-radius:999px; border:1px dashed var(--line); background:transparent; color:var(--muted); cursor:pointer; white-space:nowrap; align-self:center}
+.pick{font-family:var(--f-mono); font-size:.72rem; padding:5px 11px; border-radius:999px; border:1px dashed #B9CCC5; background:var(--paper); color:var(--muted); cursor:pointer; white-space:nowrap; align-self:center}
 .pick:hover{border-color:var(--accent); color:var(--ink)}
 .pick:disabled{cursor:default; opacity:.8}
-.pick[data-s="oui"]{border:1px solid var(--accent); background:var(--accent); color:var(--paper)}
-.pick[data-s="non"]{border:1px solid var(--line); color:var(--muted)}
-.opts li.is-no > span:nth-child(2){text-decoration:line-through; text-decoration-color:var(--muted); opacity:.55}
+.pick[data-s="oui"]{border:1px solid #23A562; background:#23A562; color:#fff}
+.pick[data-s="non"]{border:1px solid var(--line); color:var(--muted); background:#F3F6F5}
+.opts li.is-no > span:nth-child(2){text-decoration:line-through; text-decoration-color:var(--muted); opacity:.5}
 @media (max-width: 560px){
   .opts li[data-opt]{grid-template-columns:auto minmax(0,1fr)}
   .pick{grid-column:2; justify-self:start}
 }
-.dl-row{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center}
-.dl{font-family:var(--f-display); font-weight:600; font-size:.92rem; border:1px solid var(--contour); background:transparent; color:var(--hero-ink); padding:9px 14px; border-radius:10px; cursor:pointer}
-.dl:hover{border-color:var(--hero-ink)}
-.dl-msg{font-family:var(--f-mono); font-size:.8rem; color:var(--hero-muted)}
 
-/* Sources */
-.sources{columns:2 320px; column-gap:32px; font-size:.88rem; margin:0; padding-left:1.1em}
+/* ---------- Logements ---------- */
+.lodge{padding:0 0 20px; overflow:hidden}
+.lodge > *:not(.lodge-photo){margin-inline:20px}
+.lodge-photo{height:170px; background:linear-gradient(135deg, var(--accent-bright), #2F9E6A)}
+.lodge-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.lodge .top{display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap; margin-top:6px}
+.lodge .n{font-family:var(--f-mono); font-size:.8rem; color:var(--muted)}
+.lodge .budget{font-family:var(--f-mono); font-size:.95rem; color:var(--ink)}
+.lodge .budget b{color:var(--sun); font-weight:500}
+.phase-label{font-family:var(--f-display); font-weight:800; font-size:1.1rem; margin:8px 0 14px; display:flex; gap:10px; align-items:center}
+
+/* ---------- Restaurants ---------- */
+.resto-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:20px}
+.resto-col{--r:var(--r-road); display:grid; gap:12px; align-content:start; min-width:0; background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px; box-shadow:var(--shadow); border-top:5px solid var(--r)}
+.resto-col.mv{--r:var(--r-mv)} .resto-col.gu{--r:var(--r-gu)} .resto-col.ar{--r:var(--r-ar)} .resto-col.pa{--r:var(--r-pa)}
+.resto-col h3{font-size:1.2rem; color:var(--ink)}
+.resto{display:grid; gap:2px}
+.resto .nm{font-family:var(--f-display); font-weight:800}
+.resto .nm .star{color:var(--coral)}
+.resto p{font-size:.93rem; color:var(--muted)}
+.resto .tg{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--r)}
+
+/* ---------- Tableaux ---------- */
+.tscroll{overflow-x:auto; border:1px solid var(--line); border-radius:16px; background:var(--paper); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:560px; font-size:.95rem}
+th,td{padding:11px 16px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); font-weight:500; background:#F6FBFA}
+tr:last-child td{border-bottom:0}
+td .mono{font-size:.88rem}
+
+/* ---------- Budget ---------- */
+.budget-layout{display:grid; grid-template-columns:minmax(0,1fr) 350px; gap:24px; align-items:start}
+@media (max-width: 920px){.budget-layout{grid-template-columns:1fr}}
+.bgroup{display:grid; margin-bottom:18px; background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
+.bgroup h3{font-size:1rem; padding:13px 16px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; background:#F6FBFA}
+.bgroup h3 span{font-family:var(--f-mono); font-weight:400; font-size:.8rem; color:var(--muted)}
+.brow{display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:8px 14px; align-items:center; padding:11px 16px; border-bottom:1px solid var(--line)}
+.brow:last-child{border-bottom:0}
+@media (max-width: 560px){.brow{grid-template-columns:minmax(0,1fr) auto}.brow .qty{grid-column:1 / -1; justify-self:start}}
+.brow .lbl{display:flex; gap:10px; align-items:flex-start; cursor:pointer; min-width:0}
+.brow .lbl input{margin-top:5px; accent-color:var(--accent); width:17px; height:17px; flex:none}
+.brow .lbl span{display:grid; gap:1px; min-width:0}
+.brow .lbl small{color:var(--muted); font-size:.8rem}
+.brow.off .lbl span > b, .brow.off .sub{opacity:.45}
+.brow .lbl b{font-weight:600}
+.qty{display:flex; gap:10px; align-items:center; font-family:var(--f-mono); font-size:.78rem; color:var(--muted); flex-wrap:wrap}
+.qty label{display:inline-flex; align-items:center; gap:5px}
+.num{width:4.6em; font-family:var(--f-mono); font-size:.9rem; padding:6px 7px; border:1px solid var(--line); border-radius:8px; background:#F7FAF9; color:var(--ink)}
+.num.wide{width:6.4em}
+.sub{font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right; min-width:5.5em; font-size:.92rem}
+.summary{position:sticky; top:calc(env(safe-area-inset-top,0px) + 70px); background:var(--paper); border:2px solid var(--accent); border-radius:20px; padding:22px; display:grid; gap:14px; box-shadow:var(--shadow)}
+@media (max-width: 920px){.summary{position:static}}
+.total{font-family:var(--f-display); font-weight:800; font-size:2.5rem; line-height:1; font-variant-numeric:tabular-nums; color:var(--ink)}
+.total-usd{font-family:var(--f-mono); color:var(--muted); font-size:.88rem}
+.stack{display:flex; height:14px; border-radius:7px; overflow:hidden; background:var(--line)}
+.stack i{display:block; height:100%}
+.blines{display:grid; gap:7px; margin:0; padding:0; list-style:none; font-size:.93rem}
+.blines li{display:grid; grid-template-columns:12px 1fr auto; gap:8px; align-items:center}
+.blines .sw{width:10px; height:10px; border-radius:3px}
+.blines .v{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
+.c1{background:var(--accent-bright)} .c2{background:var(--coral)} .c3{background:var(--r-pa)} .c4{background:#2FB36B} .c5{background:var(--gold)}
+.btn{font-family:var(--f-display); font-weight:700; font-size:.9rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); padding:8px 12px; border-radius:10px; cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+
+/* ---------- Sources ---------- */
+.sources{columns:2 320px; column-gap:32px; font-size:.9rem; margin:0; padding-left:1.1em}
 .sources li{margin-bottom:6px; break-inside:avoid}
-footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
+footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:var(--bg); border-top:1px solid var(--line)}
+.map-wrap > .panel{box-shadow:none}
+
 </style>
 
 <header class="hero">
+  <div class="hero-slides" aria-hidden="true">
+<img data-cap="Manuel Antonio, plage du parc national" class="on" src="https://commons.wikimedia.org/wiki/Special:FilePath/Manuel_Antonio_National_Park_Beach.jpg?width=1920" alt="Manuel Antonio, plage du parc national" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')">
+<img data-cap="Le Río Celeste, parc du volcan Tenorio" class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Tenorio_Volcano_Nationalpark,_Costa_Rica_%E2%80%94_bright_blue_paradise_fantasy_waterfall%E2%80%942021.jpg?width=1920" alt="Le Río Celeste, parc du volcan Tenorio" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')">
+<img data-cap="Le volcan Arenal depuis La Fortuna" class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Arenal_Volcano_seen_from_La_Fortuna,_Costa_Rica.jpg?width=1920" alt="Le volcan Arenal depuis La Fortuna" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')">
+<img data-cap="La baie de Brasilito et Playa Conchal" class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=1920" alt="La baie de Brasilito et Playa Conchal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')">
+  </div>
   <div class="wrap hero-in">
-    <p class="eyebrow">Réunion de famille · hiver 2027-2028 · Pura vida</p>
+    <p class="badge">¡ Pura vida !</p>
+    <p class="eyebrow">Réunion de famille · hiver 2027-2028</p>
     <h1>Costa Rica,<br>à trois, puis <em>à sept</em>.</h1>
     <p class="hero-lede">Vingt-deux jours entre forêt de nuages, volcans et Pacifique. Huit jours à trois pour le brevet de plongée de Colin et les sorties impossibles avec un bébé, puis treize jours avec sa sœur, son beau-frère et les deux petites.</p>
     <div class="date-row">
@@ -294,12 +308,15 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
     </div>
     <div class="dl-row"><button type="button" class="dl" id="dl-btn" hidden>Télécharger une copie hors connexion</button><span class="dl-msg" id="dl-msg" role="status"></span></div>
     <p class="facts"><span><b>22</b> jours</span><span><b>21</b> nuits</span><span><b>7</b> voyageurs</span><span><b>4</b> régions</span><span><b>6</b> logements</span><span><b>2</b> voitures</span></p>
+  
+    <p class="hero-cap" id="hero-cap">Manuel Antonio, plage du parc national</p>
   </div>
 </header>
 
 <nav class="toc" aria-label="Sommaire">
   <div class="wrap">
     <ul>
+      <li><a href="#envie">En images</a></li>
       <li><a href="#apercu">Aperçu</a></li>
       <li><a href="#quand">Quand partir</a></li>
       <li><a href="#vols">Vols & voitures</a></li>
@@ -315,6 +332,29 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
 </nav>
 
 <main>
+<section id="envie">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ce qui nous attend</p>
+      <h2>Volcans, rivière turquoise et paresseux</h2>
+      <p>Un pays d'à peine 51 000 km², moins de deux fois la Belgique, qui abrite environ 5 % de la biodiversité mondiale. En trois semaines : la forêt de nuages, un volcan parfait, une rivière bleu ciel, deux plages de rêve et des animaux à chaque virage.</p>
+    </div>
+    <div class="mosaic">
+      <figure class="tile w2 h2"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Tenorio_Volcano_Nationalpark,_Costa_Rica_%E2%80%94_bright_blue_paradise_fantasy_waterfall%E2%80%942021.jpg?width=960" alt="Le Río Celeste" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Le Río Celeste</b><span>J8 · volcan Tenorio</span></figcaption></figure>
+      <figure class="tile w2"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Landscape_of_Arenal_Volcano_(5861946349).jpg?width=960" alt="Le volcan Arenal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Le volcan Arenal</b><span>J13 → J16</span></figcaption></figure>
+      <figure class="tile "><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brown-throated_three-toed_sloth_male.jpg?width=960" alt="Les paresseux" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Les paresseux</b><span>J19 · Manuel Antonio</span></figcaption></figure>
+      <figure class="tile "><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Red_eyed_tree_frog_edit2.jpg?width=960" alt="La rainette aux yeux rouges" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>La rainette aux yeux rouges</b><span>J2 · balade de nuit</span></figcaption></figure>
+      <figure class="tile h2"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Monteverde_Cloud_Forest_01.jpg?width=960" alt="La forêt de nuages" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>La forêt de nuages</b><span>J2 → J3 · Monteverde</span></figcaption></figure>
+      <figure class="tile w2"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=960" alt="Les plages de Guanacaste" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Les plages de Guanacaste</b><span>J9 → J12</span></figcaption></figure>
+      <figure class="tile "><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Keel-billed_toucan_in_Costa_Rica_03.jpg?width=960" alt="Le toucan à carène" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Le toucan à carène</b><span>un peu partout</span></figcaption></figure>
+      <figure class="tile "><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pharomachrus_mocinno_Monteverde_01.jpg?width=960" alt="Le quetzal resplendissant" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Le quetzal resplendissant</b><span>J3 · Monteverde</span></figcaption></figure>
+      <figure class="tile w2"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Parque_Nacional_Manuel_Antonio_02.jpg?width=960" alt="Manuel Antonio" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Manuel Antonio</b><span>J17 → J21</span></figcaption></figure>
+      <figure class="tile h2"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/La_Fortuna_Waterfall,_La_Fortuna_de_San_Carlos,_Costa_Rica_(Unsplash).jpg?width=960" alt="La cascade de La Fortuna" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>La cascade de La Fortuna</b><span>J15</span></figcaption></figure>
+      <figure class="tile "><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Costa_Rica_Sarchi_ox_drawn_cart.jpg?width=960" alt="Les charrettes peintes" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><b>Les charrettes peintes</b><span>J2 · Sarchí</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- ============ APERÇU ============ -->
 <section id="apercu">
   <div class="wrap">
@@ -537,6 +577,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
         </div>
       </article>
 
+      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Monteverde_puente.jpg?width=1280" alt="Monteverde" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 2 · 2 nuits</span><b>Monteverde</b><span>Forêt de nuages à 1 400 m, ponts suspendus et balades de nuit</span></figcaption></figure>
+
       <article class="day" data-d="2">
         <div class="day-date"><span class="dnum">J2</span><span class="ddate">dim. 9 janv.</span></div>
         <div class="day-body">
@@ -568,6 +610,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
           <p class="note">Réserver les entrées et le guide en ligne à l'avance en haute saison.</p>
         </div>
       </article>
+
+      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Playa_Hermosa_Guanacaste_Sunset.jpg?width=1280" alt="Playas del Coco" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 3 · 5 nuits</span><b>Playas del Coco</b><span>Golfe de Papagayo : brevet de plongée et forêt sèche</span></figcaption></figure>
 
       <article class="day" data-d="4">
         <div class="day-date"><span class="dnum">J4</span><span class="ddate">mar. 11 janv.</span></div>
@@ -654,6 +698,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
     </div>
     <div class="days">
 
+      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=1280" alt="Playa Hermosa" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 4 · 4 nuits</span><b>Playa Hermosa</b><span>Plages calmes pour les petites, crocodiles et volcan Rincón</span></figcaption></figure>
+
       <article class="day" data-d="9">
         <div class="day-date"><span class="dnum">J9</span><span class="ddate">dim. 16 janv.</span></div>
         <div class="day-body">
@@ -709,6 +755,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
           <p class="note">Parc fermé le lundi, billets en ligne. Cheval dès 4 ans. Les sources très chaudes ne conviennent pas aux tout-petits.</p>
         </div>
       </article>
+
+      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Arenal_Volcano_seen_from_La_Fortuna,_Costa_Rica.jpg?width=1280" alt="Arenal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 5 · 4 nuits</span><b>Arenal</b><span>Sources chaudes, ponts suspendus et cascade au pied du volcan</span></figcaption></figure>
 
       <article class="day" data-d="13">
         <div class="day-date"><span class="dnum">J13</span><span class="ddate">jeu. 20 janv.</span></div>
@@ -766,6 +814,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
           <p class="eat"><b>Manger :</b> Essence Arenal à El Castillo, cuisine de la ferme à l'assiette, vue sur le lac et le volcan (35 min).</p>
         </div>
       </article>
+
+      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Manuel_Antonio_National_Park_Beach.jpg?width=1280" alt="Manuel Antonio" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 6 · 5 nuits</span><b>Manuel Antonio</b><span>Jungle et plages, singes, paresseux et pêche au gros</span></figcaption></figure>
 
       <article class="day" data-d="17">
         <div class="day-date"><span class="dnum">J17</span><span class="ddate">lun. 24 janv.</span></div>
@@ -865,6 +915,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
     <p class="phase-label"><span class="tag reco">Phase 1</span> À trois · 1 à 2 chambres</p>
     <div class="grid3">
       <div class="panel lodge">
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Costa_Rica_Sarchi_ox_drawn_cart.jpg?width=960" alt="Vallée centrale" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>1 · Alajuela ou Atenas</h3><span class="n">N1 · 1 nuit</span></div>
         <p>À 15–30 minutes de l'aéroport. Atenas et Grecia offrent des maisons au milieu des caféiers, plus agréables qu'Alajuela.</p>
         <p class="small">À chercher : parking fermé, arrivée autonome tardive.</p>
@@ -872,6 +923,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
         <a href="https://www.airbnb.fr/s/Atenas--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Atenas</a>
       </div>
       <div class="panel lodge">
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Monteverde_Cloud_Forest_01.jpg?width=960" alt="Monteverde" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>2 · Monteverde</h3><span class="n">N2–N3 · 2 nuits</span></div>
         <p>Un chalet en lisière de forêt, sur la route entre Santa Elena et la réserve, pour être à 10 minutes des sentiers à 7 h.</p>
         <p class="small">À chercher : chauffage ou poêle (nuits fraîches), vue sur le golfe de Nicoya.</p>
@@ -879,6 +931,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
         <a href="https://www.airbnb.fr/s/Monteverde--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Monteverde</a>
       </div>
       <div class="panel lodge">
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Playa_Hermosa_Guanacaste_Sunset.jpg?width=960" alt="Playas del Coco" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>3 · Playas del Coco ou Ocotal</h3><span class="n">N4–N8 · 5 nuits</span></div>
         <p>Les centres de plongée viennent chercher leurs élèves à Coco, Hermosa et Playa Panamá. Base idéale aussi pour les sorties des parents.</p>
         <p class="small">À chercher : piscine, climatisation, restaurants à pied.</p>
@@ -889,6 +942,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
     <p class="phase-label" style="margin-top:28px"><span class="tag" style="border-color:var(--sun);color:var(--sun)">Phase 2</span> À sept · 4 chambres et piscine</p>
     <div class="grid3">
       <div class="panel lodge">
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=960" alt="Guanacaste" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>4 · Playa Hermosa ou Playa Panamá</h3><span class="n">N9–N12 · 4 nuits</span></div>
         <p>Les plages les plus calmes du nord, à 25 minutes de Liberia. Colin et ses parents n'ont que dix minutes à faire depuis Coco.</p>
         <p class="small">À chercher : piscine clôturée, coin ombragé, lit bébé, rez-de-chaussée.</p>
@@ -896,6 +950,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
         <a href="https://www.airbnb.fr/s/Playa-Hermosa--Guanacaste--Costa-Rica/homes?adults=5&children=1&infants=1&min_bedrooms=4" target="_blank" rel="noopener">Chercher à Playa Hermosa</a>
       </div>
       <div class="panel lodge">
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Arenal_Volcano_seen_from_La_Fortuna,_Costa_Rica.jpg?width=960" alt="Arenal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>5 · Arenal, La Fortuna</h3><span class="n">N13–N16 · 4 nuits</span></div>
         <p>Une maison avec vue sur le volcan, entre La Fortuna et le parc national ou sur la route d'El Castillo, à 15 minutes maximum des activités.</p>
         <p class="small">À chercher : vue volcan depuis la terrasse, piscine, accès sans piste trop raide.</p>
@@ -903,6 +958,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
         <a href="https://www.airbnb.fr/s/La-Fortuna--Costa-Rica/homes?adults=5&children=1&infants=1&min_bedrooms=4" target="_blank" rel="noopener">Chercher à La Fortuna</a>
       </div>
       <div class="panel lodge">
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Parque_Nacional_Manuel_Antonio_02.jpg?width=960" alt="Manuel Antonio" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>6 · Manuel Antonio, les collines</h3><span class="n">N17–N21 · 5 nuits</span></div>
         <p>Une villa dans la jungle avec vue sur l'océan : singes au petit-déjeuner, coucher de soleil depuis la piscine. Variante plus calme : Uvita ou Ojochal, plus proches des baleines mais à une heure de plus de route.</p>
         <p class="small">À chercher : peu d'escaliers avec les petites (le terrain est très pentu), barrière de piscine.</p>
@@ -1267,6 +1323,25 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
       <li><a href="https://www.hinterlandtravel.com/belgium/destinations/costa-rica" target="_blank" rel="noopener">Conditions d'entrée pour les Belges</a></li>
       <li><a href="https://www.tonton-outdoor.com/fr_FR/p/guide-du-routard-costa-rica-edition-2025-26" target="_blank" rel="noopener">Guide du Routard Costa Rica 2025-2026</a></li>
     </ul>
+    <h3 style="margin-top:34px">Crédits photos</h3>
+    <p class="small" style="margin:8px 0 12px">Toutes les photos viennent de Wikimedia Commons, sous licences libres. Chaque lien mène à la page de la photo, avec son auteur et sa licence.</p>
+    <ul class="sources">
+      <li><a href="https://commons.wikimedia.org/wiki/File:Arenal_Volcano_seen_from_La_Fortuna,_Costa_Rica.jpg" target="_blank" rel="noopener">Arenal Volcano seen from La Fortuna, Costa Rica</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Landscape_of_Arenal_Volcano_(5861946349).jpg" target="_blank" rel="noopener">Landscape of Arenal Volcano (5861946349)</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Tenorio_Volcano_Nationalpark,_Costa_Rica_%E2%80%94_bright_blue_paradise_fantasy_waterfall%E2%80%942021.jpg" target="_blank" rel="noopener">Tenorio Volcano Nationalpark, Costa Rica — bright blue paradise fantasy waterfall—2021</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg" target="_blank" rel="noopener">Brasilito Bay in Guanacaste, Costa Rica showing Playa Brasilito and Playa Conchal</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:La_Fortuna_Waterfall,_La_Fortuna_de_San_Carlos,_Costa_Rica_(Unsplash).jpg" target="_blank" rel="noopener">La Fortuna Waterfall, La Fortuna de San Carlos, Costa Rica (Unsplash)</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Red_eyed_tree_frog_edit2.jpg" target="_blank" rel="noopener">Red eyed tree frog edit2</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Playa_Hermosa_Guanacaste_Sunset.jpg" target="_blank" rel="noopener">Playa Hermosa Guanacaste Sunset</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Manuel_Antonio_National_Park_Beach.jpg" target="_blank" rel="noopener">Manuel Antonio National Park Beach</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Parque_Nacional_Manuel_Antonio_02.jpg" target="_blank" rel="noopener">Parque Nacional Manuel Antonio 02</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Monteverde_Cloud_Forest_01.jpg" target="_blank" rel="noopener">Monteverde Cloud Forest 01</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Monteverde_puente.jpg" target="_blank" rel="noopener">Monteverde puente</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Pharomachrus_mocinno_Monteverde_01.jpg" target="_blank" rel="noopener">Pharomachrus mocinno Monteverde 01</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Costa_Rica_Sarchi_ox_drawn_cart.jpg" target="_blank" rel="noopener">Costa Rica Sarchi ox drawn cart</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Brown-throated_three-toed_sloth_male.jpg" target="_blank" rel="noopener">Brown-throated three-toed sloth male</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Keel-billed_toucan_in_Costa_Rica_03.jpg" target="_blank" rel="noopener">Keel-billed toucan in Costa Rica 03</a></li>
+    </ul>
   </div>
 </section>
 </main>
@@ -1279,7 +1354,14 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
    Colle ici l'objet "firebaseConfig" donné par Firebase, par exemple :
    window.FIREBASE_CONFIG = { apiKey: "...", authDomain: "...", projectId: "...", appId: "..." };
    Tant que c'est null, les choix restent sur chaque appareil. */
-window.FIREBASE_CONFIG = null;
+window.FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCFpNnOHeNq1VE2M8KcQSCtjakubcplOvs",
+  authDomain: "costa-rica-avec-la-fafa.firebaseapp.com",
+  projectId: "costa-rica-avec-la-fafa",
+  storageBucket: "costa-rica-avec-la-fafa.firebasestorage.app",
+  messagingSenderId: "1053174301457",
+  appId: "1:1053174301457:web:a0fa75872b3a7ae16942b0"
+};
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -1358,7 +1440,7 @@ window.FIREBASE_CONFIG = null;
     });
     document.getElementById("ch-count").textContent = yes + " retenues · " + no + " écartées · " + open + " à décider";
   }
-  function setStatus(mode){
+  function setStatus(mode, detail){
     chMode = mode;
     var bar = document.getElementById("choicebar"); bar.dataset.mode = mode;
     var msg = {
@@ -1367,7 +1449,7 @@ window.FIREBASE_CONFIG = null;
       readonly: "Vous voyez les choix de la famille.",
       error: "La base partagée ne répond pas : vos choix restent sur cet appareil pour l'instant."
     }[mode];
-    document.getElementById("ch-status").innerHTML = '<i class="dot"></i>' + msg;
+    document.getElementById("ch-status").innerHTML = '<i class="dot"></i>' + msg + (detail ? ' <span class="mono">(code : ' + String(detail).replace(/[<>&]/g, '') + ')</span>' : '');
     paintChoices();
   }
 
@@ -1380,7 +1462,7 @@ window.FIREBASE_CONFIG = null;
       var body = { choices: Object.assign({}, CH), updated: firebase.firestore.FieldValue.serverTimestamp() };
       writing = writing.then(function(){ return ref.set(body); }).then(function(){ retries = 0; }).catch(function(e){
         var code = e && e.code;
-        if (code === "permission-denied" || code === "invalid-argument") { demoted = true; setStatus("error"); }
+        if (code === "permission-denied" || code === "invalid-argument") { demoted = true; setStatus("error", code); }
         else if (retries < 1) { retries++; setTimeout(scheduleWrite, 1500 + Math.random()*1500); }
       });
     }, 450);
@@ -1388,13 +1470,13 @@ window.FIREBASE_CONFIG = null;
   function connectShared(){
     var cfg = window.FIREBASE_CONFIG;
     if (!cfg) { setStatus("local"); return; }
-    if (!window.firebase || !firebase.initializeApp) { setStatus("error"); return; }
+    if (!window.firebase || !firebase.initializeApp) { setStatus("error", "sdk-non-charge"); return; }
     try {
       if (!firebase.apps.length) firebase.initializeApp(cfg);
       var fs = firebase.firestore();
       try { fs.enablePersistence({ synchronizeTabs: true }).catch(function(){}); } catch(e){}
       ref = fs.collection("plan").doc("choices");
-    } catch(e){ setStatus("error"); return; }
+    } catch(e){ setStatus("error", e && (e.code || e.message)); return; }
     var first = true;
     ref.onSnapshot(function(snap){
       if (demoted) return;
@@ -1411,7 +1493,7 @@ window.FIREBASE_CONFIG = null;
         if (Object.keys(CH).length) scheduleWrite();
       }
       first = false;
-    }, function(){ demoted = true; setStatus("error"); });
+    }, function(e){ demoted = true; setStatus("error", e && (e.code || e.message)); });
   }
 
   /* ---------- Copie hors connexion ---------- */
@@ -1611,5 +1693,22 @@ window.FIREBASE_CONFIG = null;
 })();
 </script>
 
+<script>
+(function(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll(".hero-slides img"));
+  var cap = document.getElementById("hero-cap");
+  if (imgs.length < 2) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return;
+  var i = 0;
+  setInterval(function(){
+    var n = i;
+    for (var k = 1; k <= imgs.length; k++){ var c = (i + k) % imgs.length; if (!imgs[c].classList.contains("fail")) { n = c; break; } }
+    if (n === i) return;
+    imgs[i].classList.remove("on"); imgs[n].classList.add("on"); i = n;
+    if (cap) cap.textContent = imgs[n].dataset.cap || "";
+  }, 6500);
+})();
+</script>
 </body>
 </html>
