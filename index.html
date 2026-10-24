@@ -1,0 +1,1615 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Costa Rica en famille</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Itinéraire de la réunion de famille au Costa Rica, hiver 2027-2028.">
+<meta name="theme-color" content="#103326">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Costa Rica">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : un carnet de route en chapitres — bandeau "contours de volcan", sommaire collant, puis jours, logements, plongée, budget. */
+:root{
+  --bg:#EDF3EF; --paper:#F9FBFA; --ink:#10241C; --muted:#4D6158; --line:#C8D6CE;
+  --hero:#103326; --hero-ink:#EAF4EE; --hero-muted:#A8C4B5; --contour:#1B4636;
+  --accent:#0A7B7E; --accent-soft:#D2EAE9; --sun:#B85E17; --sun-soft:#F6E2CF;
+  --land:#DAE6DD; --sea:#D3E6EA; --land-line:#9DB5A6;
+  --r-cv:#66753A; --r-mv:#3A765D; --r-gu:#A3751A; --r-ar:#A3452A; --r-pa:#2A6799; --r-road:#5A6A62;
+  --warn:#9A5B00;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Literata", Georgia, "Times New Roman", serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1712; --paper:#12211A; --ink:#E2EDE6; --muted:#98AEA2; --line:#25392E;
+    --hero:#07120D; --hero-ink:#E2EDE6; --hero-muted:#8DAC9C; --contour:#15302A;
+    --accent:#4FC5C2; --accent-soft:#12312F; --sun:#F0A052; --sun-soft:#3A2715;
+    --land:#1A2C23; --sea:#0E1E24; --land-line:#3C5A4A;
+    --r-cv:#B5C27E; --r-mv:#7CC4A4; --r-gu:#E2B65A; --r-ar:#E88E6E; --r-pa:#7DB1DE; --r-road:#A3B4AB;
+    --warn:#F0B35A;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1712; --paper:#12211A; --ink:#E2EDE6; --muted:#98AEA2; --line:#25392E;
+  --hero:#07120D; --hero-ink:#E2EDE6; --hero-muted:#8DAC9C; --contour:#15302A;
+  --accent:#4FC5C2; --accent-soft:#12312F; --sun:#F0A052; --sun-soft:#3A2715;
+  --land:#1A2C23; --sea:#0E1E24; --land-line:#3C5A4A;
+  --r-cv:#B5C27E; --r-mv:#7CC4A4; --r-gu:#E2B65A; --r-ar:#E88E6E; --r-pa:#7DB1DE; --r-road:#A3B4AB;
+  --warn:#F0B35A;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--f-body); font-size:16px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
+a{color:var(--accent); text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display); text-wrap:balance; line-height:1.12; margin:0}
+p{margin:0}
+.mono{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
+.wrap{max-width:1140px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
+.prose{max-width:68ch}
+.eyebrow{font-family:var(--f-mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+
+/* ---------- Bandeau ---------- */
+.hero{
+  background-color:var(--hero); color:var(--hero-ink);
+  background-image:
+    repeating-radial-gradient(circle at 86% 18%, transparent 0 26px, var(--contour) 26px 27.5px),
+    repeating-radial-gradient(circle at 8% 112%, transparent 0 30px, var(--contour) 30px 31.5px);
+}
+.hero-in{padding-block:clamp(40px,7vw,84px) clamp(32px,5vw,56px); display:grid; gap:28px}
+.hero .eyebrow{color:var(--hero-muted)}
+.hero h1{font-size:clamp(2.7rem, 8.4vw, 6rem); font-weight:800; letter-spacing:-.02em; line-height:.98; font-variation-settings:"opsz" 96}
+.hero h1 em{font-style:normal; color:var(--accent)}
+.hero-lede{font-size:clamp(1.02rem,1.6vw,1.2rem); max-width:60ch; color:var(--hero-ink)}
+.facts{display:flex; flex-wrap:wrap; gap:8px 22px; font-family:var(--f-mono); font-size:.86rem; color:var(--hero-muted)}
+.facts b{color:var(--hero-ink); font-weight:500}
+.ribbon{display:flex; flex-wrap:wrap; align-items:center; gap:6px 4px; font-family:var(--f-mono); font-size:.82rem}
+.ribbon .stop{border:1px solid var(--contour); background:color-mix(in srgb, var(--hero) 70%, #000 30%); padding:5px 10px; border-radius:999px; color:var(--hero-ink); white-space:nowrap}
+.ribbon .stop i{font-style:normal; color:var(--hero-muted)}
+.ribbon .arr{color:var(--hero-muted)}
+.ribbon .stop.join{border-color:var(--sun); color:var(--sun)}
+
+.seg{display:inline-flex; flex-wrap:wrap; gap:4px; padding:4px; border-radius:12px; background:color-mix(in srgb, var(--hero) 60%, #000 40%); border:1px solid var(--contour)}
+.seg button{font-family:var(--f-display); font-size:.95rem; font-weight:600; border:0; border-radius:9px; padding:9px 14px; cursor:pointer; background:transparent; color:var(--hero-muted)}
+.seg button[aria-pressed="true"]{background:var(--hero-ink); color:var(--hero)}
+.seg button small{font-weight:500; opacity:.75; margin-left:6px; font-size:.78rem}
+.date-row{display:flex; flex-wrap:wrap; align-items:center; gap:12px 18px}
+.date-row .d{font-family:var(--f-mono); font-size:.9rem; color:var(--hero-ink)}
+
+/* ---------- Sommaire ---------- */
+.toc{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--bg); border-bottom:1px solid var(--line)}
+.toc .wrap{overflow-x:auto; scrollbar-width:none}
+.toc .wrap::-webkit-scrollbar{display:none}
+.toc ul{list-style:none; margin:0; padding:10px 0; display:flex; gap:4px; white-space:nowrap}
+.toc a{display:block; font-family:var(--f-display); font-weight:600; font-size:.9rem; color:var(--muted); text-decoration:none; padding:6px 10px; border-radius:8px}
+.toc a:hover{color:var(--ink); background:var(--paper)}
+
+/* ---------- Sections ---------- */
+section{padding-block:clamp(44px,6vw,76px); border-bottom:1px solid var(--line)}
+.sec-head{display:grid; gap:10px; margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem); font-weight:750; letter-spacing:-.01em}
+.sec-head p{color:var(--muted); max-width:66ch}
+h3{font-size:1.25rem; font-weight:700}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap:20px}
+.grid3{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap:18px}
+.panel{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:20px; display:grid; gap:12px; align-content:start; min-width:0}
+.panel h3{font-size:1.12rem}
+.list{margin:0; padding-left:1.1em; display:grid; gap:6px}
+.kv{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:.95rem}
+.kv dt{font-family:var(--f-mono); font-size:.8rem; color:var(--muted); padding-top:2px}
+.kv dd{margin:0}
+.callout{border-left:3px solid var(--sun); background:var(--sun-soft); padding:14px 16px; border-radius:0 10px 10px 0; display:grid; gap:6px}
+.callout.teal{border-color:var(--accent); background:var(--accent-soft)}
+.tag{display:inline-block; font-family:var(--f-mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); white-space:nowrap}
+.tag.reco{border-color:var(--accent); color:var(--accent)}
+.small{font-size:.88rem; color:var(--muted)}
+
+/* Carte */
+.map-wrap{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:28px; align-items:start}
+@media (max-width: 860px){.map-wrap{grid-template-columns:1fr}}
+.map-box{background:var(--sea); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+.map-box svg{display:block; width:100%; height:auto}
+.legend{display:flex; flex-wrap:wrap; gap:8px 18px; font-family:var(--f-mono); font-size:.76rem; color:var(--muted); padding:12px 16px; border-top:1px solid var(--line); background:var(--paper)}
+.legend span{display:inline-flex; align-items:center; gap:8px}
+.legend .ln{width:26px; height:0; border-top:3px solid var(--accent)}
+.legend .ln.p2{border-color:var(--sun)}
+.legend .ln.trip{border-top:2px dashed var(--muted)}
+.why{display:grid; gap:14px; counter-reset:none}
+.why li{list-style:none}
+.why{padding:0; margin:0}
+.why strong{font-family:var(--f-display); font-weight:700}
+
+/* Comparatif dates */
+.cmp{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap:18px}
+.cmp .panel.win{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent) inset}
+.pm{display:grid; gap:6px; margin:0; padding:0; list-style:none}
+.pm li{display:grid; grid-template-columns:20px 1fr; gap:6px}
+.pm li::before{font-family:var(--f-mono); font-weight:500}
+.pm li.plus::before{content:"+"; color:var(--accent)}
+.pm li.minus::before{content:"–"; color:var(--sun)}
+
+/* Jours */
+.phase{display:grid; gap:6px; margin:40px 0 18px; padding-bottom:14px; border-bottom:2px solid var(--ink)}
+.phase:first-of-type{margin-top:0}
+.phase h3{font-size:clamp(1.4rem,2.6vw,1.9rem); font-weight:800}
+.phase .meta{font-family:var(--f-mono); font-size:.85rem; color:var(--muted)}
+.days{display:grid; gap:0}
+.day{display:grid; grid-template-columns:118px minmax(0,1fr); gap:20px; padding:22px 0; border-bottom:1px solid var(--line)}
+@media (max-width: 620px){.day{grid-template-columns:1fr; gap:10px}}
+.day-date{display:flex; flex-direction:column; gap:2px}
+@media (max-width: 620px){.day-date{flex-direction:row; align-items:baseline; gap:12px}}
+.dnum{font-family:var(--f-display); font-weight:800; font-size:2rem; line-height:1; color:var(--ink)}
+.ddate{font-family:var(--f-mono); font-size:.82rem; color:var(--muted); text-transform:capitalize}
+.day-body{display:grid; gap:10px; min-width:0}
+.day-top{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.region{--r:var(--r-road); font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; color:var(--r); background:color-mix(in srgb, var(--r) 13%, transparent); border:1px solid color-mix(in srgb, var(--r) 35%, transparent)}
+.region.cv{--r:var(--r-cv)} .region.mv{--r:var(--r-mv)} .region.gu{--r:var(--r-gu)} .region.ar{--r:var(--r-ar)} .region.pa{--r:var(--r-pa)} .region.rd{--r:var(--r-road)}
+.drive{font-family:var(--f-mono); font-size:.76rem; color:var(--muted)}
+.day h4{font-size:1.28rem; font-weight:700}
+.opts{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.opts li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:10px; align-items:baseline}
+.who{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:6px; border:1px solid var(--line); color:var(--muted); white-space:nowrap; min-width:7.6em; text-align:center}
+.who.all{color:var(--ink)}
+.who.kids{border-color:var(--accent); color:var(--accent); background:var(--accent-soft)}
+.who.colin{border-color:var(--r-pa); color:var(--r-pa)}
+.who.parents{border-color:var(--r-mv); color:var(--r-mv)}
+.who.adults{border-color:var(--sun); color:var(--sun)}
+.who.sis{border-color:var(--r-ar); color:var(--r-ar)}
+.eat{font-size:.95rem}
+.eat b, .note b{font-family:var(--f-display); font-weight:700}
+.note{font-size:.88rem; color:var(--muted); border-left:2px solid var(--line); padding-left:10px}
+.note.warn{border-color:var(--warn)}
+.dec-note{font-size:.88rem; color:var(--sun); font-family:var(--f-display); font-weight:600}
+.price{font-family:var(--f-mono); font-size:.86em; color:var(--sun); white-space:nowrap}
+
+/* Logements */
+.lodge .top{display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap}
+.lodge .n{font-family:var(--f-mono); font-size:.8rem; color:var(--muted)}
+.lodge .budget{font-family:var(--f-mono); font-size:.95rem; color:var(--ink)}
+.lodge .budget b{color:var(--sun); font-weight:500}
+.phase-label{font-family:var(--f-display); font-weight:700; font-size:1.05rem; margin:8px 0 12px; display:flex; gap:10px; align-items:center}
+
+/* Restaurants */
+.resto-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:18px}
+.resto-col h3{font-size:1.05rem; padding-bottom:8px; border-bottom:2px solid var(--r); color:var(--ink)}
+.resto-col{--r:var(--r-road); display:grid; gap:12px; align-content:start; min-width:0}
+.resto-col.mv{--r:var(--r-mv)} .resto-col.gu{--r:var(--r-gu)} .resto-col.ar{--r:var(--r-ar)} .resto-col.pa{--r:var(--r-pa)}
+.resto{display:grid; gap:3px}
+.resto .nm{font-family:var(--f-display); font-weight:700}
+.resto .nm .star{color:var(--sun)}
+.resto p{font-size:.92rem; color:var(--muted)}
+.resto .tg{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--r)}
+
+/* Tables */
+.tscroll{overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--paper)}
+table{border-collapse:collapse; width:100%; min-width:560px; font-size:.93rem}
+th,td{padding:10px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:500}
+tr:last-child td{border-bottom:0}
+td .mono{font-size:.88rem}
+
+/* Budget */
+.budget-layout{display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:24px; align-items:start}
+@media (max-width: 920px){.budget-layout{grid-template-columns:1fr}}
+.bgroup{display:grid; gap:0; margin-bottom:18px; background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.bgroup h3{font-size:.98rem; padding:12px 16px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+.bgroup h3 span{font-family:var(--f-mono); font-weight:400; font-size:.78rem; color:var(--muted)}
+.brow{display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:8px 14px; align-items:center; padding:10px 16px; border-bottom:1px solid var(--line)}
+.brow:last-child{border-bottom:0}
+@media (max-width: 560px){.brow{grid-template-columns:minmax(0,1fr) auto}.brow .qty{grid-column:1 / -1; justify-self:start}}
+.brow .lbl{display:flex; gap:10px; align-items:flex-start; cursor:pointer; min-width:0}
+.brow .lbl input{margin-top:5px; accent-color:var(--accent); width:16px; height:16px; flex:none}
+.brow .lbl span{display:grid; gap:1px; min-width:0}
+.brow .lbl small{color:var(--muted); font-size:.8rem}
+.brow.off .lbl span > b, .brow.off .sub{opacity:.45}
+.brow .lbl b{font-weight:500}
+.qty{display:flex; gap:10px; align-items:center; font-family:var(--f-mono); font-size:.78rem; color:var(--muted); flex-wrap:wrap}
+.qty label{display:inline-flex; align-items:center; gap:5px}
+.num{width:4.6em; font-family:var(--f-mono); font-size:.88rem; padding:5px 6px; border:1px solid var(--line); border-radius:7px; background:var(--bg); color:var(--ink)}
+.num.wide{width:6.4em}
+.sub{font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right; min-width:5.5em; font-size:.92rem}
+.summary{position:sticky; top:calc(env(safe-area-inset-top,0px) + 64px); background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:20px; display:grid; gap:14px}
+@media (max-width: 920px){.summary{position:static}}
+.total{font-family:var(--f-display); font-weight:800; font-size:2.3rem; line-height:1; font-variant-numeric:tabular-nums}
+.total-usd{font-family:var(--f-mono); color:var(--muted); font-size:.88rem}
+.stack{display:flex; height:14px; border-radius:7px; overflow:hidden; background:var(--line)}
+.stack i{display:block; height:100%}
+.blines{display:grid; gap:7px; margin:0; padding:0; list-style:none; font-size:.9rem}
+.blines li{display:grid; grid-template-columns:12px 1fr auto; gap:8px; align-items:center}
+.blines .sw{width:10px; height:10px; border-radius:3px}
+.blines .v{font-family:var(--f-mono); font-variant-numeric:tabular-nums}
+.c1{background:var(--accent)} .c2{background:var(--sun)} .c3{background:var(--r-pa)} .c4{background:var(--r-mv)} .c5{background:var(--r-gu)}
+.btn{font-family:var(--f-display); font-weight:600; font-size:.9rem; border:1px solid var(--line); background:var(--bg); color:var(--ink); padding:8px 12px; border-radius:9px; cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+
+/* Choix */
+.choicebar{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--paper)}
+.choicebar .dot{width:8px; height:8px; border-radius:50%; background:var(--muted); display:inline-block; margin-right:8px}
+.choicebar[data-mode="shared"] .dot{background:var(--accent)}
+.choicebar[data-mode="readonly"] .dot, .choicebar[data-mode="error"] .dot{background:var(--warn)}
+.opts li[data-opt]{grid-template-columns:auto minmax(0,1fr) auto}
+.pick{font-family:var(--f-mono); font-size:.7rem; letter-spacing:.02em; padding:4px 9px; border-radius:999px; border:1px dashed var(--line); background:transparent; color:var(--muted); cursor:pointer; white-space:nowrap; align-self:center}
+.pick:hover{border-color:var(--accent); color:var(--ink)}
+.pick:disabled{cursor:default; opacity:.8}
+.pick[data-s="oui"]{border:1px solid var(--accent); background:var(--accent); color:var(--paper)}
+.pick[data-s="non"]{border:1px solid var(--line); color:var(--muted)}
+.opts li.is-no > span:nth-child(2){text-decoration:line-through; text-decoration-color:var(--muted); opacity:.55}
+@media (max-width: 560px){
+  .opts li[data-opt]{grid-template-columns:auto minmax(0,1fr)}
+  .pick{grid-column:2; justify-self:start}
+}
+.dl-row{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center}
+.dl{font-family:var(--f-display); font-weight:600; font-size:.92rem; border:1px solid var(--contour); background:transparent; color:var(--hero-ink); padding:9px 14px; border-radius:10px; cursor:pointer}
+.dl:hover{border-color:var(--hero-ink)}
+.dl-msg{font-family:var(--f-mono); font-size:.8rem; color:var(--hero-muted)}
+
+/* Sources */
+.sources{columns:2 320px; column-gap:32px; font-size:.88rem; margin:0; padding-left:1.1em}
+.sources li{margin-bottom:6px; break-inside:avoid}
+footer{padding-block:36px 48px; color:var(--muted); font-size:.88rem}
+</style>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <p class="eyebrow">Réunion de famille · hiver 2027-2028 · Pura vida</p>
+    <h1>Costa Rica,<br>à trois, puis <em>à sept</em>.</h1>
+    <p class="hero-lede">Vingt-deux jours entre forêt de nuages, volcans et Pacifique. Huit jours à trois pour le brevet de plongée de Colin et les sorties impossibles avec un bébé, puis treize jours avec sa sœur, son beau-frère et les deux petites.</p>
+    <div class="date-row">
+      <div class="seg" role="group" aria-label="Choix des dates">
+        <button type="button" id="mode-jan" aria-pressed="true" data-mode="jan">Janvier 2028 <small>recommandé</small></button>
+        <button type="button" id="mode-dec" aria-pressed="false" data-mode="dec">Décembre 2027</button>
+      </div>
+      <span class="d" id="hero-dates">sam. 8 janv. → sam. 29 janv. 2028</span>
+    </div>
+    <div class="ribbon" aria-label="Étapes du circuit">
+      <span class="stop">San José <i>1 n.</i></span><span class="arr">→</span>
+      <span class="stop">Monteverde <i>2 n.</i></span><span class="arr">→</span>
+      <span class="stop">Playas del Coco <i>5 n.</i></span><span class="arr">→</span>
+      <span class="stop join">Playa Hermosa · la famille arrive <i>4 n.</i></span><span class="arr">→</span>
+      <span class="stop">Arenal <i>4 n.</i></span><span class="arr">→</span>
+      <span class="stop">Manuel Antonio <i>5 n.</i></span><span class="arr">→</span>
+      <span class="stop">San José</span>
+    </div>
+    <div class="dl-row"><button type="button" class="dl" id="dl-btn" hidden>Télécharger une copie hors connexion</button><span class="dl-msg" id="dl-msg" role="status"></span></div>
+    <p class="facts"><span><b>22</b> jours</span><span><b>21</b> nuits</span><span><b>7</b> voyageurs</span><span><b>4</b> régions</span><span><b>6</b> logements</span><span><b>2</b> voitures</span></p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="wrap">
+    <ul>
+      <li><a href="#apercu">Aperçu</a></li>
+      <li><a href="#quand">Quand partir</a></li>
+      <li><a href="#vols">Vols & voitures</a></li>
+      <li><a href="#jours">Jour par jour</a></li>
+      <li><a href="#logements">Logements</a></li>
+      <li><a href="#plongee">Plongée</a></li>
+      <li><a href="#peche">Pêche</a></li>
+      <li><a href="#restos">Restos</a></li>
+      <li><a href="#budget">Budget</a></li>
+      <li><a href="#pratique">Pratique</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<!-- ============ APERÇU ============ -->
+<section id="apercu">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Le circuit</p>
+      <h2>Une boucle par le Pacifique, sans côte caraïbe</h2>
+      <p>Le circuit suit la logique des aéroports et de la plongée : on arrive à San José, on monte en forêt, on plonge en Guanacaste là où la famille atterrit, puis on redescend la côte pour finir à trois heures de l'avion du retour.</p>
+    </div>
+    <div class="map-wrap">
+      <figure class="map-box" style="margin:0">
+        <svg viewBox="0 0 740 690" role="img" aria-labelledby="map-t">
+          <title id="map-t">Carte du circuit au Costa Rica</title>
+          <rect x="0" y="0" width="740" height="690" fill="var(--sea)"/>
+          <path d="M80,54 L96,30 L150,50 L200,62 L240,80 L284,54 L350,74 L380,112 L436,128 L480,110 L490,86 L504,116 L518,162 L550,208 L590,246 L614,270 L640,300 L654,322 L670,340 L688,344 L708,356 L666,380 L634,384 L634,456 L678,486 L652,546 L654,600 L640,664 L610,620 L590,590 L586,542 L560,526 L548,546 L560,564 L562,594 L530,582 L502,574 L474,546 L488,526 L500,500 L488,470 L472,440 L448,420 L420,404 L388,386 L340,366 L294,346 L296,314 L276,284 L248,272 L264,266 L224,246 L180,230 L172,214 L196,250 L208,270 L230,296 L216,328 L204,346 L198,360 L180,338 L150,312 L114,294 L86,274 L60,240 L50,210 L60,180 L76,160 L84,152 L72,138 L80,110 L30,90 L60,74 Z" fill="var(--land)" stroke="var(--land-line)" stroke-width="1.5" stroke-linejoin="round"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)" letter-spacing="2">
+            <text x="300" y="26">NICARAGUA</text>
+            <text x="735" y="470" text-anchor="end">PANAMÁ</text>
+          </g>
+          <g font-family="Literata, Georgia, serif" font-style="italic" font-size="14" fill="var(--muted)">
+            <text x="560" y="120">Mer des Caraïbes</text>
+            <text x="110" y="520">Océan Pacifique</text>
+          </g>
+          <!-- côte caraïbe, non visitée -->
+          <g fill="var(--muted)" opacity=".7">
+            <circle cx="518" cy="162" r="3.5"/>
+            <circle cx="670" cy="340" r="3.5"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)">
+            <text x="528" y="166">Tortuguero</text>
+            <text x="660" y="330" text-anchor="end">Puerto Viejo</text>
+            <text x="560" y="262">pas cette fois</text>
+          </g>
+          <!-- excursions à la journée -->
+          <g fill="none" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="4 5" stroke-linecap="round">
+            <path d="M84,160 Q150,126 218,128"/>
+            <path d="M84,160 Q112,128 150,116"/>
+            <path d="M88,166 Q120,196 154,200"/>
+            <path d="M390,392 Q440,404 472,438"/>
+            <path d="M292,176 Q252,140 218,128"/>
+          </g>
+          <!-- phase 1 -->
+          <path d="M380,272 Q320,252 256,210 Q170,168 84,160" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+          <!-- phase 2 -->
+          <path d="M86,156 Q190,118 292,176 Q306,252 296,314 Q330,372 390,392 Q404,330 380,272" fill="none" stroke="var(--sun)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 0"/>
+          <!-- étapes avec nuit -->
+          <g stroke="var(--paper)" stroke-width="2.5">
+            <circle cx="380" cy="272" r="7" fill="var(--ink)"/>
+            <circle cx="256" cy="210" r="7" fill="var(--accent)"/>
+            <circle cx="84" cy="160" r="8" fill="var(--accent)"/>
+            <circle cx="292" cy="176" r="7" fill="var(--sun)"/>
+            <circle cx="390" cy="392" r="7" fill="var(--sun)"/>
+          </g>
+          <!-- points d'excursion -->
+          <g fill="var(--paper)" stroke="var(--ink)" stroke-width="2">
+            <circle cx="218" cy="128" r="4.5"/>
+            <circle cx="150" cy="116" r="4.5"/>
+            <circle cx="154" cy="200" r="4.5"/>
+            <circle cx="472" cy="438" r="4.5"/>
+            <circle cx="296" cy="314" r="4.5"/>
+          </g>
+          <!-- aéroports -->
+          <g fill="var(--ink)">
+            <rect x="107" y="146" width="10" height="10" transform="rotate(45 112 151)"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--ink)" paint-order="stroke" stroke="var(--land)" stroke-width="4" stroke-linejoin="round">
+            <text x="392" y="268" font-weight="500">San José · SJO</text>
+            <text x="246" y="228" text-anchor="end" font-weight="500">Monteverde</text>
+            <text x="22" y="190" font-weight="500">Coco · Hermosa</text>
+            <text x="124" y="160">Liberia · LIR</text>
+            <text x="304" y="172" font-weight="500">Arenal</text>
+            <text x="402" y="396" font-weight="500">Manuel Antonio</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)" paint-order="stroke" stroke="var(--land)" stroke-width="4" stroke-linejoin="round">
+            <text x="226" y="120">Río Celeste</text>
+            <text x="144" y="104" text-anchor="end">Rincón de la Vieja</text>
+            <text x="146" y="214" text-anchor="end">Palo Verde</text>
+            <text x="286" y="330" text-anchor="end">Tárcoles</text>
+            <text x="482" y="442">Uvita</text>
+          </g>
+        </svg>
+        <figcaption class="legend">
+          <span><i class="ln"></i>Phase 1 · à trois</span>
+          <span><i class="ln p2"></i>Phase 2 · à sept</span>
+          <span><i class="ln trip"></i>Excursion à la journée</span>
+          <span>◆ Aéroport de Liberia</span>
+        </figcaption>
+      </figure>
+      <div class="panel" style="background:transparent;border:0;padding:0">
+        <h3>Pourquoi dans ce sens</h3>
+        <ul class="why">
+          <li><strong>La plongée au début, en Guanacaste.</strong> Le golfe de Papagayo est l'endroit où la plupart des débutants apprennent au Costa Rica, et l'aéroport de Liberia où atterrit la famille est à 25 minutes.</li>
+          <li><strong>Monteverde avant la plongée.</strong> Après plusieurs plongées, il faut attendre au moins 18 heures avant de monter en altitude, en voiture comme en avion. On monte donc d'abord à 1 400 m, puis on plonge, puis on reste au niveau de la mer.</li>
+          <li><strong>Les sorties « sans bébé » à trois.</strong> Balade de nuit, journée en forêt avec un guide, randonnée du Río Celeste : tout ce qui est difficile avec une poussette est groupé dans les huit premiers jours.</li>
+          <li><strong>Finir à Manuel Antonio.</strong> L'avion Air France repart de San José le soir, à trois heures de route, et Quepos est le port de pêche au gros le plus réputé du pays, en pleine saison du marlin.</li>
+          <li><strong>Pas de côte caraïbe.</strong> Décembre et janvier comptent parmi les mois les plus pluvieux de ce côté, à cinq ou six heures de route. Sa meilleure période, c'est septembre-octobre. Et on n'y pêche pas le marlin mais le tarpon.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUAND PARTIR ============ -->
+<section id="quand">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Dates</p>
+      <h2>Janvier plutôt que décembre</h2>
+      <p>Le circuit marche dans les deux cas : le bouton en haut de page recalcule toutes les dates. La différence se joue sur le prix et la météo des treize jours en famille.</p>
+    </div>
+    <div class="cmp">
+      <div class="panel win">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline"><h3>Janvier 2028</h3><span class="tag reco">Recommandé</span></div>
+        <p class="mono small">Sam. 8 → sam. 29 janvier · la famille arrive le dim. 16</p>
+        <ul class="pm">
+          <li class="plus">Saison sèche bien installée sur tout le Pacifique.</li>
+          <li class="plus">Les prix et la foule baissent après le 5 janvier environ.</li>
+          <li class="plus">Pic des baleines à bosse à Uvita (janvier-février) et du marlin bleu à Quepos (décembre-février).</li>
+          <li class="plus">Mantas aux îles Catalina en plongée, surtout de janvier à mars.</li>
+          <li class="minus">Vacances scolaires costariciennes jusqu'à début février : plages animées le week-end.</li>
+          <li class="minus">Eau un peu plus fraîche et plus agitée pour la plongée (vents de Papagayo).</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline"><h3>Décembre 2027</h3><span class="tag">Noël sur place</span></div>
+        <p class="mono small">Dim. 5 → dim. 26 décembre · la famille arrive le lun. 13</p>
+        <ul class="pm">
+          <li class="plus">Première quinzaine moins chère, paysages encore très verts.</li>
+          <li class="plus">Noël tous ensemble à la villa de Manuel Antonio.</li>
+          <li class="minus">À partir du 15-20 décembre, logements et voitures peuvent coûter deux à trois fois plus et sont complets tôt : la phase à sept tombe pile dans ces semaines.</li>
+          <li class="minus">Certains hôtels imposent un dîner de Noël ou du Nouvel An (50 à 100 $ par personne).</li>
+          <li class="minus">Début décembre reste une transition : averses possibles sur le Pacifique central.</li>
+          <li class="minus">Il faut réserver environ un an à l'avance.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOLS ============ -->
+<section id="vols">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Arriver et circuler</p>
+      <h2>Deux aéroports, deux voitures</h2>
+      <p>Le pays a deux aéroports internationaux : San José (SJO), au centre, et Liberia (LIR), au nord-ouest en Guanacaste. Le circuit utilise les deux.</p>
+    </div>
+    <div class="grid3">
+      <div class="panel">
+        <h3>Colin et ses parents</h3>
+        <dl class="kv">
+          <dt>Vol</dt><dd>Air France, Paris-CDG → San José, sans escale, environ 11 h. Tous les jours en hiver.</dd>
+          <dt>Horaires</dt><dd>Départ vers 14 h, arrivée vers 17 h 20 ; retour vers 19 h 35 (horaires 2023, à reconfirmer).</dd>
+          <dt>Bruxelles</dt><dd>Pas de vol direct : train jusqu'à l'aéroport CDG, ou vol avec escale en Europe.</dd>
+          <dt>Prix</dt><dd>En moyenne 720 à 780 € l'aller-retour, davantage en pleine saison.</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h3>La famille de Calgary</h3>
+        <dl class="kv">
+          <dt>Aller</dt><dd>WestJet vole sans escale Calgary → Liberia en saison d'hiver, plusieurs fois par semaine selon les années. Programme 2027-2028 à vérifier.</dd>
+          <dt>Retour</dt><dd>Deux options : un billet « open-jaw » qui repart de San José (avec escale), ou un retour depuis Liberia, à 4 h 30–5 h de route de Manuel Antonio.</dd>
+          <dt>Décalage</dt><dd>Une heure seulement avec Calgary : idéal pour les petites.</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h3>Les voitures</h3>
+        <dl class="kv">
+          <dt>Voiture 1</dt><dd>Prise et rendue à San José (J1 → J22).</dd>
+          <dt>Voiture 2</dt><dd>Prise à Liberia le J9, rendue à San José (frais d'abandon possibles) ou à Liberia.</dd>
+          <dt>Modèle</dt><dd>Un SUV pour la garde au sol ; un 4×4 n'est pas indispensable sur ce circuit.</dd>
+          <dt>Piège</dt><dd>L'assurance responsabilité civile est obligatoire et presque jamais incluse dans les prix des comparateurs : 10 à 20 $ par jour, plus 15 à 40 $ pour la couverture du véhicule.</dd>
+          <dt>Enfants</dt><dd>Sièges auto obligatoires : à louer avec la voiture.</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="tscroll" style="margin-top:22px">
+      <table>
+        <thead><tr><th>Trajet</th><th>Durée estimée</th><th>Jour</th><th>Remarque</th></tr></thead>
+        <tbody>
+          <tr><td>Aéroport SJO → Monteverde</td><td class="mono">≈ 3 h</td><td class="mono">J2</td><td>Dernière heure en lacets.</td></tr>
+          <tr><td>Monteverde → Playas del Coco</td><td class="mono">≈ 3 h</td><td class="mono">J4</td><td>Par l'Interaméricaine.</td></tr>
+          <tr><td>Liberia LIR → Playa Hermosa</td><td class="mono">≈ 25 min</td><td class="mono">J9</td><td>Arrivée de la famille.</td></tr>
+          <tr><td>Playa Hermosa → La Fortuna</td><td class="mono">≈ 3 h</td><td class="mono">J13</td><td>Par Tilarán et le lac Arenal.</td></tr>
+          <tr><td>La Fortuna → Manuel Antonio</td><td class="mono">≈ 4 h 30</td><td class="mono">J17</td><td>Le seul trajet au-delà de 4 h : 5 à 6 h avec les pauses.</td></tr>
+          <tr><td>Manuel Antonio → aéroport SJO</td><td class="mono">≈ 3 h</td><td class="mono">J22</td><td>Ne pas rouler de nuit (il fait noir vers 17 h 30).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOUR PAR JOUR ============ -->
+<section id="jours">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Le programme</p>
+      <h2>Jour par jour</h2>
+      <p>Chaque journée propose un plan principal et des variantes. Les étiquettes indiquent qui fait quoi : <span class="who kids">Bébés OK</span> marche avec les petites, <span class="who adults">Adultes</span> se fait pendant qu'un ou deux adultes gardent les filles.</p>
+      <p>Touchez le bouton à droite d'une activité pour la marquer <b>« On le fait »</b>, puis <b>« Pas cette fois »</b>. Les activités payantes suivent dans le budget.</p>
+      <div class="choicebar" id="choicebar" data-mode="local"><span class="small" id="ch-status"><i class="dot"></i>Vos choix sont enregistrés sur cet appareil.</span><span class="mono small" id="ch-count"></span></div>
+    </div>
+
+    <div class="phase">
+      <p class="eyebrow">Phase 1</p>
+      <h3>À trois : forêt de nuages et brevet de plongée</h3>
+      <p class="meta"><span data-range="1-8">J1 → J8 · sam. 8 → sam. 15 janv.</span> · Colin et ses parents · 3 logements</p>
+    </div>
+    <div class="days">
+
+      <article class="day" data-d="1">
+        <div class="day-date"><span class="dnum">J1</span><span class="ddate">sam. 8 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region cv">Vallée centrale</span><span class="drive">Route : 15–30 min</span></div>
+          <h4>Atterrissage à San José</h4>
+          <p>Vol Paris → San José. On récupère la voiture à l'arrivée et on dort à proximité de l'aéroport : il fait nuit vers 17 h 30, pas question de prendre la route ce soir.</p>
+          <ul class="opts">
+            <li><span class="who all">Tous</span><span>Option A : Alajuela, à 15 minutes, le plus pratique. Option B : les collines d'Atenas ou de Grecia, une maison au milieu des caféiers.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> dîner léger dans une soda, le petit restaurant familial tico : casado, gallo pinto.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="2">
+        <div class="day-date"><span class="dnum">J2</span><span class="ddate">dim. 9 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region mv">Monteverde</span><span class="drive">Route : ≈ 3 h</span></div>
+          <h4>Montée dans la forêt de nuages</h4>
+          <p>La dernière heure grimpe en lacets jusqu'à 1 400 m. Il y fait frais et venteux en cette saison : polaire et coupe-vent.</p>
+          <ul class="opts">
+            <li data-opt="j2-sarchi"><span class="who all">Tous</span><span>En route, détour par Sarchí, le village des charrettes peintes, l'artisanat emblématique du pays (environ 1 h de plus).</span></li>
+            <li data-opt="j2-ponts" data-bud="a2"><span class="who all">Tous</span><span>Après-midi : ponts suspendus au-dessus de la canopée, à Selvatura <span class="price">56 $</span> ou dans un autre parc de ponts.</span></li>
+            <li data-opt="j2-nuit" data-bud="a1"><span class="who all">Tous</span><span>17 h 30 : balade nocturne guidée de 2 h. Grenouilles aux yeux rouges, paresseux, tarentules <span class="price">25–35 $</span>.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> The Fig, vue sur la forêt et la côte, ou le Treehouse Restaurant, construit autour d'un figuier étrangleur.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="3">
+        <div class="day-date"><span class="dnum">J3</span><span class="ddate">lun. 10 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region mv">Monteverde</span><span class="drive">Sur place</span></div>
+          <h4>Une journée en forêt avec un guide</h4>
+          <p>La grande journée « sans poussette ». Les oiseaux sortent tôt : rendez-vous à 7 h avec un guide naturaliste et sa longue-vue, qui repère ce qu'on ne verrait jamais seul.</p>
+          <ul class="opts">
+            <li data-opt="j3-mv" data-bud="a3,a4"><span class="who all">Option A</span><span>Réserve de Monteverde, la plus célèbre <span class="price">25 $ + guide</span>. Le quetzal y est le plus actif tôt le matin.</span></li>
+            <li data-opt="j3-se"><span class="who all">Option B</span><span>Réserve de Santa Elena : même décor, beaucoup moins de monde, une tour d'observation.</span></li>
+            <li data-opt="j3-cc"><span class="who all">Option C</span><span>Curi-Cancha, petite réserve privée très prisée pour les oiseaux.</span></li>
+            <li data-opt="j3-cafe" data-bud="a5"><span class="who all">Tous</span><span>Après-midi : visite d'une plantation de café ou de cacao, ou repos.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> à midi, La Cuchara de la Abuela, la cantine de la coopérative des femmes de Santa Elena (en semaine, jusqu'à 16 h). Le soir, Celajes, le restaurant de l'hôtel Belmar, pour le coucher de soleil.</p>
+          <p class="note">Réserver les entrées et le guide en ligne à l'avance en haute saison.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="4">
+        <div class="day-date"><span class="dnum">J4</span><span class="ddate">mar. 11 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Route : ≈ 3 h</span></div>
+          <h4>Descente vers le Pacifique</h4>
+          <p>Monteverde → Playas del Coco. Le paysage change d'un coup : forêt sèche, pâturages de cow-boys sabaneros, chaleur. Installation dans le logement 3, avec piscine.</p>
+          <ul class="opts">
+            <li><span class="who colin">Colin</span><span>Passage au centre de plongée : inscription, questionnaire médical, essayage du matériel.</span></li>
+            <li data-opt="j4-ocotal"><span class="who all">Tous</span><span>Fin d'après-midi à Playa Ocotal, la petite plage voisine.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Father Rooster, bar de plage à Ocotal, pour le premier coucher de soleil sur le Pacifique.</p>
+          <p class="note">Pourquoi Monteverde avant : après la plongée, on évite l'altitude pendant au moins 18 h.</p>
+          <p class="dec-note" hidden>8 décembre : jour férié au Costa Rica, routes plus chargées.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="5">
+        <div class="day-date"><span class="dnum">J5</span><span class="ddate">mer. 12 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
+          <h4>Plongée, jour 1 : la piscine</h4>
+          <ul class="opts">
+            <li><span class="who colin">Colin</span><span>Matinée d'exercices en piscine. La théorie est déjà faite en e-learning avant le départ.</span></li>
+            <li data-opt="j5-plage"><span class="who parents">Parents · A</span><span>Plage tranquille à Playa Panamá ou Playa Hermosa.</span></li>
+            <li data-opt="j5-cata" data-bud="a8"><span class="who parents">Parents · B</span><span>Catamaran voile et snorkeling dans le golfe de Papagayo <span class="price">≈ 100 $</span>.</span></li>
+            <li><span class="who all">Tous</span><span>Après-midi ensemble : baignade, piscine, sieste.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Ginger à Playa Hermosa, des tapas asiatiques dans une salle perchée dans les arbres, avec vue sur la baie.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="6">
+        <div class="day-date"><span class="dnum">J6</span><span class="ddate">jeu. 13 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Parents : ≈ 1 h 15 aller</span></div>
+          <h4>Plongée, jour 2 : premières plongées en mer</h4>
+          <ul class="opts">
+            <li><span class="who colin">Colin</span><span>Deux plongées en mer le matin, retour vers 13 h.</span></li>
+            <li data-opt="j6-rincon" data-bud="a7"><span class="who parents">Parents</span><span>Journée au volcan Rincón de la Vieja avec Hacienda Guachipelín : sentier des Pailas (boue qui bouillonne, fumerolles), cascade, sources chaudes et bains de boue de Río Negro, déjeuner <span class="price">≈ 140 $</span>. Colin y retournera à cheval le J12.</span></li>
+            <li data-opt="j6-conchal"><span class="who parents">Variante</span><span>Plus calme : Playa Conchal, la plage de coquillages, accessible à pied depuis Brasilito.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Papagayo Seafood à Coco, poisson du jour et musique live.</p>
+          <p class="note">Parc fermé le lundi ; billets en ligne uniquement (16,95 $).</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="7">
+        <div class="day-date"><span class="dnum">J7</span><span class="ddate">ven. 14 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
+          <h4>Plongée, jour 3 : le brevet</h4>
+          <ul class="opts">
+            <li><span class="who colin">Colin</span><span>Deux dernières plongées : brevet Open Water en poche.</span></li>
+            <li data-opt="j7-guaitil"><span class="who parents">Parents · A</span><span>Guaitil, le village des potiers chorotegas.</span></li>
+            <li data-opt="j7-liberia"><span class="who parents">Parents · B</span><span>Liberia, la « ville blanche », et son marché.</span></li>
+            <li data-opt="j7-piscine"><span class="who parents">Parents · C</span><span>Matinée piscine.</span></li>
+            <li><span class="who all">Tous</span><span>Le soir, on fête le brevet.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> The Lookout, un rooftop au-dessus de Coco, vu dans la série Netflix « Restaurants on the Edge ».</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="8">
+        <div class="day-date"><span class="dnum">J8</span><span class="ddate">sam. 15 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Volcan Tenorio</span><span class="drive">Route : ≈ 2 h aller, 2 h retour</span></div>
+          <h4>Le Río Celeste à trois</h4>
+          <p>La rivière turquoise du parc national du volcan Tenorio, l'une des plus belles images du pays. À faire sans les petites : 7 km aller-retour, environ 3 h, dont 250 marches pour la cascade.</p>
+          <ul class="opts">
+            <li data-opt="j8-celeste" data-bud="a9"><span class="who all">Tous</span><span>30 minutes de sentier jusqu'à l'escalier de la cascade, puis la partie plus exigeante : los Teñideros, où l'eau devient bleue, la Laguna Azul et les Borbollones. Entrée <span class="price">12 $</span>, guide facultatif <span class="price">55 $</span>.</span></li>
+            <li><span class="who all">Tous</span><span>La baignade est interdite dans le parc ; un bassin gratuit se trouve 1 km après l'entrée (« Río Celeste Danta Free Pool » sur Google Maps).</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> déjeuner à Bijagua, le village à l'entrée du parc.</p>
+          <p class="note warn">Début 2026, la plateforme au pied de la cascade était fermée après une tempête : on voyait la cascade depuis l'escalier. À revérifier avant le départ.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="phase">
+      <p class="eyebrow">Phase 2</p>
+      <h3>À sept : plages douces, volcan et jungle</h3>
+      <p class="meta"><span data-range="9-22">J9 → J22 · dim. 16 → sam. 29 janv.</span> · toute la famille · 3 logements à 4 chambres avec piscine</p>
+    </div>
+    <div class="days">
+
+      <article class="day" data-d="9">
+        <div class="day-date"><span class="dnum">J9</span><span class="ddate">dim. 16 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Liberia → Hermosa : 25 min</span></div>
+          <h4>La famille arrive</h4>
+          <p>Vol Calgary → Liberia. Colin et ses parents quittent Coco pour la grande villa de Playa Hermosa, à dix minutes. Chacun arrive avec sa voiture.</p>
+          <ul class="opts">
+            <li><span class="who kids">Bébés OK</span><span>Installation, piscine, et coucher de soleil sur la plage.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> La Casita del Marisco, fruits de mer sur la plage de Hermosa, ou barbecue à la villa.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="10">
+        <div class="day-date"><span class="dnum">J10</span><span class="ddate">lun. 17 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
+          <h4>Plage douce pour les petites</h4>
+          <ul class="opts">
+            <li data-opt="j10-panama"><span class="who kids">Bébés OK</span><span>Playa Panamá : vagues très faibles, sable doux. Peu d'ombre, prendre un parasol.</span></li>
+            <li data-opt="j10-hermosa"><span class="who kids">Variante</span><span>Playa Hermosa ou Playa Penca, juste à côté.</span></li>
+            <li data-opt="j10-cata" data-bud="b4"><span class="who adults">Adultes</span><span>Le soir, catamaran au coucher du soleil pendant que les grands-parents gardent les filles <span class="price">≈ 100 $</span>.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Café de Playa à Coco, où l'on passe l'après-midi entre la mer et la piscine.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="11">
+        <div class="day-date"><span class="dnum">J11</span><span class="ddate">mar. 18 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Palo Verde</span><span class="drive">Route : ≈ 1 h 15 aller</span></div>
+          <h4>Crocodiles sur le Tempisque</h4>
+          <p>Sortie en bateau couvert sur le fleuve Tempisque, en bordure du parc national de Palo Verde : crocodiles, singes hurleurs et capucins, iguanes géants, hérons et spatules. Aucune marche, idéal pour les petites et les grands-parents.</p>
+          <ul class="opts">
+            <li data-opt="j11-ortega" data-bud="b1"><span class="who kids">Option A</span><span>Opérateur familial d'Ortega, 1 h 45 de bateau, avec votre voiture <span class="price">≈ 100 $</span>.</span></li>
+            <li data-opt="j11-tour"><span class="who kids">Option B</span><span>Excursion avec transport depuis la plage et déjeuner typique <span class="price">140–190 $</span>.</span></li>
+            <li><span class="who kids">Bébés OK</span><span>Après-midi : sieste et piscine.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> casado dans une soda sur la route du retour.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="12">
+        <div class="day-date"><span class="dnum">J12</span><span class="ddate">mer. 19 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Rincón de la Vieja</span><span class="drive">Route : ≈ 1 h 15 aller</span></div>
+          <h4>Le volcan à cheval</h4>
+          <ul class="opts">
+            <li data-opt="j12-cheval" data-bud="b2,b3"><span class="who adults">Adultes</span><span>Colin, sa sœur et son mari : 45 minutes à cheval avec Hacienda Guachipelín jusqu'à l'entrée des Pailas, puis la boucle de 3,5 km entre marmites de boue et fumerolles <span class="price">70 $ + entrée</span>.</span></li>
+            <li><span class="who parents">Parents</span><span>Ils ont vu le parc le J6 : ils gardent les petites à la villa, ou viennent et attendent à l'hacienda.</span></li>
+            <li data-opt="j12-llanos"><span class="who all">Variante</span><span>Cascade de Llanos de Cortés, près de Bagaces, à quelques minutes de marche du parking.</span></li>
+          </ul>
+          <p class="note">Parc fermé le lundi, billets en ligne. Cheval dès 4 ans. Les sources très chaudes ne conviennent pas aux tout-petits.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="13">
+        <div class="day-date"><span class="dnum">J13</span><span class="ddate">jeu. 20 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region ar">Arenal</span><span class="drive">Route : ≈ 3 h</span></div>
+          <h4>Cap sur le volcan</h4>
+          <p>Route par Tilarán et le bord du lac Arenal, l'une des plus jolies du pays. Arrivée dans la villa avec vue sur le cône parfait de l'Arenal.</p>
+          <ul class="opts">
+            <li data-opt="j13-baldi" data-bud="b5"><span class="who kids">Bébés OK</span><span>Fin de journée aux sources chaudes de Baldi : 25 bassins, une zone enfants peu profonde et des toboggans <span class="price">47 $ · enfant 34 $</span>.</span></li>
+            <li data-opt="j13-eco"><span class="who adults">Variante</span><span>EcoTermales, plus calme, avec un nombre de visiteurs limité <span class="price">45–80 $</span>.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Que Rico Arenal, pizzas au feu de bois face au volcan.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="14">
+        <div class="day-date"><span class="dnum">J14</span><span class="ddate">ven. 21 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region ar">Arenal</span><span class="drive">Sur place</span></div>
+          <h4>Ponts suspendus, même en poussette</h4>
+          <ul class="opts">
+            <li data-opt="j14-mistico" data-bud="b6"><span class="who kids">Bébés OK</span><span>Místico : 3,2 km de sentier et 16 ponts dont 6 suspendus, vue sur le volcan. Sol antidérapant sans marches, poussettes en location sur place. Y aller à l'ouverture <span class="price">≈ 39 $</span>.</span></li>
+            <li data-opt="j14-choco"><span class="who kids">Bébés OK</span><span>Après-midi : visite chocolat ou tour des paresseux, faciles avec les enfants.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Restaurante Travesía, sur une colline entre le volcan et la vallée.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="15">
+        <div class="day-date"><span class="dnum">J15</span><span class="ddate">sam. 22 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region ar">Arenal</span><span class="drive">Sur place</span></div>
+          <h4>Journée à la carte</h4>
+          <ul class="opts">
+            <li data-opt="j15-fortuna"><span class="who adults">Option A</span><span>Cascade de La Fortuna (environ 500 marches) et baignade au pied, puis le sentier de la coulée de lave de 1968.</span></li>
+            <li data-opt="j15-cheval"><span class="who sis">Sœur</span><span>Option B : balade à cheval dans les ranchs autour du volcan.</span></li>
+            <li><span class="who parents">Parents</span><span>Option C : matinée tranquille à la villa avec les filles.</span></li>
+            <li data-opt="j15-kayak" data-bud="b7"><span class="who adults">Adultes</span><span>Fin de journée : kayak au coucher du soleil sur le lac Arenal, face au volcan <span class="price">≈ 70 $</span>.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Chifa La Familia Feliz, cuisine sino-péruvienne, une adresse de locaux.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="16">
+        <div class="day-date"><span class="dnum">J16</span><span class="ddate">dim. 23 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region ar">Arenal</span><span class="drive">Sur place</span></div>
+          <h4>Jour joker</h4>
+          <p>L'Arenal reste plus humide que la côte, même en saison sèche : cette journée sert à rattraper ce que la pluie aurait décalé.</p>
+          <ul class="opts">
+            <li data-opt="j16-celeste"><span class="who adults">Option A</span><span>Río Celeste pour ceux qui ne l'ont pas vu (environ 2 h de route chaque sens).</span></li>
+            <li data-opt="j16-nuit" data-bud="b8"><span class="who kids">Option B</span><span>Balade nocturne en début de soirée : les grenouilles plaisent beaucoup aux petits <span class="price">≈ 35 $</span>.</span></li>
+            <li data-opt="j16-obs"><span class="who kids">Option C</span><span>Le belvédère de l'Arenal Observatory Lodge, la plus belle vue sur le volcan.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Essence Arenal à El Castillo, cuisine de la ferme à l'assiette, vue sur le lac et le volcan (35 min).</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="17">
+        <div class="day-date"><span class="dnum">J17</span><span class="ddate">lun. 24 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region rd">Grande route</span><span class="drive">Route : ≈ 4 h 30 sans les pauses</span></div>
+          <h4>La traversée vers le Pacifique central</h4>
+          <p>Le seul trajet au-delà de 4 heures. Départ vers 7 h par San Ramón, puis la route côtière.</p>
+          <ul class="opts">
+            <li><span class="who kids">Bébés OK</span><span>Pause café à San Ramón.</span></li>
+            <li><span class="who kids">Bébés OK</span><span>Le pont aux crocodiles de Tárcoles : on observe les crocodiles du fleuve depuis le pont, gratuitement.</span></li>
+            <li><span class="who kids">Bébés OK</span><span>Arrivée dans la villa de Manuel Antonio, dans la jungle, vue sur l'océan.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> El Wagon, pizzas au feu de bois, facile avec les enfants.</p>
+          <p class="note">Avec deux voitures, chacun peut caler son départ : tôt pour les uns, pendant la sieste des petites pour les autres.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="18">
+        <div class="day-date"><span class="dnum">J18</span><span class="ddate">mar. 25 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region pa">Pacifique central</span><span class="drive">Sur place</span></div>
+          <h4>Mangrove et plages</h4>
+          <ul class="opts">
+            <li data-opt="j18-damas" data-bud="b9"><span class="who kids">Option A</span><span>Mangrove d'Isla Damas en bateau à moteur : singes capucins, oiseaux, peut-être un paresseux, et un repas typique préparé par la famille du guide <span class="price">57 $ + taxe · gratuit avant 5 ans</span>.</span></li>
+            <li data-opt="j18-plage"><span class="who kids">Option B</span><span>Playa Biesanz, une petite crique calme, ou Espadilla, la grande plage.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> coucher de soleil à El Avión, un restaurant installé dans un ancien avion-cargo militaire.</p>
+          <p class="note">Le parc de Manuel Antonio est fermé le mardi : sa visite est placée le J19, qui n'en est jamais un avec ces dates.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="19">
+        <div class="day-date"><span class="dnum">J19</span><span class="ddate">mer. 26 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region pa">Pacifique central</span><span class="drive">Sur place</span></div>
+          <h4>Le parc national Manuel Antonio</h4>
+          <ul class="opts">
+            <li data-opt="j19-parc" data-bud="b10"><span class="who kids">Bébés OK</span><span>Entrée à 7 h avec un guide et sa longue-vue : paresseux, singes, iguanes. Le sentier principal se fait en poussette. Billets en ligne <span class="price">16 $ + taxe · 5 $ de 2 à 12 ans · gratuit avant 2 ans</span>.</span></li>
+            <li><span class="who kids">Bébés OK</span><span>Plages du parc jusqu'à 15 h, puis sieste à la villa.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Ronny's Place, sur une pointe au-dessus de la baie, pour le plus beau coucher de soleil du coin. Réserver et arriver vers 17 h.</p>
+          <p class="note">Interdit dans le parc : sprays (anti-moustique et solaire en lotion seulement), plastique jetable, alcool. Parking privé ≈ 10 $ en espèces.</p>
+          <p class="dec-note" hidden>23 décembre : billets à prendre dès l'ouverture des réservations, le parc est très demandé avant Noël.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="20">
+        <div class="day-date"><span class="dnum">J20</span><span class="ddate">jeu. 27 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region pa">Pacifique central</span><span class="drive">Marina de Quepos : 15 min</span></div>
+          <h4>Pêche au gros ou baleines</h4>
+          <ul class="opts">
+            <li data-opt="j20-peche" data-bud="b11"><span class="who colin">Colin & Co</span><span>Sortie au large depuis la marina Pez Vela de Quepos : marlin bleu, voilier, thon jaune. Le père et le beau-frère sont les bienvenus <span class="price">1 600–3 800 $ le bateau</span>.</span></li>
+            <li data-opt="j20-baleines" data-bud="b12"><span class="who adults">Option B</span><span>Baleines à bosse à Uvita, à 1 h au sud, dans le parc marin Ballena <span class="price">88 $ + taxe</span>. Dès 4 ans : à faire à un ou deux adultes.</span></li>
+            <li><span class="who kids">Option C</span><span>Plage et piscine avec les filles.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> El Gran Escape à Quepos cuisine votre prise du jour, thon ou mahi-mahi.</p>
+          <p class="dec-note" hidden>24 décembre : réveillon à la villa, beaucoup de restaurants sont complets ou ferment tôt.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="21">
+        <div class="day-date"><span class="dnum">J21</span><span class="ddate">ven. 28 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region pa">Pacifique central</span><span class="drive">Sur place</span></div>
+          <h4>Dernier jour de plage</h4>
+          <ul class="opts">
+            <li><span class="who kids">Bébés OK</span><span>Matinée à Playa Biesanz, derniers achats à Quepos, valises.</span></li>
+            <li><span class="who all">Tous</span><span>Dîner d'adieu avec vue.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Barba Roja pour le coucher de soleil, ou Emilio's Café, une adresse éclectique que les habitués adorent.</p>
+          <p class="dec-note" hidden>25 décembre : Noël à la villa.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="22">
+        <div class="day-date"><span class="dnum">J22</span><span class="ddate">sam. 29 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region rd">Retour</span><span class="drive">Route : ≈ 3 h</span></div>
+          <h4>Retour vers San José</h4>
+          <p>Départ en fin de matinée pour rendre les voitures et prendre le vol Air France du soir. La famille de Calgary repart de San José avec une escale, ou de Liberia si elle a pris un aller-retour.</p>
+          <p class="dec-note" hidden>26 décembre : grand défilé à cheval (El Tope) à San José, la circulation peut être perturbée.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGEMENTS ============ -->
+<section id="logements">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Où dormir</p>
+      <h2>Six logements, trois par phase</h2>
+      <p>Chaque logement est placé pour limiter la route vers les activités. Les budgets sont des fourchettes estimées par Claude pour janvier, hors frais Airbnb : autour de Noël, comptez 20 à 50 % de plus, parfois le double. Les liens ouvrent une recherche Airbnb déjà filtrée ; ajoutez les dates et cochez « Piscine ».</p>
+    </div>
+    <p class="phase-label"><span class="tag reco">Phase 1</span> À trois · 1 à 2 chambres</p>
+    <div class="grid3">
+      <div class="panel lodge">
+        <div class="top"><h3>1 · Alajuela ou Atenas</h3><span class="n">N1 · 1 nuit</span></div>
+        <p>À 15–30 minutes de l'aéroport. Atenas et Grecia offrent des maisons au milieu des caféiers, plus agréables qu'Alajuela.</p>
+        <p class="small">À chercher : parking fermé, arrivée autonome tardive.</p>
+        <p class="budget">≈ <b>70–120 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/Atenas--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Atenas</a>
+      </div>
+      <div class="panel lodge">
+        <div class="top"><h3>2 · Monteverde</h3><span class="n">N2–N3 · 2 nuits</span></div>
+        <p>Un chalet en lisière de forêt, sur la route entre Santa Elena et la réserve, pour être à 10 minutes des sentiers à 7 h.</p>
+        <p class="small">À chercher : chauffage ou poêle (nuits fraîches), vue sur le golfe de Nicoya.</p>
+        <p class="budget">≈ <b>90–160 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/Monteverde--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Monteverde</a>
+      </div>
+      <div class="panel lodge">
+        <div class="top"><h3>3 · Playas del Coco ou Ocotal</h3><span class="n">N4–N8 · 5 nuits</span></div>
+        <p>Les centres de plongée viennent chercher leurs élèves à Coco, Hermosa et Playa Panamá. Base idéale aussi pour les sorties des parents.</p>
+        <p class="small">À chercher : piscine, climatisation, restaurants à pied.</p>
+        <p class="budget">≈ <b>100–180 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/Playas-del-Coco--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Coco</a>
+      </div>
+    </div>
+    <p class="phase-label" style="margin-top:28px"><span class="tag" style="border-color:var(--sun);color:var(--sun)">Phase 2</span> À sept · 4 chambres et piscine</p>
+    <div class="grid3">
+      <div class="panel lodge">
+        <div class="top"><h3>4 · Playa Hermosa ou Playa Panamá</h3><span class="n">N9–N12 · 4 nuits</span></div>
+        <p>Les plages les plus calmes du nord, à 25 minutes de Liberia. Colin et ses parents n'ont que dix minutes à faire depuis Coco.</p>
+        <p class="small">À chercher : piscine clôturée, coin ombragé, lit bébé, rez-de-chaussée.</p>
+        <p class="budget">≈ <b>350–600 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/Playa-Hermosa--Guanacaste--Costa-Rica/homes?adults=5&children=1&infants=1&min_bedrooms=4" target="_blank" rel="noopener">Chercher à Playa Hermosa</a>
+      </div>
+      <div class="panel lodge">
+        <div class="top"><h3>5 · Arenal, La Fortuna</h3><span class="n">N13–N16 · 4 nuits</span></div>
+        <p>Une maison avec vue sur le volcan, entre La Fortuna et le parc national ou sur la route d'El Castillo, à 15 minutes maximum des activités.</p>
+        <p class="small">À chercher : vue volcan depuis la terrasse, piscine, accès sans piste trop raide.</p>
+        <p class="budget">≈ <b>250–450 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/La-Fortuna--Costa-Rica/homes?adults=5&children=1&infants=1&min_bedrooms=4" target="_blank" rel="noopener">Chercher à La Fortuna</a>
+      </div>
+      <div class="panel lodge">
+        <div class="top"><h3>6 · Manuel Antonio, les collines</h3><span class="n">N17–N21 · 5 nuits</span></div>
+        <p>Une villa dans la jungle avec vue sur l'océan : singes au petit-déjeuner, coucher de soleil depuis la piscine. Variante plus calme : Uvita ou Ojochal, plus proches des baleines mais à une heure de plus de route.</p>
+        <p class="small">À chercher : peu d'escaliers avec les petites (le terrain est très pentu), barrière de piscine.</p>
+        <p class="budget">≈ <b>400–750 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/Manuel-Antonio--Costa-Rica/homes?adults=5&children=1&infants=1&min_bedrooms=4" target="_blank" rel="noopener">Chercher à Manuel Antonio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLONGÉE ============ -->
+<section id="plongee">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Le brevet de Colin</p>
+      <h2>Open Water à Playas del Coco</h2>
+      <p>Le golfe de Papagayo, au départ de Coco, est l'endroit où la plupart des débutants apprennent au Costa Rica : sites protégés, bateaux à quelques minutes, vie marine abondante.</p>
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th></th><th>PADI ou SSI Open Water <span class="tag reco" style="margin-left:6px">À choisir</span></th><th>Niveau 1 FFESSM</th></tr></thead>
+        <tbody>
+          <tr><td>Profondeur</td><td>18 m, en autonomie avec un binôme</td><td>20 m, encadré par un moniteur</td></tr>
+          <tr><td>Au Costa Rica</td><td>Proposé par tous les centres</td><td>Aucun centre FFESSM trouvé sur place</td></tr>
+          <tr><td>Durée</td><td>3 jours avec la théorie faite avant (e-learning)</td><td>À passer en France ou en Belgique</td></tr>
+          <tr><td>Prix</td><td class="mono">≈ 500–650 $ (560 $ chez Rich Coast, SSI)</td><td>—</td></tr>
+          <tr><td>Reconnaissance</td><td>Mondiale ; les clubs français et belges ont des équivalences, à confirmer avec le club où tu plongeras ensuite</td><td>Surtout en France</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin:30px 0 14px">Trois centres à Playas del Coco</h3>
+    <div class="grid3">
+      <div class="panel">
+        <h3>Rich Coast Diving</h3>
+        <p>Centre PADI 5 étoiles, qui forme aussi des moniteurs. Exercices en vraie piscine, salle de cours climatisée.</p>
+        <p class="mono small">Open Water SSI : 3 jours · 560 $ · acompte 200 $</p>
+      </div>
+      <div class="panel">
+        <h3>Rocket Frog Divers</h3>
+        <p>PADI 5 étoiles, une vingtaine d'instructeurs, réputé pour ses bateaux. Formule Open Water en e-learning ; ramassage à Coco, Hermosa et Playa Panamá.</p>
+        <p class="mono small">PADI Open Water · e-learning</p>
+      </div>
+      <div class="panel">
+        <h3>Summer Salt Dive Center</h3>
+        <p>Centre PADI installé rue La Chorrera à Coco, apprécié des plongeurs qui y passent tous leurs niveaux.</p>
+        <p class="mono small">Sortie 2 plongées : dès 125 $</p>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:22px">
+      <div class="panel">
+        <h3>Le déroulé</h3>
+        <dl class="kv">
+          <dt>1 mois avant</dt><dd>E-learning : la théorie et les quiz en ligne. C'est ce qui fait gagner un jour sur place.</dd>
+          <dt>J4</dt><dd>Inscription, questionnaire médical, essayage.</dd>
+          <dt>J5</dt><dd>Exercices en piscine.</dd>
+          <dt>J6 · J7</dt><dd>Quatre plongées en mer, deux par matinée : brevet.</dd>
+          <dt>J8</dt><dd>Pas de plongée : route vers le Río Celeste, au moins 18 h après la dernière.</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h3>À emporter</h3>
+        <ul class="list">
+          <li>Passeport et preuve de l'e-learning terminé.</li>
+          <li>Le questionnaire médical du centre, rempli à la maison. Une seule réponse « oui » demande un certificat signé par un médecin : à faire en Belgique.</li>
+          <li>Un test d'aisance dans l'eau t'attend : environ 200 m de nage et 10 minutes de surplace.</li>
+          <li>Maillot, serviette, crème solaire sans danger pour les récifs. Le matériel est fourni.</li>
+          <li>Le baptême n'est pas nécessaire : ce n'est pas un brevet, personne ne le demandera.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="callout teal">
+        <p><b style="font-family:var(--f-display)">Les conditions en janvier.</b> Les vents de Papagayo agitent un peu la surface et une remontée d'eau froide rafraîchit l'eau (24 à 26 °C). La visibilité varie, mais les poissons sont très nombreux, et les mantas passent aux îles Catalina de janvier à mars.</p>
+      </div>
+      <div class="callout">
+        <p><b style="font-family:var(--f-display)">Plan B si le circuit s'inversait.</b> L'île de Caño, depuis Uvita ou Drake Bay, offre une meilleure visibilité et convient aussi aux débutants. Elle imposerait de commencer par le sud, loin de l'aéroport de la famille.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PÊCHE ============ -->
+<section id="peche">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Marlin et thon jaune</p>
+      <h2>La pêche au gros, côté Pacifique</h2>
+      <p>Le marlin et le thon jaune se pêchent côté Pacifique. La côte caraïbe est le domaine du tarpon et du snook. Le meilleur port pour vos dates est Quepos, à quinze minutes de la villa de Manuel Antonio.</p>
+    </div>
+    <div class="grid3">
+      <div class="panel">
+        <h3>Quand et quoi</h3>
+        <dl class="kv">
+          <dt>Marlin bleu</dt><dd>Pic de décembre à février à Quepos.</dd>
+          <dt>Voilier</dt><dd>Très bon de décembre à avril. Quepos se surnomme la capitale mondiale du voilier.</dd>
+          <dt>Thon jaune</dt><dd>Toute l'année.</dd>
+          <dt>Guanacaste</dt><dd>Petit pic du marlin en décembre-janvier, grande saison de mai à septembre.</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h3>Combien</h3>
+        <dl class="kv">
+          <dt>Demi-journée</dt><dd class="mono">1 200–1 850 $ le bateau</dd>
+          <dt>Journée au large</dt><dd class="mono">1 600–3 800 $ le bateau</dd>
+          <dt>Moyenne</dt><dd>Environ 2 170 $ la journée sur une plateforme de réservation.</dd>
+        </dl>
+        <p class="small">Prix par bateau, pas par personne : à partager à trois ou quatre.</p>
+      </div>
+      <div class="panel">
+        <h3>Les règles</h3>
+        <ul class="list">
+          <li>Marlins et voiliers sont obligatoirement relâchés.</li>
+          <li>Thon, mahi-mahi et vivaneau se gardent : El Gran Escape les cuisine le soir même.</li>
+          <li>Départ de la marina Pez Vela vers 7 h ; prévoir un médicament contre le mal de mer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESTOS ============ -->
+<section id="restos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Bonnes adresses</p>
+      <h2>Où manger, et où se souvenir</h2>
+      <p>Les adresses marquées <span style="color:var(--sun)">★</span> valent surtout pour le cadre : coucher de soleil, volcan, salle dans les arbres. Les sodas sont les petits restaurants familiaux où l'on mange un casado pour quelques dollars. Sur la carte, les prix n'incluent souvent pas les 13 % de taxe et les 10 % de service.</p>
+    </div>
+    <div class="resto-grid">
+      <div class="resto-col mv">
+        <h3>Monteverde</h3>
+        <div class="resto"><span class="nm"><span class="star">★</span> Celajes</span><span class="tg">Coucher de soleil</span><p>Le restaurant de l'hôtel Belmar, ouvert sur la vallée.</p></div>
+        <div class="resto"><span class="nm"><span class="star">★</span> The Fig</span><span class="tg">Vue panoramique</span><p>Cuisine bio moderne, vue sur la forêt et la côte.</p></div>
+        <div class="resto"><span class="nm"><span class="star">★</span> Treehouse Restaurant</span><span class="tg">Insolite</span><p>Construit autour d'un figuier étrangleur.</p></div>
+        <div class="resto"><span class="nm">San Lucas Treetop Dining</span><span class="tg">Gastronomique</span><p>Le dîner chic de la région, dans les arbres.</p></div>
+        <div class="resto"><span class="nm">La Cuchara de la Abuela</span><span class="tg">Local · pas cher</span><p>La cantine de la coopérative des femmes, midi en semaine.</p></div>
+        <div class="resto"><span class="nm">Monteverde Brewing Co.</span><span class="tg">Bière artisanale</span><p>Le déjeuner idéal en revenant de la réserve de Santa Elena.</p></div>
+      </div>
+      <div class="resto-col gu">
+        <h3>Guanacaste</h3>
+        <div class="resto"><span class="nm"><span class="star">★</span> Ginger</span><span class="tg">Dans les arbres</span><p>Playa Hermosa. Tapas asiatiques dans une salle suspendue, vue sur la baie.</p></div>
+        <div class="resto"><span class="nm"><span class="star">★</span> The Lookout</span><span class="tg">Rooftop</span><p>Coco. Repéré par la série Netflix « Restaurants on the Edge ».</p></div>
+        <div class="resto"><span class="nm"><span class="star">★</span> Father Rooster</span><span class="tg">Coucher de soleil</span><p>Ocotal. Bar de plage, cocktails au coucher du soleil.</p></div>
+        <div class="resto"><span class="nm">La Casita del Marisco</span><span class="tg">Pieds dans le sable</span><p>Playa Hermosa. Fruits de mer et desserts maison.</p></div>
+        <div class="resto"><span class="nm">Café de Playa</span><span class="tg">Avec enfants</span><p>Coco. Une journée entre la mer et la piscine.</p></div>
+        <div class="resto"><span class="nm">Restaurante Mar Azul</span><span class="tg">Poisson</span><p>Coco. La référence pour le poisson frais.</p></div>
+        <div class="resto"><span class="nm">Papagayo Seafood</span><span class="tg">Musique live</span><p>Coco. Fiable, sur la rue principale.</p></div>
+      </div>
+      <div class="resto-col ar">
+        <h3>Arenal</h3>
+        <div class="resto"><span class="nm"><span class="star">★</span> Essence Arenal</span><span class="tg">Vue lac et volcan</span><p>El Castillo. Cuisine de la ferme, à 35 min de La Fortuna.</p></div>
+        <div class="resto"><span class="nm"><span class="star">★</span> Restaurante Travesía</span><span class="tg">Vue volcan</span><p>Sur une colline, volcan d'un côté, vallée de l'autre.</p></div>
+        <div class="resto"><span class="nm">Jalapas</span><span class="tg">Mirador familial</span><p>Dans les collines au-dessus de La Fortuna.</p></div>
+        <div class="resto"><span class="nm">Que Rico Arenal</span><span class="tg">Avec enfants</span><p>Pizzas au feu de bois, vue sur le volcan.</p></div>
+        <div class="resto"><span class="nm">Café Mediterráneo</span><span class="tg">Vue volcan</span><p>Face à l'Arenal et au Cerro Chato.</p></div>
+        <div class="resto"><span class="nm">Chifa La Familia Feliz</span><span class="tg">Local</span><p>Sino-péruvien, l'adresse préférée des habitants.</p></div>
+        <div class="resto"><span class="nm">Soda La Hormiga</span><span class="tg">Pas cher</span><p>Le casado le moins cher de La Fortuna.</p></div>
+      </div>
+      <div class="resto-col pa">
+        <h3>Manuel Antonio</h3>
+        <div class="resto"><span class="nm"><span class="star">★</span> Ronny's Place</span><span class="tg">Coucher de soleil</span><p>Sur une pointe au-dessus de la baie. Réserver, venir vers 17 h.</p></div>
+        <div class="resto"><span class="nm"><span class="star">★</span> El Avión</span><span class="tg">Insolite</span><p>Dans un ancien avion-cargo militaire, vue sur le Pacifique.</p></div>
+        <div class="resto"><span class="nm">Barba Roja</span><span class="tg">Coucher de soleil</span><p>Un classique pour l'apéritif face à l'océan.</p></div>
+        <div class="resto"><span class="nm">Emilio's Café</span><span class="tg">Éclectique</span><p>Le préféré de nombreux habitués.</p></div>
+        <div class="resto"><span class="nm">Café Milagro · El Patio</span><span class="tg">Café · petit-déj</span><p>Café torréfié sur place ; El Patio pour le dîner à Quepos.</p></div>
+        <div class="resto"><span class="nm">El Wagon</span><span class="tg">Avec enfants</span><p>Pizzas au feu de bois.</p></div>
+        <div class="resto"><span class="nm">El Gran Escape</span><span class="tg">Après la pêche</span><p>Quepos. Cuisine votre prise du jour.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUDGET ============ -->
+<section id="budget">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Combien ça coûte</p>
+      <h2>Le budget, activité par activité</h2>
+      <p>Cochez les activités retenues et ajustez les nombres de personnes et les prix : le total se recalcule. Une activité marquée « On le fait » ou « Pas cette fois » dans le programme se coche ou se décoche ici aussi. Les prix sont ceux trouvés en ligne en 2026, ceux marqués « estimation » sont à confirmer. Les nombres et les prix restent enregistrés sur cet appareil.</p>
+    </div>
+    <div class="budget-layout">
+      <div>
+        <div id="act-groups"></div>
+
+        <div class="bgroup">
+          <h3>Logements <span>prix par nuit modifiables</span></h3>
+          <div id="lodge-rows"></div>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Frais Airbnb et taxes</b><small>en pourcentage du total des nuits</small></span></div>
+            <div class="qty"><label for="fee">% <input class="num" type="number" id="fee" min="0" max="40" step="1" value="15"></label></div>
+            <span class="sub" id="fee-sub">—</span>
+          </div>
+        </div>
+
+        <div class="bgroup">
+          <h3>Voitures, essence et repas</h3>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Voiture 1 · Colin et ses parents</b><small>SUV, assurance obligatoire comprise · 21 jours</small></span></div>
+            <div class="qty"><label for="car1">$/jour <input class="num" type="number" id="car1" min="0" step="5" value="85"></label></div>
+            <span class="sub" id="car1-sub">—</span>
+          </div>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Voiture 2 · la famille</b><small>SUV et 2 sièges auto · 14 jours</small></span></div>
+            <div class="qty"><label for="car2">$/jour <input class="num" type="number" id="car2" min="0" step="5" value="95"></label></div>
+            <span class="sub" id="car2-sub">—</span>
+          </div>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Essence, deux voitures</b><small>estimation pour tout le circuit</small></span></div>
+            <div class="qty"><label for="fuel">$ <input class="num wide" type="number" id="fuel" min="0" step="10" value="450"></label></div>
+            <span class="sub" id="fuel-sub">—</span>
+          </div>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Repas et courses</b><small>par adulte et par jour · 89 jours-adultes</small></span></div>
+            <div class="qty"><label for="food">$/jour <input class="num" type="number" id="food" min="0" step="5" value="40"></label></div>
+            <span class="sub" id="food-sub">—</span>
+          </div>
+        </div>
+
+        <div class="bgroup">
+          <h3>Vols <span>en euros</span></h3>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Paris ↔ San José, 3 personnes</b><small>prix par personne, aller-retour</small></span></div>
+            <div class="qty"><label for="fl1">€ <input class="num wide" type="number" id="fl1" min="0" step="10" value="900"></label></div>
+            <span class="sub" id="fl1-sub">—</span>
+          </div>
+          <div class="brow">
+            <div class="lbl" style="cursor:default"><span><b>Calgary ↔ Costa Rica, la famille</b><small>total à renseigner</small></span></div>
+            <div class="qty"><label for="fl2">€ <input class="num wide" type="number" id="fl2" min="0" step="50" value="0"></label></div>
+            <span class="sub" id="fl2-sub">—</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="summary" aria-live="polite">
+        <p class="eyebrow">Total estimé</p>
+        <p class="total" id="tot-eur">—</p>
+        <p class="total-usd" id="tot-usd">—</p>
+        <div class="stack" id="stack" aria-hidden="true"></div>
+        <ul class="blines">
+          <li><i class="sw c1"></i><span>Activités</span><span class="v" id="s-act">—</span></li>
+          <li><i class="sw c2"></i><span>Logements</span><span class="v" id="s-lodge">—</span></li>
+          <li><i class="sw c3"></i><span>Voitures et essence</span><span class="v" id="s-car">—</span></li>
+          <li><i class="sw c4"></i><span>Repas</span><span class="v" id="s-food">—</span></li>
+          <li><i class="sw c5"></i><span>Vols</span><span class="v" id="s-fl">—</span></li>
+        </ul>
+        <p class="small" id="per-adult">—</p>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <label for="rate" class="small">1 $ = <input class="num" type="number" id="rate" min="0.5" max="1.5" step="0.01" value="0.89"> €</label>
+          <button type="button" class="btn" id="reset">Revenir aux valeurs de départ</button>
+        </div>
+        <p class="small">Taux d'octobre 2026. Les logements comptent pour la plus grosse part : réserver tôt fait la vraie différence.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRATIQUE ============ -->
+<section id="pratique">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Avant de partir</p>
+      <h2>Infos pratiques</h2>
+    </div>
+    <div class="grid3">
+      <div class="panel">
+        <h3>Papiers</h3>
+        <ul class="list">
+          <li>Pas de visa pour les Belges ni les Canadiens, séjour jusqu'à 180 jours.</li>
+          <li>Passeport valable 6 mois après l'arrivée par prudence, y compris pour chaque enfant.</li>
+          <li>Billet de sortie du pays obligatoire, contrôlé à l'embarquement.</li>
+          <li>Le permis de conduire national suffit pour un séjour touristique.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Argent</h3>
+        <ul class="list">
+          <li>Dollars américains acceptés partout dans le tourisme ; la monnaie locale est le colón.</li>
+          <li>Carte bancaire presque partout, espèces pour les sodas, parkings et pourboires.</li>
+          <li>Au restaurant, 13 % de taxe et 10 % de service s'ajoutent souvent aux prix affichés.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Sur la route</h3>
+        <ul class="list">
+          <li>Waze est l'application de référence ; ajoutez de la marge aux temps annoncés.</li>
+          <li>Il fait nuit vers 17 h 30 : on arrive avant.</li>
+          <li>Rien de visible dans la voiture lors des arrêts.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Santé et climat</h3>
+        <ul class="list">
+          <li>Aucun vaccin obligatoire depuis la Belgique ou le Canada. Répulsif en lotion contre les moustiques.</li>
+          <li>Côte : 28 à 32 °C. Monteverde : 15 à 20 °C, polaire et coupe-vent.</li>
+          <li>Prises américaines en 110-120 V : adaptateurs pour les appareils européens.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Avec les petites</h3>
+        <ul class="list">
+          <li>Sièges auto obligatoires.</li>
+          <li>Porte-bébé pour les sentiers ; poussette pour Místico et Manuel Antonio.</li>
+          <li>Chapeau, lycra anti-UV, eau en permanence : la chaleur de Guanacaste est sèche et forte.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Ce qu'il faut réserver, et quand</h3>
+        <dl class="kv">
+          <dt>Dès l'ouverture</dt><dd>Vols, puis les trois villas à quatre chambres.</dd>
+          <dt>6 mois avant</dt><dd>Voitures et petits logements.</dd>
+          <dt>2–3 mois</dt><dd>Plongée, pêche, guides de Monteverde.</dd>
+          <dt>Quelques jours</dt><dd>Billets des parcs nationaux en ligne, Ronny's Place.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources" style="border-bottom:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">D'où viennent les infos</p>
+      <h2>Sources</h2>
+      <p>Le circuit croise les incontournables du Guide du Routard (édition 2025-2026 : réserve de Monteverde, baleines et tortues, balades à cheval autour de Liberia), Frommer's et Rough Guides avec des guides locaux tenus par des résidents. Les prix sont ceux publiés en 2026 et peuvent évoluer d'ici 2028.</p>
+    </div>
+    <ul class="sources">
+      <li><a href="https://costa-rica-guide.com/travel/best-time/when-to-visit/" target="_blank" rel="noopener">Costa Rica Guide : quand partir</a> · <a href="https://costa-rica-guide.com/travel/best-time/december/" target="_blank" rel="noopener">décembre</a></li>
+      <li><a href="https://mytanfeet.com/costa-rica-travel-tips/costa-rica-in-december/" target="_blank" rel="noopener">Tan Feet : le Costa Rica en décembre</a></li>
+      <li><a href="https://www.costaricavibes.com/costa-rica-weather/" target="_blank" rel="noopener">Costa Rica Vibes : la météo par région</a></li>
+      <li><a href="https://www.air-journal.fr/?p=249364" target="_blank" rel="noopener">Air Journal : Air France Paris – San José</a></li>
+      <li><a href="https://www.partir.com/Costa-rica/billet-avion-vol/paris-cdg-san-jose/cdg/sjo/vol-direct.html" target="_blank" rel="noopener">Partir.com : vols directs Paris – San José</a></li>
+      <li><a href="https://westjet.mediaroom.com/2026-07-20-From-parkas-to-paradise-WestJet-adds-five-new-routes-for-winter-2026-2027" target="_blank" rel="noopener">WestJet : programme d'hiver 2026-2027</a></li>
+      <li><a href="https://www.scubadiving.com/altitude-after-diving" target="_blank" rel="noopener">Ask DAN : l'altitude après la plongée</a></li>
+      <li><a href="https://ticotimes.net/2026/09/12/scuba-diving-costa-rica-beginners-guide" target="_blank" rel="noopener">Tico Times : débuter la plongée au Costa Rica</a></li>
+      <li><a href="https://www.wetravel.com/i/69cb5c7f4d299c964260e4cf" target="_blank" rel="noopener">Rich Coast Diving : Open Water SSI</a></li>
+      <li><a href="https://travel.padi.com/dive-course/playas-del-coco-guanacaste/padi-open-water-diver-11700" target="_blank" rel="noopener">PADI Travel : Rocket Frog Divers</a></li>
+      <li><a href="https://diveplannerpro.com/dive-centers/cr/cr-summer-salt-dive-center" target="_blank" rel="noopener">Summer Salt Dive Center</a></li>
+      <li><a href="https://www.billbeardcostarica.com/?p=43420" target="_blank" rel="noopener">Bill Beard's : saisons de plongée</a></li>
+      <li><a href="https://sportfishingbluemarlin.com/fishing-calendar/" target="_blank" rel="noopener">Calendrier de pêche de Quepos</a></li>
+      <li><a href="https://captainexperiences.com/locations/costa-rica/quepos/trolling" target="_blank" rel="noopener">Captain Experiences : prix des sorties à Quepos</a></li>
+      <li><a href="https://www.twoweeksincostarica.com/the-enchanting-rio-celeste/" target="_blank" rel="noopener">Two Weeks in Costa Rica : Río Celeste</a></li>
+      <li><a href="https://mytanfeet.com/activities/tips-visiting-rio-celeste" target="_blank" rel="noopener">Tan Feet : visiter le Río Celeste</a></li>
+      <li><a href="https://guachipelin.com/horseback-riding/horseback-riding-to-las-pailas-trail" target="_blank" rel="noopener">Hacienda Guachipelín : cheval aux Pailas</a></li>
+      <li><a href="https://mytanfeet.com/national-parks/rincon-de-la-vieja-national-park/" target="_blank" rel="noopener">Tan Feet : parc Rincón de la Vieja</a></li>
+      <li><a href="https://www.travelocity.com/things-to-do/palo-verde-boat-tours-ortega.a2249380.activity-details" target="_blank" rel="noopener">Palo Verde Boat Tours, Ortega</a></li>
+      <li><a href="https://www.costaricavibes.com/la-fortuna-hot-springs" target="_blank" rel="noopener">Costa Rica Vibes : sources chaudes de l'Arenal</a></li>
+      <li><a href="https://www.travelocity.com/things-to-do/arenal-hanging-bridges-self-guided-walk-at-mistico-park.a2392005.activity-details" target="_blank" rel="noopener">Místico : ponts suspendus</a></li>
+      <li><a href="https://mytanfeet.com/activities/hiking-at-manuel-antonio-national-park/" target="_blank" rel="noopener">Tan Feet : parc Manuel Antonio</a></li>
+      <li><a href="https://www.twoweeksincostarica.com/product/isla-damas-tour/" target="_blank" rel="noopener">Two Weeks in Costa Rica : Isla Damas</a></li>
+      <li><a href="https://twoweeksincostarica.com/product/whale-watching-tour-uvita" target="_blank" rel="noopener">Two Weeks in Costa Rica : baleines à Uvita</a></li>
+      <li><a href="https://www.twoweeksincostarica.com/best-beaches-families-costa-rica/" target="_blank" rel="noopener">Two Weeks in Costa Rica : plages en famille</a></li>
+      <li><a href="https://www.costaricavibes.com/restaurants-monteverde/" target="_blank" rel="noopener">Restaurants de Monteverde</a> · <a href="https://blog.selvatura.com/which-are-the-best-restaurants-in-monteverde/" target="_blank" rel="noopener">Selvatura</a></li>
+      <li><a href="https://www.costaricavibes.com/restaurants-playas-del-coco/" target="_blank" rel="noopener">Restaurants de Playas del Coco</a> · <a href="https://www.frommers.com/destinations/playa-del-coco-and-playa-ocotal/restaurants/citron" target="_blank" rel="noopener">Frommer's</a></li>
+      <li><a href="https://www.holidayhypermarket.co.uk/destinations/costa-rica/playa-hermosa/best-restaurants" target="_blank" rel="noopener">Restaurants de Playa Hermosa</a></li>
+      <li><a href="https://www.costaricavibes.com/restaurants-la-fortuna/" target="_blank" rel="noopener">Restaurants de La Fortuna</a> · <a href="https://www.twoweeksincostarica.com/la-fortuna-what-to-expect/" target="_blank" rel="noopener">Two Weeks in Costa Rica</a></li>
+      <li><a href="https://www.twoweeksincostarica.com/manuel-antonio-restaurant-guide/" target="_blank" rel="noopener">Restaurants de Manuel Antonio</a></li>
+      <li><a href="https://drinkteatravel.com/renting-a-car-in-costa-rica-tips/" target="_blank" rel="noopener">Louer une voiture au Costa Rica</a></li>
+      <li><a href="https://elbosquemonteverde.com/blog/getting-from-arenal-la-fortuna-to-manuel-antonio" target="_blank" rel="noopener">De La Fortuna à Manuel Antonio</a></li>
+      <li><a href="https://www.hinterlandtravel.com/belgium/destinations/costa-rica" target="_blank" rel="noopener">Conditions d'entrée pour les Belges</a></li>
+      <li><a href="https://www.tonton-outdoor.com/fr_FR/p/guide-du-routard-costa-rica-edition-2025-26" target="_blank" rel="noopener">Guide du Routard Costa Rica 2025-2026</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">Préparé en octobre 2026 pour la réunion de famille de l'hiver 2027-2028. Horaires, prix et ouvertures sont à reconfirmer au moment de réserver.</div>
+</footer>
+
+<script>
+/* ===== Configuration Firebase =====
+   Colle ici l'objet "firebaseConfig" donné par Firebase, par exemple :
+   window.FIREBASE_CONFIG = { apiKey: "...", authDomain: "...", projectId: "...", appId: "..." };
+   Tant que c'est null, les choix restent sur chaque appareil. */
+window.FIREBASE_CONFIG = null;
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script id="app">
+(function(){
+  "use strict";
+  var KEY = "cr-famille-v1";
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ store = {}; }
+  var seed = {};
+  try { seed = JSON.parse(document.documentElement.getAttribute("data-seed") || "{}") || {}; } catch(e){ seed = {}; }
+  if (!store.choices && seed.choices) store.choices = seed.choices;
+  if (!store.v && seed.v) store.v = seed.v;
+  if (!store.mode && seed.mode) store.mode = seed.mode;
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){} }
+
+  /* ---------- Dates ---------- */
+  var MODES = { jan: new Date(2028,0,8), dec: new Date(2027,11,5) };
+  function dayDate(mode, n){ var d = new Date(MODES[mode]); d.setDate(d.getDate() + n - 1); return d; }
+  function fmt(d, withYear){
+    var o = { weekday:"short", day:"numeric", month:"short" };
+    if (withYear) o.year = "numeric";
+    return d.toLocaleDateString("fr-FR", o);
+  }
+  function applyMode(mode){
+    document.querySelectorAll(".seg button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.mode === mode)); });
+    document.querySelectorAll(".day[data-d]").forEach(function(el){
+      var n = +el.dataset.d; var t = el.querySelector(".ddate");
+      if (t) t.textContent = fmt(dayDate(mode, n));
+    });
+    document.querySelectorAll("[data-range]").forEach(function(el){
+      var p = el.dataset.range.split("-"); var a = +p[0], b = +p[1];
+      el.textContent = "J" + a + " → J" + b + " · " + fmt(dayDate(mode, a)) + " → " + fmt(dayDate(mode, b));
+    });
+    document.getElementById("hero-dates").textContent = fmt(dayDate(mode,1)) + " → " + fmt(dayDate(mode,22), true);
+    document.querySelectorAll(".dec-note").forEach(function(el){ el.hidden = (mode !== "dec"); });
+    store.mode = mode; save();
+  }
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.addEventListener("click", function(){ applyMode(b.dataset.mode); });
+  });
+  applyMode(store.mode === "dec" ? "dec" : "jan");
+
+  /* ---------- Choix « on le fait / pas cette fois » ---------- */
+  var CH = Object.assign({}, store.choices || {});
+  var chMode = "local";           // local | shared | readonly
+  var LABEL = { "": "À décider", oui: "✓ On le fait", non: "✕ Pas cette fois" };
+  var OPTS = Array.prototype.slice.call(document.querySelectorAll(".opts li[data-opt]"));
+  OPTS.forEach(function(li){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "pick";
+    b.addEventListener("click", function(){
+      if (chMode === "readonly") return;
+      var id = li.dataset.opt, cur = CH[id] || "";
+      var next = cur === "" ? "oui" : (cur === "oui" ? "non" : "");
+      setChoice(id, next);
+    });
+    li.appendChild(b);
+  });
+  function setChoice(id, v){
+    if (v) CH[id] = v; else delete CH[id];
+    store.choices = Object.assign({}, CH); save();
+    paintChoices(); syncBudget(); compute();
+    if (chMode === "shared") scheduleWrite();
+  }
+  function paintChoices(){
+    var yes = 0, no = 0, open = 0;
+    OPTS.forEach(function(li){
+      var s = CH[li.dataset.opt] || "";
+      var b = li.querySelector(".pick");
+      b.dataset.s = s; b.textContent = LABEL[s];
+      b.disabled = (chMode === "readonly");
+      b.setAttribute("aria-label", "Choix pour cette activité : " + LABEL[s].replace(/^[✓✕]\s/, ""));
+      li.classList.toggle("is-yes", s === "oui"); li.classList.toggle("is-no", s === "non");
+      if (s === "oui") yes++; else if (s === "non") no++; else open++;
+    });
+    document.getElementById("ch-count").textContent = yes + " retenues · " + no + " écartées · " + open + " à décider";
+  }
+  function setStatus(mode){
+    chMode = mode;
+    var bar = document.getElementById("choicebar"); bar.dataset.mode = mode;
+    var msg = {
+      local: "Vos choix sont enregistrés sur cet appareil.",
+      shared: "Choix partagés : toute la famille voit les mêmes réponses, en direct.",
+      readonly: "Vous voyez les choix de la famille.",
+      error: "La base partagée ne répond pas : vos choix restent sur cet appareil pour l'instant."
+    }[mode];
+    document.getElementById("ch-status").innerHTML = '<i class="dot"></i>' + msg;
+    paintChoices();
+  }
+
+  var ref = null, writeTimer = null, writing = Promise.resolve(), retries = 0, demoted = false;
+  function scheduleWrite(){
+    if (!ref) return;
+    clearTimeout(writeTimer);
+    writeTimer = setTimeout(function(){
+      writeTimer = null;
+      var body = { choices: Object.assign({}, CH), updated: firebase.firestore.FieldValue.serverTimestamp() };
+      writing = writing.then(function(){ return ref.set(body); }).then(function(){ retries = 0; }).catch(function(e){
+        var code = e && e.code;
+        if (code === "permission-denied" || code === "invalid-argument") { demoted = true; setStatus("error"); }
+        else if (retries < 1) { retries++; setTimeout(scheduleWrite, 1500 + Math.random()*1500); }
+      });
+    }, 450);
+  }
+  function connectShared(){
+    var cfg = window.FIREBASE_CONFIG;
+    if (!cfg) { setStatus("local"); return; }
+    if (!window.firebase || !firebase.initializeApp) { setStatus("error"); return; }
+    try {
+      if (!firebase.apps.length) firebase.initializeApp(cfg);
+      var fs = firebase.firestore();
+      try { fs.enablePersistence({ synchronizeTabs: true }).catch(function(){}); } catch(e){}
+      ref = fs.collection("plan").doc("choices");
+    } catch(e){ setStatus("error"); return; }
+    var first = true;
+    ref.onSnapshot(function(snap){
+      if (demoted) return;
+      if (snap.exists){
+        if (!writeTimer){
+          var d = snap.data() || {};
+          CH = Object.assign({}, d.choices || {});
+          store.choices = Object.assign({}, CH); save();
+        }
+        if (first) setStatus("shared"); else paintChoices();
+        syncBudget(); compute();
+      } else if (first){
+        setStatus("shared");
+        if (Object.keys(CH).length) scheduleWrite();
+      }
+      first = false;
+    }, function(){ demoted = true; setStatus("error"); });
+  }
+
+  /* ---------- Copie hors connexion ---------- */
+  function connectDownloads(){
+    var btn = document.getElementById("dl-btn"), msg = document.getElementById("dl-msg");
+    btn.hidden = false;
+    btn.addEventListener("click", function(){
+      var root = document.documentElement.cloneNode(true);
+      root.removeAttribute("data-theme");
+      root.setAttribute("data-seed", JSON.stringify({ choices: CH, v: store.v || {}, mode: store.mode || "jan" }));
+      var b2 = root.querySelector("#dl-btn"); if (b2) b2.hidden = true;
+      var m2 = root.querySelector("#dl-msg"); if (m2) m2.textContent = "";
+      var html = "<!doctype html>\n" + root.outerHTML;
+      try {
+        var url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+        var a = document.createElement("a");
+        a.href = url; a.download = "costa-rica-en-famille.html";
+        document.body.appendChild(a); a.click();
+        setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 1500);
+        msg.textContent = "Copie téléchargée, avec vos choix du moment.";
+      } catch(e){ msg.textContent = "Le téléchargement n'a pas fonctionné sur cet appareil."; }
+    });
+  }
+
+  /* ---------- Budget ---------- */
+  var ACT = [
+    { g:"Monteverde · à trois", items:[
+      { id:"a1", label:"Balade nocturne guidée (2 h)", note:"25 à 35 $ selon l'opérateur", pa:30, pc:0, na:3, nc:0, on:true },
+      { id:"a2", label:"Ponts suspendus de Selvatura", note:"entrée sans guide", pa:56, pc:0, na:3, nc:0, on:true },
+      { id:"a3", label:"Réserve de Monteverde : entrée", note:"gratuit avant 6 ans", pa:25, pc:0, na:3, nc:0, on:true },
+      { id:"a4", label:"Guide naturaliste pour la réserve", note:"estimation par personne", pa:35, pc:0, na:3, nc:0, on:true },
+      { id:"a5", label:"Visite café ou cacao", note:"estimation", pa:40, pc:0, na:3, nc:0, on:false }
+    ]},
+    { g:"Guanacaste · à trois", items:[
+      { id:"a6", label:"Brevet Open Water de Colin", note:"SSI chez Rich Coast ; PADI du même ordre", pa:560, pc:0, na:1, nc:0, on:true },
+      { id:"a7", label:"Parents : journée Rincón de la Vieja", note:"estimation, déjeuner et sources chaudes compris", pa:140, pc:0, na:2, nc:0, on:true },
+      { id:"a8", label:"Parents : catamaran et snorkeling", note:"estimation", pa:100, pc:0, na:2, nc:0, on:false },
+      { id:"a9", label:"Río Celeste : entrée du parc", note:"enfant 5 $", pa:12, pc:5, na:3, nc:0, on:true },
+      { id:"a10", label:"Río Celeste : guide naturaliste", note:"facultatif, entrée comprise", pa:55, pc:0, na:3, nc:0, on:false }
+    ]},
+    { g:"Guanacaste · à sept", items:[
+      { id:"b1", label:"Palo Verde en bateau", note:"opérateur d'Ortega ; tarif enfant estimé", pa:100, pc:50, na:5, nc:1, on:true },
+      { id:"b2", label:"Rincón : cheval jusqu'aux Pailas", note:"dès 4 ans", pa:70, pc:60, na:3, nc:0, on:true },
+      { id:"b3", label:"Rincón : entrée du parc", note:"enfant 5,65 $", pa:16.95, pc:5.65, na:3, nc:0, on:true },
+      { id:"b4", label:"Catamaran au coucher du soleil", note:"estimation", pa:100, pc:0, na:3, nc:0, on:false }
+    ]},
+    { g:"Arenal · à sept", items:[
+      { id:"b5", label:"Sources chaudes de Baldi", note:"enfant 34 $", pa:47, pc:34, na:5, nc:1, on:true },
+      { id:"b6", label:"Ponts suspendus Místico", note:"sans guide ; tarif enfant à vérifier", pa:39, pc:0, na:5, nc:0, on:true },
+      { id:"b7", label:"Kayak au coucher du soleil", note:"estimation", pa:70, pc:0, na:3, nc:0, on:false },
+      { id:"b8", label:"Balade nocturne", note:"estimation", pa:35, pc:20, na:5, nc:1, on:false }
+    ]},
+    { g:"Pacifique central · à sept", items:[
+      { id:"b9", label:"Mangrove d'Isla Damas", note:"57 $ + 13 % ; gratuit avant 5 ans", pa:64.41, pc:0, na:5, nc:1, on:true },
+      { id:"b10", label:"Manuel Antonio : visite guidée et entrée", note:"enfants de 2 à 5 ans : environ un quart du prix", pa:78, pc:20, na:5, nc:1, on:true },
+      { id:"b11", label:"Pêche au gros, journée au large", note:"prix pour tout le bateau", pa:2000, pc:0, na:1, nc:0, on:true, group:true },
+      { id:"b12", label:"Baleines à Uvita", note:"88 $ + 13 % ; dès 4 ans", pa:99.44, pc:56.5, na:2, nc:0, on:false }
+    ]}
+  ];
+  var LODGE = [
+    { id:"l1", label:"1 · Alajuela ou Atenas", n:1, p:95 },
+    { id:"l2", label:"2 · Monteverde", n:2, p:125 },
+    { id:"l3", label:"3 · Playas del Coco", n:5, p:140 },
+    { id:"l4", label:"4 · Playa Hermosa, 4 chambres", n:4, p:450 },
+    { id:"l5", label:"5 · Arenal, 4 chambres", n:4, p:350 },
+    { id:"l6", label:"6 · Manuel Antonio, 4 chambres", n:5, p:550 }
+  ];
+  var FIELDS = { fee:15, car1:85, car2:95, fuel:450, food:40, fl1:900, fl2:0, rate:0.89 };
+  var ADULT_DAYS = 3*8 + 5*13;
+
+  // lien activité du programme → lignes du budget
+  var BUD2OPT = {};
+  OPTS.forEach(function(li){
+    (li.dataset.bud || "").split(",").filter(Boolean).forEach(function(b){ (BUD2OPT[b] = BUD2OPT[b] || []).push(li.dataset.opt); });
+  });
+
+  var usd = new Intl.NumberFormat("fr-FR", { style:"currency", currency:"USD", maximumFractionDigits:0 });
+  var eur = new Intl.NumberFormat("fr-FR", { style:"currency", currency:"EUR", maximumFractionDigits:0 });
+
+  function val(k, d){ return (store.v && k in store.v) ? store.v[k] : d; }
+  function setv(k, v){ store.v = store.v || {}; store.v[k] = v; save(); }
+
+  function numInput(id, value, cls, min, step){
+    return '<input class="num ' + (cls||"") + '" type="number" id="' + id + '" min="' + (min||0) + '" step="' + (step||1) + '" value="' + value + '">';
+  }
+  function choiceOn(it){
+    var opts = BUD2OPT[it.id] || [];
+    for (var i = 0; i < opts.length; i++){ var c = CH[opts[i]]; if (c === "oui") return true; if (c === "non") return false; }
+    return val(it.id + ":on", it.on);
+  }
+
+  function renderActs(){
+    var host = document.getElementById("act-groups"); var html = "";
+    ACT.forEach(function(gr, gi){
+      html += '<div class="bgroup"><h3>' + gr.g + ' <span id="gsum-' + gi + '"></span></h3>';
+      gr.items.forEach(function(it){
+        var on = choiceOn(it), na = val(it.id + ":na", it.na), nc = val(it.id + ":nc", it.nc), pa = val(it.id + ":pa", it.pa);
+        html += '<div class="brow' + (on ? "" : " off") + '" data-row="' + it.id + '">';
+        html += '<label class="lbl" for="' + it.id + '-on"><input type="checkbox" id="' + it.id + '-on"' + (on ? " checked" : "") + '><span><b>' + it.label + '</b><small>' + it.note + '</small></span></label>';
+        html += '<div class="qty">';
+        if (it.group){
+          html += '<label for="' + it.id + '-pa">$ le bateau ' + numInput(it.id + "-pa", pa, "wide", 0, 50) + '</label>';
+        } else {
+          html += '<label for="' + it.id + '-pa">$ ' + numInput(it.id + "-pa", pa, "", 0, 1) + '</label>';
+          html += '<label for="' + it.id + '-na">× ad. ' + numInput(it.id + "-na", na, "", 0, 1) + '</label>';
+          if (it.pc > 0 || it.nc > 0) html += '<label for="' + it.id + '-nc">enf. ' + numInput(it.id + "-nc", nc, "", 0, 1) + '</label>';
+        }
+        html += '</div><span class="sub" id="' + it.id + '-sub">—</span></div>';
+      });
+      html += '</div>';
+    });
+    host.innerHTML = html;
+
+    var lh = "";
+    LODGE.forEach(function(l){
+      lh += '<div class="brow"><div class="lbl" style="cursor:default"><span><b>' + l.label + '</b><small>' + l.n + (l.n > 1 ? " nuits" : " nuit") + '</small></span></div>';
+      lh += '<div class="qty"><label for="' + l.id + '">$/nuit ' + numInput(l.id, val(l.id, l.p), "", 0, 5) + '</label></div>';
+      lh += '<span class="sub" id="' + l.id + '-sub">—</span></div>';
+    });
+    document.getElementById("lodge-rows").innerHTML = lh;
+
+    Object.keys(FIELDS).forEach(function(k){ var el = document.getElementById(k); if (el) el.value = val(k, FIELDS[k]); });
+  }
+  function syncBudget(){
+    ACT.forEach(function(gr){ gr.items.forEach(function(it){
+      var cb = document.getElementById(it.id + "-on"); if (cb) cb.checked = choiceOn(it);
+    }); });
+  }
+
+  function n(id){ var el = document.getElementById(id); var x = el ? parseFloat(el.value) : 0; return isFinite(x) && x > 0 ? x : 0; }
+
+  function compute(){
+    var rate = n("rate") || 0.89;
+    var act = 0;
+    ACT.forEach(function(gr, gi){
+      var gs = 0;
+      gr.items.forEach(function(it){
+        var on = document.getElementById(it.id + "-on").checked;
+        var sub = it.group ? n(it.id + "-pa") : n(it.id + "-pa") * n(it.id + "-na") + it.pc * (document.getElementById(it.id + "-nc") ? n(it.id + "-nc") : 0);
+        document.getElementById(it.id + "-sub").textContent = usd.format(sub);
+        document.querySelector('[data-row="' + it.id + '"]').classList.toggle("off", !on);
+        if (on) gs += sub;
+      });
+      document.getElementById("gsum-" + gi).textContent = usd.format(gs);
+      act += gs;
+    });
+    var nights = 0;
+    LODGE.forEach(function(l){ var s = n(l.id) * l.n; nights += s; document.getElementById(l.id + "-sub").textContent = usd.format(s); });
+    var fee = nights * n("fee") / 100;
+    document.getElementById("fee-sub").textContent = usd.format(fee);
+    var lodge = nights + fee;
+    var c1 = n("car1") * 21, c2 = n("car2") * 14, fuel = n("fuel");
+    document.getElementById("car1-sub").textContent = usd.format(c1);
+    document.getElementById("car2-sub").textContent = usd.format(c2);
+    document.getElementById("fuel-sub").textContent = usd.format(fuel);
+    var car = c1 + c2 + fuel;
+    var food = n("food") * ADULT_DAYS;
+    document.getElementById("food-sub").textContent = usd.format(food);
+    var fl1e = n("fl1") * 3, fl2e = n("fl2");
+    document.getElementById("fl1-sub").textContent = eur.format(fl1e);
+    document.getElementById("fl2-sub").textContent = eur.format(fl2e);
+    var flUsd = (fl1e + fl2e) / rate;
+
+    var parts = [act, lodge, car, food, flUsd];
+    var totUsd = parts.reduce(function(a,b){ return a+b; }, 0);
+    document.getElementById("tot-eur").textContent = eur.format(totUsd * rate);
+    document.getElementById("tot-usd").textContent = "soit " + usd.format(totUsd) + " pour les 7 voyageurs";
+    var ids = ["s-act","s-lodge","s-car","s-food","s-fl"];
+    parts.forEach(function(p, i){ document.getElementById(ids[i]).textContent = eur.format(p * rate); });
+    var cls = ["c1","c2","c3","c4","c5"]; var st = "";
+    parts.forEach(function(p, i){ if (totUsd > 0 && p > 0) st += '<i class="' + cls[i] + '" style="width:' + (p / totUsd * 100).toFixed(2) + '%"></i>'; });
+    document.getElementById("stack").innerHTML = st;
+    document.getElementById("per-adult").textContent = "≈ " + eur.format(totUsd * rate / 5) + " par adulte si tout est partagé à cinq (vols de Calgary compris s'ils sont renseignés).";
+    return totUsd;
+  }
+
+  function bind(){
+    document.getElementById("budget").addEventListener("input", function(e){
+      var t = e.target; if (!t.id) return;
+      var m = t.id.match(/^(a\d+|b\d+)-(on|na|nc|pa)$/);
+      if (m && m[2] === "on"){
+        var opts = BUD2OPT[m[1]] || [];
+        if (opts.length && chMode !== "readonly"){ opts.forEach(function(o){ if (t.checked) CH[o] = "oui"; else CH[o] = "non"; }); setChoice(opts[0], CH[opts[0]]); return; }
+        if (opts.length && chMode === "readonly"){ syncBudget(); compute(); return; }
+        setv(m[1] + ":on", t.checked);
+      } else if (m) setv(m[1] + ":" + m[2], parseFloat(t.value) || 0);
+      else if (t.id in FIELDS || /^l\d$/.test(t.id)) setv(t.id, parseFloat(t.value) || 0);
+      compute();
+    });
+    document.getElementById("reset").addEventListener("click", function(){
+      delete store.v; save(); renderActs(); compute();
+    });
+  }
+
+  renderActs(); bind(); paintChoices(); compute();
+  connectShared(); connectDownloads();
+})();
+</script>
+
+</body>
+</html>
