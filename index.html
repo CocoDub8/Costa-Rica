@@ -276,6 +276,55 @@ td .mono{font-size:.88rem}
 footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:var(--bg); border-top:1px solid var(--line)}
 .map-wrap > .panel{box-shadow:none}
 
+
+/* ---------- Récap : ligne du temps ---------- */
+.recap-stats{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:18px}
+.stat{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:14px 18px; box-shadow:var(--shadow); display:grid; gap:2px; min-width:130px}
+.stat b{font-family:var(--f-display); font-size:1.9rem; font-weight:800; line-height:1; font-variant-numeric:tabular-nums}
+.stat span{font-size:.85rem; color:var(--muted)}
+.stat.yes b{color:#1E9B58} .stat.open b{color:var(--muted)} .stat.no b{color:#9AA9A4} .stat.money b{color:var(--sun)}
+.tl-toggle{display:inline-flex; gap:8px; align-items:center; font-size:.92rem; color:var(--muted); margin-bottom:22px; cursor:pointer}
+.tl-toggle input{accent-color:var(--accent); width:17px; height:17px}
+.tl{list-style:none; margin:0; padding:0}
+.tl > li{--r:var(--r-road); display:grid; grid-template-columns:150px 64px minmax(0,1fr)}
+.tl > li[data-r="cv"]{--r:var(--r-cv)} .tl > li[data-r="mv"]{--r:var(--r-mv)} .tl > li[data-r="gu"]{--r:var(--r-gu)} .tl > li[data-r="ar"]{--r:var(--r-ar)} .tl > li[data-r="pa"]{--r:var(--r-pa)}
+.tl-date{font-family:var(--f-mono); font-size:.8rem; color:var(--muted); text-align:right; padding-top:13px; text-transform:capitalize}
+.tl-axis{position:relative}
+.tl-axis::before{content:""; position:absolute; left:50%; top:0; bottom:0; width:4px; margin-left:-2px; background:var(--r); border-radius:2px}
+.tl > li:first-child .tl-axis::before{top:24px}
+.tl > li:last-child .tl-axis::before{bottom:auto; height:24px}
+.tl-day .tl-axis::after{content:""; position:absolute; left:50%; top:13px; width:18px; height:18px; margin-left:-9px; border-radius:50%; background:var(--paper); border:4px solid var(--r); box-sizing:border-box}
+.tl-day.star .tl-axis::after{width:26px; height:26px; margin-left:-13px; top:9px; background:var(--gold); border-color:var(--gold); box-shadow:0 0 0 5px rgba(255,197,61,.3)}
+.tl-body{padding:8px 0 22px 6px; display:grid; gap:7px; min-width:0}
+.tl-d2{display:none; font-family:var(--f-mono); font-size:.78rem; color:var(--muted); text-transform:capitalize}
+.tl-title{font-family:var(--f-display); font-weight:800; font-size:1.1rem; color:var(--ink); text-decoration:none; line-height:1.2}
+.tl-title:hover{color:var(--accent)}
+.tl-title .dn{color:var(--r); margin-right:8px}
+.tl-meta{font-family:var(--f-mono); font-size:.74rem; color:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:6px; list-style:none; margin:0; padding:0}
+.chip{font-size:.86rem; padding:4px 11px; border-radius:999px; line-height:1.35}
+.chip.yes{background:#E2F6EA; color:#11683A; border:1px solid #BDE5CC}
+.chip.yes::before{content:"✓ "; font-weight:800}
+.chip.fixed{background:color-mix(in srgb, var(--r) 12%, #fff); color:var(--ink); border:1px solid color-mix(in srgb, var(--r) 38%, #fff)}
+.chip.open{border:1px dashed #B5C8C1; color:var(--muted); background:var(--paper)}
+.chip.open::before{content:"? "; font-weight:700}
+.tl-empty{font-size:.86rem; color:var(--muted); font-style:italic}
+.tl-dec{font-size:.86rem; color:var(--sun); font-family:var(--f-display); font-weight:700}
+.tl-stage .tl-thumb{position:absolute; left:50%; top:2px; width:60px; height:60px; margin-left:-30px; border-radius:50%; background-color:var(--r); background-size:cover; background-position:center; border:4px solid var(--r); z-index:1; box-shadow:var(--shadow)}
+.tl-stage .tl-body{padding:10px 0 20px 6px; gap:2px; min-height:76px}
+.tl-stage .eyebrow{color:var(--r)}
+.tl-stage b{font-family:var(--f-display); font-size:1.6rem; font-weight:800; line-height:1.05}
+.tl-stage .tl-sub{font-size:.92rem; color:var(--muted)}
+.tl-phase .tl-body{background:var(--ink); color:#fff; border-radius:16px; padding:14px 18px; margin:4px 0 22px; gap:2px}
+.tl-phase .eyebrow{color:var(--gold)}
+.tl-phase b{font-family:var(--f-display); font-size:1.25rem; font-weight:800}
+@media (max-width: 640px){
+  .tl > li{grid-template-columns:46px minmax(0,1fr)}
+  .tl-date{display:none}
+  .tl-d2{display:block}
+  .tl-stage .tl-thumb{width:44px; height:44px; margin-left:-22px; top:6px; border-width:3px}
+  .tl-stage b{font-size:1.35rem}
+}
 </style>
 
 <header class="hero">
@@ -317,6 +366,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
   <div class="wrap">
     <ul>
       <li><a href="#envie">En images</a></li>
+      <li><a href="#recap">Récap</a></li>
       <li><a href="#apercu">Aperçu</a></li>
       <li><a href="#quand">Quand partir</a></li>
       <li><a href="#vols">Vols & voitures</a></li>
@@ -356,6 +406,24 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
 </section>
 
 <!-- ============ APERÇU ============ -->
+<section id="recap">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Le résumé</p>
+      <h2>Le voyage en un coup d'œil</h2>
+      <p>La ligne du temps se remplit avec les activités marquées « On le fait » dans le programme jour par jour. Elle se met à jour toute seule, pour toute la famille. Touchez un jour pour voir son détail.</p>
+    </div>
+    <div class="recap-stats">
+      <div class="stat yes"><b id="st-yes">0</b><span>activités retenues</span></div>
+      <div class="stat open"><b id="st-open">0</b><span>options à décider</span></div>
+      <div class="stat no"><b id="st-no">0</b><span>écartées</span></div>
+      <div class="stat money"><b id="st-money">—</b><span>budget estimé</span></div>
+    </div>
+    <label class="tl-toggle" for="tl-open"><input type="checkbox" id="tl-open"> Montrer aussi les options encore à décider</label>
+    <ol class="tl" id="tl" aria-label="Ligne du temps du voyage"></ol>
+  </div>
+</section>
+
 <section id="apercu">
   <div class="wrap">
     <div class="sec-head">
@@ -564,6 +632,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
     </div>
     <div class="days">
 
+      <figure class="chapter" data-r="cv"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Costa_Rica_Sarchi_ox_drawn_cart.jpg?width=1280" alt="San José" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 1 · 1 nuit</span><b>San José</b><span>Atterrissage, puis une nuit dans les collines à café</span></figcaption></figure>
+
       <article class="day" data-d="1">
         <div class="day-date"><span class="dnum">J1</span><span class="ddate">sam. 8 janv.</span></div>
         <div class="day-body">
@@ -577,7 +647,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         </div>
       </article>
 
-      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Monteverde_puente.jpg?width=1280" alt="Monteverde" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 2 · 2 nuits</span><b>Monteverde</b><span>Forêt de nuages à 1 400 m, ponts suspendus et balades de nuit</span></figcaption></figure>
+      <figure class="chapter" data-r="mv"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Monteverde_puente.jpg?width=1280" alt="Monteverde" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 2 · 2 nuits</span><b>Monteverde</b><span>Forêt de nuages à 1 400 m, ponts suspendus et balades de nuit</span></figcaption></figure>
 
       <article class="day" data-d="2">
         <div class="day-date"><span class="dnum">J2</span><span class="ddate">dim. 9 janv.</span></div>
@@ -611,7 +681,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         </div>
       </article>
 
-      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Playa_Hermosa_Guanacaste_Sunset.jpg?width=1280" alt="Playas del Coco" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 3 · 5 nuits</span><b>Playas del Coco</b><span>Golfe de Papagayo : brevet de plongée et forêt sèche</span></figcaption></figure>
+      <figure class="chapter" data-r="gu"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Playa_Hermosa_Guanacaste_Sunset.jpg?width=1280" alt="Playas del Coco" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 3 · 5 nuits</span><b>Playas del Coco</b><span>Golfe de Papagayo : brevet de plongée et forêt sèche</span></figcaption></figure>
 
       <article class="day" data-d="4">
         <div class="day-date"><span class="dnum">J4</span><span class="ddate">mar. 11 janv.</span></div>
@@ -698,7 +768,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
     </div>
     <div class="days">
 
-      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=1280" alt="Playa Hermosa" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 4 · 4 nuits</span><b>Playa Hermosa</b><span>Plages calmes pour les petites, crocodiles et volcan Rincón</span></figcaption></figure>
+      <figure class="chapter" data-r="gu"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=1280" alt="Playa Hermosa" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 4 · 4 nuits</span><b>Playa Hermosa</b><span>Plages calmes pour les petites, crocodiles et volcan Rincón</span></figcaption></figure>
 
       <article class="day" data-d="9">
         <div class="day-date"><span class="dnum">J9</span><span class="ddate">dim. 16 janv.</span></div>
@@ -756,7 +826,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         </div>
       </article>
 
-      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Arenal_Volcano_seen_from_La_Fortuna,_Costa_Rica.jpg?width=1280" alt="Arenal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 5 · 4 nuits</span><b>Arenal</b><span>Sources chaudes, ponts suspendus et cascade au pied du volcan</span></figcaption></figure>
+      <figure class="chapter" data-r="ar"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Arenal_Volcano_seen_from_La_Fortuna,_Costa_Rica.jpg?width=1280" alt="Arenal" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 5 · 4 nuits</span><b>Arenal</b><span>Sources chaudes, ponts suspendus et cascade au pied du volcan</span></figcaption></figure>
 
       <article class="day" data-d="13">
         <div class="day-date"><span class="dnum">J13</span><span class="ddate">jeu. 20 janv.</span></div>
@@ -815,7 +885,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         </div>
       </article>
 
-      <figure class="chapter"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Manuel_Antonio_National_Park_Beach.jpg?width=1280" alt="Manuel Antonio" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 6 · 5 nuits</span><b>Manuel Antonio</b><span>Jungle et plages, singes, paresseux et pêche au gros</span></figcaption></figure>
+      <figure class="chapter" data-r="pa"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Manuel_Antonio_National_Park_Beach.jpg?width=1280" alt="Manuel Antonio" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 6 · 5 nuits</span><b>Manuel Antonio</b><span>Jungle et plages, singes, paresseux et pêche au gros</span></figcaption></figure>
 
       <article class="day" data-d="17">
         <div class="day-date"><span class="dnum">J17</span><span class="ddate">lun. 24 janv.</span></div>
@@ -1399,6 +1469,7 @@ window.FIREBASE_CONFIG = {
     document.getElementById("hero-dates").textContent = fmt(dayDate(mode,1)) + " → " + fmt(dayDate(mode,22), true);
     document.querySelectorAll(".dec-note").forEach(function(el){ el.hidden = (mode !== "dec"); });
     store.mode = mode; save();
+    if (typeof OPTS !== "undefined" && OPTS) renderRecap();
   }
   document.querySelectorAll(".seg button").forEach(function(b){
     b.addEventListener("click", function(){ applyMode(b.dataset.mode); });
@@ -1495,6 +1566,74 @@ window.FIREBASE_CONFIG = {
       first = false;
     }, function(e){ demoted = true; setStatus("error", e && (e.code || e.message)); });
   }
+
+
+  /* ---------- Récap ---------- */
+  var SHORT = {
+    "j2-sarchi":"Détour par Sarchí", "j2-ponts":"Ponts suspendus", "j2-nuit":"Balade de nuit",
+    "j3-mv":"Réserve de Monteverde + guide", "j3-se":"Réserve de Santa Elena", "j3-cc":"Curi-Cancha", "j3-cafe":"Visite café ou cacao",
+    "j4-ocotal":"Playa Ocotal", "j5-plage":"Parents : plage", "j5-cata":"Parents : catamaran",
+    "j6-rincon":"Parents : Rincón de la Vieja", "j6-conchal":"Parents : Playa Conchal",
+    "j7-guaitil":"Parents : Guaitil", "j7-liberia":"Parents : Liberia", "j7-piscine":"Parents : piscine",
+    "j8-celeste":"Río Celeste", "j10-panama":"Playa Panamá", "j10-hermosa":"Playa Hermosa ou Penca", "j10-cata":"Catamaran au coucher du soleil",
+    "j11-ortega":"Palo Verde en bateau", "j11-tour":"Palo Verde, excursion organisée", "j12-cheval":"Cheval aux Pailas", "j12-llanos":"Cascade de Llanos de Cortés",
+    "j13-baldi":"Sources chaudes de Baldi", "j13-eco":"EcoTermales", "j14-mistico":"Ponts suspendus Místico", "j14-choco":"Chocolat ou paresseux",
+    "j15-fortuna":"Cascade de La Fortuna", "j15-cheval":"Cheval autour du volcan", "j15-kayak":"Kayak sur le lac Arenal",
+    "j16-celeste":"Río Celeste", "j16-nuit":"Balade de nuit", "j16-obs":"Belvédère de l'Observatory",
+    "j18-damas":"Mangrove d'Isla Damas", "j18-plage":"Playa Biesanz ou Espadilla", "j19-parc":"Parc national Manuel Antonio",
+    "j20-peche":"Pêche au gros", "j20-baleines":"Baleines à Uvita"
+  };
+  var FIXED = {
+    1:["Vol Paris → San José"], 4:["Colin : inscription plongée"], 5:["Colin : plongée en piscine"],
+    6:["Colin : 2 plongées en mer"], 7:["Colin : brevet Open Water"], 9:["Arrivée de la famille"],
+    17:["Pont aux crocodiles de Tárcoles"], 22:["Vol retour"]
+  };
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function renderRecap(){
+    var host = document.getElementById("tl"); if (!host || !OPTS) return;
+    var tog = document.getElementById("tl-open"); var showOpen = !!(tog && tog.checked);
+    var nodes = document.querySelectorAll("#jours .phase, #jours .chapter, #jours .day");
+    var html = "", yes = 0, open = 0, no = 0, nextR = {};
+    var list = Array.prototype.slice.call(nodes);
+    list.forEach(function(el, i){
+      if (el.classList.contains("phase")){
+        var nx = list.slice(i+1).filter(function(x){ return x.dataset && x.dataset.r; })[0];
+        html += '<li class="tl-phase" data-r="' + (nx ? nx.dataset.r : "rd") + '"><span class="tl-date"></span><span class="tl-axis"></span><div class="tl-body"><span class="eyebrow">' + esc(el.querySelector(".eyebrow").textContent) + '</span><b>' + esc(el.querySelector("h3").textContent) + '</b></div></li>';
+      } else if (el.classList.contains("chapter")){
+        var im = el.querySelector("img"), cap = el.querySelectorAll("figcaption > *");
+        var src = im ? im.getAttribute("src").replace(/width=\d+/, "width=330") : "";
+        html += '<li class="tl-stage" data-r="' + (el.dataset.r || "rd") + '"><span class="tl-date"></span><span class="tl-axis">' + (src ? '<span class="tl-thumb" style="background-image:url(&quot;' + esc(src) + '&quot;)"></span>' : '<span class="tl-thumb"></span>') + '</span><div class="tl-body"><span class="eyebrow">' + esc(cap[0] ? cap[0].textContent : "") + '</span><b>' + esc(cap[1] ? cap[1].textContent : "") + '</b><span class="tl-sub">' + esc(cap[2] ? cap[2].textContent : "") + '</span></div></li>';
+      } else {
+        var d = el.dataset.d, reg = el.querySelector(".region");
+        var r = reg ? ((reg.className.match(/\b(cv|mv|gu|ar|pa|rd)\b/) || [])[1] || "rd") : "rd";
+        el.dataset.r = r;
+        var date = el.querySelector(".ddate").textContent, drive = el.querySelector(".drive");
+        var chips = (FIXED[d] || []).map(function(t){ return '<li class="chip fixed">' + esc(t) + '</li>'; });
+        var openHere = 0;
+        el.querySelectorAll("li[data-opt]").forEach(function(li){
+          var id = li.dataset.opt, st = CH[id] || "";
+          if (st === "oui"){ yes++; chips.push('<li class="chip yes">' + esc(SHORT[id] || id) + '</li>'); }
+          else if (st === "non"){ no++; }
+          else { open++; openHere++; if (showOpen) chips.push('<li class="chip open">' + esc(SHORT[id] || id) + '</li>'); }
+        });
+        var dec = el.querySelector(".dec-note:not([hidden])");
+        var body = '<span class="tl-d2">' + esc(date) + '</span><a class="tl-title" href="#j' + d + '"><span class="dn">J' + d + '</span>' + esc(el.querySelector("h4").textContent) + '</a>';
+        if (drive) body += '<span class="tl-meta">' + esc(reg ? reg.textContent : "") + ' · ' + esc(drive.textContent) + '</span>';
+        if (chips.length) body += '<ul class="chips">' + chips.join("") + '</ul>';
+        else body += '<p class="tl-empty">' + (openHere ? openHere + (openHere > 1 ? " options à décider" : " option à décider") : "Journée libre") + '</p>';
+        if (!showOpen && openHere && chips.length) body += '<p class="tl-empty">+ ' + openHere + (openHere > 1 ? " options à décider" : " option à décider") + '</p>';
+        if (dec) body += '<p class="tl-dec">' + esc(dec.textContent) + '</p>';
+        html += '<li class="tl-day' + (d === "9" ? " star" : "") + '" data-r="' + r + '"><span class="tl-date">' + esc(date) + '</span><span class="tl-axis"></span><div class="tl-body">' + body + '</div></li>';
+      }
+    });
+    host.innerHTML = html;
+    document.getElementById("st-yes").textContent = yes;
+    document.getElementById("st-open").textContent = open;
+    document.getElementById("st-no").textContent = no;
+    var te = document.getElementById("tot-eur"); document.getElementById("st-money").textContent = te ? te.textContent : "—";
+  }
+  document.querySelectorAll("#jours .day[data-d]").forEach(function(el){ el.id = "j" + el.dataset.d; });
+  (function(){ var t = document.getElementById("tl-open"); if (t) t.addEventListener("change", renderRecap); })();
 
   /* ---------- Copie hors connexion ---------- */
   function connectDownloads(){
@@ -1667,6 +1806,7 @@ window.FIREBASE_CONFIG = {
     parts.forEach(function(p, i){ if (totUsd > 0 && p > 0) st += '<i class="' + cls[i] + '" style="width:' + (p / totUsd * 100).toFixed(2) + '%"></i>'; });
     document.getElementById("stack").innerHTML = st;
     document.getElementById("per-adult").textContent = "≈ " + eur.format(totUsd * rate / 5) + " par adulte si tout est partagé à cinq (vols de Calgary compris s'ils sont renseignés).";
+    renderRecap();
     return totUsd;
   }
 
