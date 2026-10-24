@@ -325,6 +325,12 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
   .tl-stage .tl-thumb{width:44px; height:44px; margin-left:-22px; top:6px; border-width:3px}
   .tl-stage b{font-size:1.35rem}
 }
+
+.km-block{margin-top:40px; display:grid; gap:14px}
+.km-head{display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:flex-end}
+.km-totals{display:flex; gap:10px; flex-wrap:wrap}
+.km-totals .stat b{font-size:1.35rem; color:var(--accent)}
+tr.long td{color:var(--sun); font-weight:600}
 </style>
 
 <header class="hero">
@@ -349,7 +355,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
     <div class="ribbon" aria-label="Étapes du circuit">
       <span class="stop">San José <i>1 n.</i></span><span class="arr">→</span>
       <span class="stop">Monteverde <i>2 n.</i></span><span class="arr">→</span>
-      <span class="stop">Playas del Coco <i>5 n.</i></span><span class="arr">→</span>
+      <span class="stop">Rincón de la Vieja <i>5 n.</i></span><span class="arr">→</span>
       <span class="stop join">Playa Hermosa · la famille arrive <i>4 n.</i></span><span class="arr">→</span>
       <span class="stop">Arenal <i>4 n.</i></span><span class="arr">→</span>
       <span class="stop">Manuel Antonio <i>5 n.</i></span><span class="arr">→</span>
@@ -457,21 +463,22 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
           </g>
           <!-- excursions à la journée -->
           <g fill="none" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="4 5" stroke-linecap="round">
-            <path d="M84,160 Q150,126 218,128"/>
-            <path d="M84,160 Q112,128 150,116"/>
+            <path d="M130,124 Q175,108 218,128"/>
+            <path d="M130,124 L150,116"/>
             <path d="M88,166 Q120,196 154,200"/>
             <path d="M390,392 Q440,404 472,438"/>
             <path d="M292,176 Q252,140 218,128"/>
           </g>
           <!-- phase 1 -->
-          <path d="M380,272 Q320,252 256,210 Q170,168 84,160" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M380,272 Q320,252 256,210 Q190,160 130,124" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
           <!-- phase 2 -->
-          <path d="M86,156 Q190,118 292,176 Q306,252 296,314 Q330,372 390,392 Q404,330 380,272" fill="none" stroke="var(--sun)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 0"/>
+          <path d="M130,124 Q104,136 86,156 Q190,118 292,176 Q306,252 296,314 Q330,372 390,392 Q404,330 380,272" fill="none" stroke="var(--sun)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 0"/>
           <!-- étapes avec nuit -->
           <g stroke="var(--paper)" stroke-width="2.5">
             <circle cx="380" cy="272" r="7" fill="var(--ink)"/>
             <circle cx="256" cy="210" r="7" fill="var(--accent)"/>
-            <circle cx="84" cy="160" r="8" fill="var(--accent)"/>
+            <circle cx="130" cy="124" r="7" fill="var(--accent)"/>
+            <circle cx="84" cy="160" r="7" fill="var(--sun)"/>
             <circle cx="292" cy="176" r="7" fill="var(--sun)"/>
             <circle cx="390" cy="392" r="7" fill="var(--sun)"/>
           </g>
@@ -491,6 +498,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
             <text x="392" y="268" font-weight="500">San José · SJO</text>
             <text x="246" y="228" text-anchor="end" font-weight="500">Monteverde</text>
             <text x="22" y="190" font-weight="500">Coco · Hermosa</text>
+            <text x="118" y="132" text-anchor="end" font-weight="500">Base</text>
             <text x="124" y="160">Liberia · LIR</text>
             <text x="304" y="172" font-weight="500">Arenal</text>
             <text x="402" y="396" font-weight="500">Manuel Antonio</text>
@@ -513,13 +521,49 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
       <div class="panel" style="background:transparent;border:0;padding:0">
         <h3>Pourquoi dans ce sens</h3>
         <ul class="why">
-          <li><strong>La plongée au début, en Guanacaste.</strong> Le golfe de Papagayo est l'endroit où la plupart des débutants apprennent au Costa Rica, et l'aéroport de Liberia où atterrit la famille est à 25 minutes.</li>
-          <li><strong>Monteverde avant la plongée.</strong> Après plusieurs plongées, il faut attendre au moins 18 heures avant de monter en altitude, en voiture comme en avion. On monte donc d'abord à 1 400 m, puis on plonge, puis on reste au niveau de la mer.</li>
-          <li><strong>Les sorties « sans bébé » à trois.</strong> Balade de nuit, journée en forêt avec un guide, randonnée du Río Celeste : tout ce qui est difficile avec une poussette est groupé dans les huit premiers jours.</li>
+          <li><strong>Huit jours à trois, sans contrainte.</strong> Forêt de nuages, volcan Rincón à cheval, Río Celeste, balade de nuit : tout ce qui est difficile avec une poussette est groupé au début, et personne n'attend la fin d'un cours de plongée.</li>
+          <li><strong>Le brevet pendant la phase en famille.</strong> Les centres de Playas del Coco viennent chercher leurs élèves à Playa Hermosa. Colin plonge le matin pendant que la famille profite des plages calmes avec les petites, et il retrouve tout le monde l'après-midi.</li>
+          <li><strong>L'altitude après la plongée.</strong> Après plusieurs plongées, il faut attendre au moins 18 heures avant de monter en altitude, en voiture comme en avion. La dernière plongée a lieu le J12 au matin, et la route vers l'Arenal ne part que le lendemain.</li>
           <li><strong>Finir à Manuel Antonio.</strong> L'avion Air France repart de San José le soir, à trois heures de route, et Quepos est le port de pêche au gros le plus réputé du pays, en pleine saison du marlin.</li>
           <li><strong>Pas de côte caraïbe.</strong> Décembre et janvier comptent parmi les mois les plus pluvieux de ce côté, à cinq ou six heures de route. Sa meilleure période, c'est septembre-octobre. Et on n'y pêche pas le marlin mais le tarpon.</li>
         </ul>
       </div>
+    </div>
+
+    <div id="trajets" class="km-block">
+      <div class="km-head">
+        <h3>Les trajets en voiture</h3>
+        <div class="km-totals">
+          <div class="stat"><b>≈ 1 600 km</b><span>voiture de Colin et ses parents</span></div>
+          <div class="stat"><b>≈ 1 000 km</b><span>voiture de la famille</span></div>
+          <div class="stat"><b>≈ 400 $</b><span>d'essence pour les deux</span></div>
+        </div>
+      </div>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>Jour</th><th>Trajet</th><th>Distance</th><th>Temps</th><th>Qui roule</th></tr></thead>
+          <tbody>
+          <tr><td class="mono">J1</td><td>Aéroport SJO → Alajuela ou Atenas</td><td class="mono">15 km</td><td class="mono">15–30 min</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J2</td><td>Alajuela → Monteverde</td><td class="mono">140 km</td><td class="mono">≈ 3 h</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J3</td><td>Autour de Monteverde</td><td class="mono">20 km</td><td class="mono">—</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J4</td><td>Monteverde → base du Rincón, pause à Llanos de Cortés</td><td class="mono">130 km</td><td class="mono">≈ 3 h</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J5</td><td>Base → Las Pailas, aller-retour</td><td class="mono">40 km</td><td class="mono">≈ 1 h</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J6</td><td>Base → Río Celeste, aller-retour</td><td class="mono">210 km</td><td class="mono">≈ 4 h</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J7</td><td>Base → Playas del Coco, aller-retour</td><td class="mono">90 km</td><td class="mono">≈ 1 h 30</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J8</td><td>Liberia ou Guaitil, aller-retour</td><td class="mono">30–140 km</td><td class="mono">30 min – 2 h 30</td><td>Colin et ses parents</td></tr>
+          <tr><td class="mono">J9</td><td>Base → Playa Hermosa · Liberia → Playa Hermosa</td><td class="mono">40 · 25 km</td><td class="mono">45 min · 25 min</td><td>Les deux voitures</td></tr>
+          <tr><td class="mono">J10–J12</td><td>Autour de Hermosa (centre de plongée, plages)</td><td class="mono">30 km</td><td class="mono">—</td><td>Les deux voitures</td></tr>
+          <tr><td class="mono">J11</td><td>Playa Hermosa → Palo Verde, aller-retour</td><td class="mono">150 km</td><td class="mono">≈ 2 h 30</td><td>Les deux voitures</td></tr>
+          <tr><td class="mono">J12</td><td>Option cheval au Rincón, aller-retour</td><td class="mono">120 km</td><td class="mono">≈ 2 h 30</td><td>La famille</td></tr>
+          <tr><td class="mono">J13</td><td>Playa Hermosa → La Fortuna, par le lac Arenal</td><td class="mono">175 km</td><td class="mono">≈ 3 h 15</td><td>Les deux voitures</td></tr>
+          <tr><td class="mono">J14–J16</td><td>Autour de l'Arenal</td><td class="mono">60 km</td><td class="mono">—</td><td>Les deux voitures</td></tr>
+          <tr class="long"><td class="mono">J17</td><td>La Fortuna → Manuel Antonio, par San Ramón</td><td class="mono">230 km</td><td class="mono">≈ 4 h 30</td><td>Les deux voitures</td></tr>
+          <tr><td class="mono">J18–J21</td><td>Autour de Manuel Antonio et Quepos</td><td class="mono">60 km</td><td class="mono">—</td><td>Les deux voitures</td></tr>
+          <tr><td class="mono">J22</td><td>Manuel Antonio → aéroport SJO</td><td class="mono">160 km</td><td class="mono">≈ 3 h</td><td>Les deux voitures</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Distances et temps estimés par Claude, sans les pauses ; au Costa Rica, prévoyez large. Les sept voyageurs tiennent dans deux voitures, donc les sorties en famille comptent pour les deux. Hors totaux : Río Celeste depuis l'Arenal (J16, ≈ 200 km) et Uvita (J20, ≈ 150 km). Essence : environ 9 L aux 100 km à 1,62 $ le litre.</p>
     </div>
   </div>
 </section>
@@ -598,19 +642,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         </dl>
       </div>
     </div>
-    <div class="tscroll" style="margin-top:22px">
-      <table>
-        <thead><tr><th>Trajet</th><th>Durée estimée</th><th>Jour</th><th>Remarque</th></tr></thead>
-        <tbody>
-          <tr><td>Aéroport SJO → Monteverde</td><td class="mono">≈ 3 h</td><td class="mono">J2</td><td>Dernière heure en lacets.</td></tr>
-          <tr><td>Monteverde → Playas del Coco</td><td class="mono">≈ 3 h</td><td class="mono">J4</td><td>Par l'Interaméricaine.</td></tr>
-          <tr><td>Liberia LIR → Playa Hermosa</td><td class="mono">≈ 25 min</td><td class="mono">J9</td><td>Arrivée de la famille.</td></tr>
-          <tr><td>Playa Hermosa → La Fortuna</td><td class="mono">≈ 3 h</td><td class="mono">J13</td><td>Par Tilarán et le lac Arenal.</td></tr>
-          <tr><td>La Fortuna → Manuel Antonio</td><td class="mono">≈ 4 h 30</td><td class="mono">J17</td><td>Le seul trajet au-delà de 4 h : 5 à 6 h avec les pauses.</td></tr>
-          <tr><td>Manuel Antonio → aéroport SJO</td><td class="mono">≈ 3 h</td><td class="mono">J22</td><td>Ne pas rouler de nuit (il fait noir vers 17 h 30).</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="small" style="margin-top:18px">Le détail de chaque trajet, avec les kilomètres, est sous la carte : <a href="#trajets">voir les trajets en voiture</a>.</p>
   </div>
 </section>
 
@@ -627,7 +659,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
 
     <div class="phase">
       <p class="eyebrow">Phase 1</p>
-      <h3>À trois : forêt de nuages et brevet de plongée</h3>
+      <h3>À trois : forêt de nuages, volcans et rivière turquoise</h3>
       <p class="meta"><span data-range="1-8">J1 → J8 · sam. 8 → sam. 15 janv.</span> · Colin et ses parents · 3 logements</p>
     </div>
     <div class="days">
@@ -681,20 +713,19 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         </div>
       </article>
 
-      <figure class="chapter" data-r="gu"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Playa_Hermosa_Guanacaste_Sunset.jpg?width=1280" alt="Playas del Coco" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 3 · 5 nuits</span><b>Playas del Coco</b><span>Golfe de Papagayo : brevet de plongée et forêt sèche</span></figcaption></figure>
+      <figure class="chapter" data-r="gu"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Rinc%C3%B3n_de_la_Vieja_Hot_Spring.jpg?width=1280" alt="Rincón de la Vieja" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 3 · 5 nuits</span><b>Rincón de la Vieja</b><span>Au pied du volcan : forêt sèche, boue qui bouillonne et rivière turquoise</span></figcaption></figure>
 
       <article class="day" data-d="4">
         <div class="day-date"><span class="dnum">J4</span><span class="ddate">mar. 11 janv.</span></div>
         <div class="day-body">
-          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Route : ≈ 3 h</span></div>
-          <h4>Descente vers le Pacifique</h4>
-          <p>Monteverde → Playas del Coco. Le paysage change d'un coup : forêt sèche, pâturages de cow-boys sabaneros, chaleur. Installation dans le logement 3, avec piscine.</p>
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Route : ≈ 3 h · 130 km</span></div>
+          <h4>Descente vers le volcan Rincón de la Vieja</h4>
+          <p>Monteverde → la base au pied du Rincón de la Vieja, à 30 minutes de Liberia. Le paysage change d'un coup : forêt sèche, pâturages des cow-boys sabaneros, chaleur. Installation dans le logement 3, avec piscine.</p>
           <ul class="opts">
-            <li><span class="who colin">Colin</span><span>Passage au centre de plongée : inscription, questionnaire médical, essayage du matériel.</span></li>
-            <li data-opt="j4-ocotal"><span class="who all">Tous</span><span>Fin d'après-midi à Playa Ocotal, la petite plage voisine.</span></li>
+            <li data-opt="j4-llanos"><span class="who all">Tous</span><span>En route, baignade à la cascade de Llanos de Cortés, près de Bagaces, à quelques minutes de marche du parking.</span></li>
           </ul>
-          <p class="eat"><b>Manger :</b> Father Rooster, bar de plage à Ocotal, pour le premier coucher de soleil sur le Pacifique.</p>
-          <p class="note">Pourquoi Monteverde avant : après la plongée, on évite l'altitude pendant au moins 18 h.</p>
+          <p class="eat"><b>Manger :</b> dîner au logement, ou à Liberia, la « ville blanche ».</p>
+          <p class="note">Sans cours de plongée à trois, plus besoin d'être à Coco : ici, le Rincón est à une demi-heure et le Río Celeste à environ deux heures.</p>
           <p class="dec-note" hidden>8 décembre : jour férié au Costa Rica, routes plus chargées.</p>
         </div>
       </article>
@@ -702,51 +733,20 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
       <article class="day" data-d="5">
         <div class="day-date"><span class="dnum">J5</span><span class="ddate">mer. 12 janv.</span></div>
         <div class="day-body">
-          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
-          <h4>Plongée, jour 1 : la piscine</h4>
+          <div class="day-top"><span class="region gu">Rincón de la Vieja</span><span class="drive">Route : ≈ 30 min aller</span></div>
+          <h4>Le volcan à cheval, à trois</h4>
           <ul class="opts">
-            <li><span class="who colin">Colin</span><span>Matinée d'exercices en piscine. La théorie est déjà faite en e-learning avant le départ.</span></li>
-            <li data-opt="j5-plage"><span class="who parents">Parents · A</span><span>Plage tranquille à Playa Panamá ou Playa Hermosa.</span></li>
-            <li data-opt="j5-cata" data-bud="a8"><span class="who parents">Parents · B</span><span>Catamaran voile et snorkeling dans le golfe de Papagayo <span class="price">≈ 100 $</span>.</span></li>
-            <li><span class="who all">Tous</span><span>Après-midi ensemble : baignade, piscine, sieste.</span></li>
+            <li data-opt="j5-rincon" data-bud="a7,a11"><span class="who all">Tous</span><span>45 minutes à cheval avec Hacienda Guachipelín jusqu'à l'entrée des Pailas, puis la boucle de 3,5 km entre marmites de boue, fumerolles et petites cascades <span class="price">70 $ + entrée 16,95 $</span>.</span></li>
+            <li data-opt="j5-pied"><span class="who all">Variante</span><span>La même boucle à pied, sans cheval.</span></li>
+            <li data-opt="j5-rionegro" data-bud="a12"><span class="who all">Tous</span><span>Après-midi : sources chaudes et bains de boue volcanique de Río Negro <span class="price">20 $</span>.</span></li>
           </ul>
-          <p class="eat"><b>Manger :</b> Ginger à Playa Hermosa, des tapas asiatiques dans une salle perchée dans les arbres, avec vue sur la baie.</p>
+          <p class="eat"><b>Manger :</b> déjeuner buffet au restaurant de Hacienda Guachipelín, au milieu du ranch.</p>
+          <p class="note">Parc fermé le lundi ; billets en ligne uniquement.</p>
         </div>
       </article>
 
       <article class="day" data-d="6">
         <div class="day-date"><span class="dnum">J6</span><span class="ddate">jeu. 13 janv.</span></div>
-        <div class="day-body">
-          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Parents : ≈ 1 h 15 aller</span></div>
-          <h4>Plongée, jour 2 : premières plongées en mer</h4>
-          <ul class="opts">
-            <li><span class="who colin">Colin</span><span>Deux plongées en mer le matin, retour vers 13 h.</span></li>
-            <li data-opt="j6-rincon" data-bud="a7"><span class="who parents">Parents</span><span>Journée au volcan Rincón de la Vieja avec Hacienda Guachipelín : sentier des Pailas (boue qui bouillonne, fumerolles), cascade, sources chaudes et bains de boue de Río Negro, déjeuner <span class="price">≈ 140 $</span>. Colin y retournera à cheval le J12.</span></li>
-            <li data-opt="j6-conchal"><span class="who parents">Variante</span><span>Plus calme : Playa Conchal, la plage de coquillages, accessible à pied depuis Brasilito.</span></li>
-          </ul>
-          <p class="eat"><b>Manger :</b> Papagayo Seafood à Coco, poisson du jour et musique live.</p>
-          <p class="note">Parc fermé le lundi ; billets en ligne uniquement (16,95 $).</p>
-        </div>
-      </article>
-
-      <article class="day" data-d="7">
-        <div class="day-date"><span class="dnum">J7</span><span class="ddate">ven. 14 janv.</span></div>
-        <div class="day-body">
-          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
-          <h4>Plongée, jour 3 : le brevet</h4>
-          <ul class="opts">
-            <li><span class="who colin">Colin</span><span>Deux dernières plongées : brevet Open Water en poche.</span></li>
-            <li data-opt="j7-guaitil"><span class="who parents">Parents · A</span><span>Guaitil, le village des potiers chorotegas.</span></li>
-            <li data-opt="j7-liberia"><span class="who parents">Parents · B</span><span>Liberia, la « ville blanche », et son marché.</span></li>
-            <li data-opt="j7-piscine"><span class="who parents">Parents · C</span><span>Matinée piscine.</span></li>
-            <li><span class="who all">Tous</span><span>Le soir, on fête le brevet.</span></li>
-          </ul>
-          <p class="eat"><b>Manger :</b> The Lookout, un rooftop au-dessus de Coco, vu dans la série Netflix « Restaurants on the Edge ».</p>
-        </div>
-      </article>
-
-      <article class="day" data-d="8">
-        <div class="day-date"><span class="dnum">J8</span><span class="ddate">sam. 15 janv.</span></div>
         <div class="day-body">
           <div class="day-top"><span class="region gu">Volcan Tenorio</span><span class="drive">Route : ≈ 2 h aller, 2 h retour</span></div>
           <h4>Le Río Celeste à trois</h4>
@@ -759,24 +759,52 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
           <p class="note warn">Début 2026, la plateforme au pied de la cascade était fermée après une tempête : on voyait la cascade depuis l'escalier. À revérifier avant le départ.</p>
         </div>
       </article>
+
+      <article class="day" data-d="7">
+        <div class="day-date"><span class="dnum">J7</span><span class="ddate">ven. 14 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Golfe de Papagayo</span><span class="drive">Route : ≈ 45 min aller</span></div>
+          <h4>Une journée de mer</h4>
+          <ul class="opts">
+            <li data-opt="j5-cata" data-bud="a8"><span class="who all">Option A</span><span>Catamaran voile et snorkeling dans le golfe de Papagayo, au départ de Playas del Coco <span class="price">≈ 100 $</span>.</span></li>
+            <li data-opt="j6-conchal"><span class="who all">Option B</span><span>Playa Conchal, la plage de coquillages, accessible à pied depuis Brasilito.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Father Rooster, bar de plage à Ocotal, pour le coucher de soleil sur le Pacifique, ou The Lookout, le rooftop au-dessus de Coco.</p>
+        </div>
+      </article>
+
+      <article class="day" data-d="8">
+        <div class="day-date"><span class="dnum">J8</span><span class="ddate">sam. 15 janv.</span></div>
+        <div class="day-body">
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Route : 20 min à 1 h 15</span></div>
+          <h4>Culture sabanera et jour joker</h4>
+          <ul class="opts">
+            <li data-opt="j7-guaitil"><span class="who all">Option A</span><span>Guaitil, le village des potiers chorotegas et sa céramique traditionnelle.</span></li>
+            <li data-opt="j7-liberia"><span class="who all">Option B</span><span>Liberia, la « ville blanche », et son marché.</span></li>
+            <li data-opt="j7-piscine"><span class="who all">Option C</span><span>Repos à la piscine du logement, avant l'arrivée de la famille.</span></li>
+          </ul>
+          <p class="eat"><b>Manger :</b> Papagayo Seafood à Coco, ou un casado dans une soda de Liberia.</p>
+        </div>
+      </article>
     </div>
 
     <div class="phase">
       <p class="eyebrow">Phase 2</p>
-      <h3>À sept : plages douces, volcan et jungle</h3>
+      <h3>À sept : plages douces, brevet, volcan et jungle</h3>
       <p class="meta"><span data-range="9-22">J9 → J22 · dim. 16 → sam. 29 janv.</span> · toute la famille · 3 logements à 4 chambres avec piscine</p>
     </div>
     <div class="days">
 
-      <figure class="chapter" data-r="gu"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=1280" alt="Playa Hermosa" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 4 · 4 nuits</span><b>Playa Hermosa</b><span>Plages calmes pour les petites, crocodiles et volcan Rincón</span></figcaption></figure>
+      <figure class="chapter" data-r="gu"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=1280" alt="Playa Hermosa" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"><figcaption><span class="eyebrow">Étape 4 · 4 nuits</span><b>Playa Hermosa</b><span>Plages calmes pour les petites, et le brevet de plongée de Colin</span></figcaption></figure>
 
       <article class="day" data-d="9">
         <div class="day-date"><span class="dnum">J9</span><span class="ddate">dim. 16 janv.</span></div>
         <div class="day-body">
-          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Liberia → Hermosa : 25 min</span></div>
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Route : ≈ 45 min · Liberia → Hermosa : 25 min</span></div>
           <h4>La famille arrive</h4>
-          <p>Vol Calgary → Liberia. Colin et ses parents quittent Coco pour la grande villa de Playa Hermosa, à dix minutes. Chacun arrive avec sa voiture.</p>
+          <p>Vol Calgary → Liberia. Colin et ses parents quittent le volcan pour la grande villa de Playa Hermosa. Chacun arrive avec sa voiture.</p>
           <ul class="opts">
+            <li><span class="who colin">Colin</span><span>Passage au centre de plongée de Playas del Coco, à 10 minutes : inscription, questionnaire médical, essayage.</span></li>
             <li><span class="who kids">Bébés OK</span><span>Installation, piscine, et coucher de soleil sur la plage.</span></li>
           </ul>
           <p class="eat"><b>Manger :</b> La Casita del Marisco, fruits de mer sur la plage de Hermosa, ou barbecue à la villa.</p>
@@ -787,13 +815,14 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         <div class="day-date"><span class="dnum">J10</span><span class="ddate">lun. 17 janv.</span></div>
         <div class="day-body">
           <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
-          <h4>Plage douce pour les petites</h4>
+          <h4>Plongée, jour 1 · plage douce pour les petites</h4>
           <ul class="opts">
-            <li data-opt="j10-panama"><span class="who kids">Bébés OK</span><span>Playa Panamá : vagues très faibles, sable doux. Peu d'ombre, prendre un parasol.</span></li>
+            <li><span class="who colin">Colin</span><span>Matinée d'exercices en piscine. La théorie est déjà faite en e-learning avant le départ.</span></li>
+            <li data-opt="j10-panama"><span class="who kids">Bébés OK</span><span>Pendant ce temps, Playa Panamá : vagues très faibles, sable doux. Peu d'ombre, prendre un parasol.</span></li>
             <li data-opt="j10-hermosa"><span class="who kids">Variante</span><span>Playa Hermosa ou Playa Penca, juste à côté.</span></li>
-            <li data-opt="j10-cata" data-bud="b4"><span class="who adults">Adultes</span><span>Le soir, catamaran au coucher du soleil pendant que les grands-parents gardent les filles <span class="price">≈ 100 $</span>.</span></li>
+            <li data-opt="j10-cata" data-bud="b4"><span class="who adults">Adultes</span><span>Le soir, catamaran au coucher du soleil, Colin compris, pendant que les grands-parents gardent les filles <span class="price">≈ 100 $</span>.</span></li>
           </ul>
-          <p class="eat"><b>Manger :</b> Café de Playa à Coco, où l'on passe l'après-midi entre la mer et la piscine.</p>
+          <p class="eat"><b>Manger :</b> Ginger à Playa Hermosa, des tapas asiatiques dans une salle perchée dans les arbres.</p>
         </div>
       </article>
 
@@ -801,28 +830,30 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         <div class="day-date"><span class="dnum">J11</span><span class="ddate">mar. 18 janv.</span></div>
         <div class="day-body">
           <div class="day-top"><span class="region gu">Palo Verde</span><span class="drive">Route : ≈ 1 h 15 aller</span></div>
-          <h4>Crocodiles sur le Tempisque</h4>
-          <p>Sortie en bateau couvert sur le fleuve Tempisque, en bordure du parc national de Palo Verde : crocodiles, singes hurleurs et capucins, iguanes géants, hérons et spatules. Aucune marche, idéal pour les petites et les grands-parents.</p>
+          <h4>Plongée, jour 2 · crocodiles sur le Tempisque</h4>
           <ul class="opts">
-            <li data-opt="j11-ortega" data-bud="b1"><span class="who kids">Option A</span><span>Opérateur familial d'Ortega, 1 h 45 de bateau, avec votre voiture <span class="price">≈ 100 $</span>.</span></li>
+            <li><span class="who colin">Colin</span><span>Deux plongées en mer le matin, retour vers 13 h.</span></li>
+            <li data-opt="j11-ortega" data-bud="b1"><span class="who kids">Option A</span><span>Bateau couvert sur le fleuve Tempisque, au bord du parc de Palo Verde : crocodiles, singes, iguanes, hérons. Opérateur familial d'Ortega <span class="price">≈ 100 $</span>. Avec un départ l'après-midi, Colin peut venir.</span></li>
             <li data-opt="j11-tour"><span class="who kids">Option B</span><span>Excursion avec transport depuis la plage et déjeuner typique <span class="price">140–190 $</span>.</span></li>
-            <li><span class="who kids">Bébés OK</span><span>Après-midi : sieste et piscine.</span></li>
           </ul>
-          <p class="eat"><b>Manger :</b> casado dans une soda sur la route du retour.</p>
+          <p class="eat"><b>Manger :</b> Café de Playa à Coco, où l'on passe le reste de la journée entre la mer et la piscine.</p>
+          <p class="note">Les heures de départ en bateau varient selon l'opérateur : à vérifier en réservant.</p>
         </div>
       </article>
 
       <article class="day" data-d="12">
         <div class="day-date"><span class="dnum">J12</span><span class="ddate">mer. 19 janv.</span></div>
         <div class="day-body">
-          <div class="day-top"><span class="region gu">Rincón de la Vieja</span><span class="drive">Route : ≈ 1 h 15 aller</span></div>
-          <h4>Le volcan à cheval</h4>
+          <div class="day-top"><span class="region gu">Guanacaste</span><span class="drive">Sur place</span></div>
+          <h4>Plongée, jour 3 · le brevet</h4>
           <ul class="opts">
-            <li data-opt="j12-cheval" data-bud="b2,b3"><span class="who adults">Adultes</span><span>Colin, sa sœur et son mari : 45 minutes à cheval avec Hacienda Guachipelín jusqu'à l'entrée des Pailas, puis la boucle de 3,5 km entre marmites de boue et fumerolles <span class="price">70 $ + entrée</span>.</span></li>
-            <li><span class="who parents">Parents</span><span>Ils ont vu le parc le J6 : ils gardent les petites à la villa, ou viennent et attendent à l'hacienda.</span></li>
-            <li data-opt="j12-llanos"><span class="who all">Variante</span><span>Cascade de Llanos de Cortés, près de Bagaces, à quelques minutes de marche du parking.</span></li>
+            <li><span class="who colin">Colin</span><span>Deux dernières plongées : brevet Open Water en poche.</span></li>
+            <li data-opt="j12-cheval" data-bud="b2,b3"><span class="who sis">Sœur</span><span>La sœur de Colin et son mari : le Rincón de la Vieja à cheval avec Hacienda Guachipelín, pendant que les grands-parents gardent les filles (≈ 1 h 15 de route) <span class="price">70 $ + entrée</span>.</span></li>
+            <li data-opt="j12-conchal"><span class="who kids">Bébés OK</span><span>Les autres : Playa Conchal en famille, la plage de coquillages.</span></li>
+            <li><span class="who all">Tous</span><span>Le soir, on fête le brevet.</span></li>
           </ul>
-          <p class="note">Parc fermé le lundi, billets en ligne. Cheval dès 4 ans. Les sources très chaudes ne conviennent pas aux tout-petits.</p>
+          <p class="eat"><b>Manger :</b> The Lookout, le rooftop au-dessus de Coco, vu dans la série Netflix « Restaurants on the Edge ».</p>
+          <p class="note">Après la dernière plongée, au moins 18 h avant de monter en altitude : la route vers l'Arenal part le lendemain matin.</p>
         </div>
       </article>
 
@@ -1001,12 +1032,12 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         <a href="https://www.airbnb.fr/s/Monteverde--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Monteverde</a>
       </div>
       <div class="panel lodge">
-        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Playa_Hermosa_Guanacaste_Sunset.jpg?width=960" alt="Playas del Coco" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
-        <div class="top"><h3>3 · Playas del Coco ou Ocotal</h3><span class="n">N4–N8 · 5 nuits</span></div>
-        <p>Les centres de plongée viennent chercher leurs élèves à Coco, Hermosa et Playa Panamá. Base idéale aussi pour les sorties des parents.</p>
-        <p class="small">À chercher : piscine, climatisation, restaurants à pied.</p>
-        <p class="budget">≈ <b>100–180 $</b> / nuit</p>
-        <a href="https://www.airbnb.fr/s/Playas-del-Coco--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher à Coco</a>
+        <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Llanos_de_Cortes.JPG?width=960" alt="Rincón de la Vieja" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
+        <div class="top"><h3>3 · Au pied du Rincón de la Vieja</h3><span class="n">N4–N8 · 5 nuits</span></div>
+        <p>Une maison dans la campagne entre Liberia, Curubandé et Cañas Dulces : le volcan à une demi-heure, le Río Celeste à deux heures, les plages de Papagayo à 45 minutes.</p>
+        <p class="small">À chercher : piscine (il fait très chaud), vue sur le volcan, route d'accès praticable.</p>
+        <p class="budget">≈ <b>90–160 $</b> / nuit</p>
+        <a href="https://www.airbnb.fr/s/Liberia--Guanacaste--Costa-Rica/homes?adults=3" target="_blank" rel="noopener">Chercher autour de Liberia</a>
       </div>
     </div>
     <p class="phase-label" style="margin-top:28px"><span class="tag" style="border-color:var(--sun);color:var(--sun)">Phase 2</span> À sept · 4 chambres et piscine</p>
@@ -1014,7 +1045,7 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
       <div class="panel lodge">
         <div class="lodge-photo"><img class="" src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasilito_Bay_in_Guanacaste,_Costa_Rica_showing_Playa_Brasilito_and_Playa_Conchal.jpg?width=960" alt="Guanacaste" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.classList.add('fail')"></div>
         <div class="top"><h3>4 · Playa Hermosa ou Playa Panamá</h3><span class="n">N9–N12 · 4 nuits</span></div>
-        <p>Les plages les plus calmes du nord, à 25 minutes de Liberia. Colin et ses parents n'ont que dix minutes à faire depuis Coco.</p>
+        <p>Les plages les plus calmes du nord, à 25 minutes de Liberia, et le centre de plongée de Colin à 10 minutes : il vient le chercher à la villa.</p>
         <p class="small">À chercher : piscine clôturée, coin ombragé, lit bébé, rez-de-chaussée.</p>
         <p class="budget">≈ <b>350–600 $</b> / nuit</p>
         <a href="https://www.airbnb.fr/s/Playa-Hermosa--Guanacaste--Costa-Rica/homes?adults=5&children=1&infants=1&min_bedrooms=4" target="_blank" rel="noopener">Chercher à Playa Hermosa</a>
@@ -1084,10 +1115,10 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
         <h3>Le déroulé</h3>
         <dl class="kv">
           <dt>1 mois avant</dt><dd>E-learning : la théorie et les quiz en ligne. C'est ce qui fait gagner un jour sur place.</dd>
-          <dt>J4</dt><dd>Inscription, questionnaire médical, essayage.</dd>
-          <dt>J5</dt><dd>Exercices en piscine.</dd>
-          <dt>J6 · J7</dt><dd>Quatre plongées en mer, deux par matinée : brevet.</dd>
-          <dt>J8</dt><dd>Pas de plongée : route vers le Río Celeste, au moins 18 h après la dernière.</dd>
+          <dt>J9</dt><dd>Inscription au centre de Playas del Coco, questionnaire médical, essayage.</dd>
+          <dt>J10</dt><dd>Exercices en piscine le matin.</dd>
+          <dt>J11 · J12</dt><dd>Quatre plongées en mer, deux par matinée : brevet. Les après-midi restent en famille.</dd>
+          <dt>J13</dt><dd>Pas de plongée : route vers l'Arenal, au moins 18 h après la dernière.</dd>
         </dl>
       </div>
       <div class="panel">
@@ -1238,8 +1269,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
             <span class="sub" id="car2-sub">—</span>
           </div>
           <div class="brow">
-            <div class="lbl" style="cursor:default"><span><b>Essence, deux voitures</b><small>estimation pour tout le circuit</small></span></div>
-            <div class="qty"><label for="fuel">$ <input class="num wide" type="number" id="fuel" min="0" step="10" value="450"></label></div>
+            <div class="lbl" style="cursor:default"><span><b>Essence, deux voitures</b><small>≈ 2 650 km à 9 L aux 100 km</small></span></div>
+            <div class="qty"><label for="fuel">$ <input class="num wide" type="number" id="fuel" min="0" step="10" value="400"></label></div>
             <span class="sub" id="fuel-sub">—</span>
           </div>
           <div class="brow">
@@ -1408,6 +1439,8 @@ footer{padding-block:36px 48px; color:var(--muted); font-size:.9rem; background:
       <li><a href="https://commons.wikimedia.org/wiki/File:Monteverde_Cloud_Forest_01.jpg" target="_blank" rel="noopener">Monteverde Cloud Forest 01</a></li>
       <li><a href="https://commons.wikimedia.org/wiki/File:Monteverde_puente.jpg" target="_blank" rel="noopener">Monteverde puente</a></li>
       <li><a href="https://commons.wikimedia.org/wiki/File:Pharomachrus_mocinno_Monteverde_01.jpg" target="_blank" rel="noopener">Pharomachrus mocinno Monteverde 01</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Rinc%C3%B3n_de_la_Vieja_Hot_Spring.jpg" target="_blank" rel="noopener">Rincón de la Vieja Hot Spring</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Llanos_de_Cortes.JPG" target="_blank" rel="noopener">Llanos de Cortes</a></li>
       <li><a href="https://commons.wikimedia.org/wiki/File:Costa_Rica_Sarchi_ox_drawn_cart.jpg" target="_blank" rel="noopener">Costa Rica Sarchi ox drawn cart</a></li>
       <li><a href="https://commons.wikimedia.org/wiki/File:Brown-throated_three-toed_sloth_male.jpg" target="_blank" rel="noopener">Brown-throated three-toed sloth male</a></li>
       <li><a href="https://commons.wikimedia.org/wiki/File:Keel-billed_toucan_in_Costa_Rica_03.jpg" target="_blank" rel="noopener">Keel-billed toucan in Costa Rica 03</a></li>
@@ -1447,6 +1480,7 @@ window.FIREBASE_CONFIG = {
   if (!store.v && seed.v) store.v = seed.v;
   if (!store.mode && seed.mode) store.mode = seed.mode;
   function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){} }
+  if (store.bv !== 2) { delete store.v; store.bv = 2; save(); }
 
   /* ---------- Dates ---------- */
   var MODES = { jan: new Date(2028,0,8), dec: new Date(2027,11,5) };
@@ -1572,11 +1606,11 @@ window.FIREBASE_CONFIG = {
   var SHORT = {
     "j2-sarchi":"Détour par Sarchí", "j2-ponts":"Ponts suspendus", "j2-nuit":"Balade de nuit",
     "j3-mv":"Réserve de Monteverde + guide", "j3-se":"Réserve de Santa Elena", "j3-cc":"Curi-Cancha", "j3-cafe":"Visite café ou cacao",
-    "j4-ocotal":"Playa Ocotal", "j5-plage":"Parents : plage", "j5-cata":"Parents : catamaran",
-    "j6-rincon":"Parents : Rincón de la Vieja", "j6-conchal":"Parents : Playa Conchal",
-    "j7-guaitil":"Parents : Guaitil", "j7-liberia":"Parents : Liberia", "j7-piscine":"Parents : piscine",
+    "j4-llanos":"Cascade de Llanos de Cortés", "j5-rincon":"Rincón à cheval", "j5-pied":"Rincón à pied", "j5-rionegro":"Sources chaudes de Río Negro",
+    "j5-cata":"Catamaran et snorkeling", "j6-conchal":"Playa Conchal",
+    "j7-guaitil":"Guaitil, village de potiers", "j7-liberia":"Liberia et son marché", "j7-piscine":"Repos à la piscine",
     "j8-celeste":"Río Celeste", "j10-panama":"Playa Panamá", "j10-hermosa":"Playa Hermosa ou Penca", "j10-cata":"Catamaran au coucher du soleil",
-    "j11-ortega":"Palo Verde en bateau", "j11-tour":"Palo Verde, excursion organisée", "j12-cheval":"Cheval aux Pailas", "j12-llanos":"Cascade de Llanos de Cortés",
+    "j11-ortega":"Palo Verde en bateau", "j11-tour":"Palo Verde, excursion organisée", "j12-cheval":"Sœur et beau-frère : cheval au Rincón", "j12-conchal":"Playa Conchal en famille",
     "j13-baldi":"Sources chaudes de Baldi", "j13-eco":"EcoTermales", "j14-mistico":"Ponts suspendus Místico", "j14-choco":"Chocolat ou paresseux",
     "j15-fortuna":"Cascade de La Fortuna", "j15-cheval":"Cheval autour du volcan", "j15-kayak":"Kayak sur le lac Arenal",
     "j16-celeste":"Río Celeste", "j16-nuit":"Balade de nuit", "j16-obs":"Belvédère de l'Observatory",
@@ -1584,8 +1618,8 @@ window.FIREBASE_CONFIG = {
     "j20-peche":"Pêche au gros", "j20-baleines":"Baleines à Uvita"
   };
   var FIXED = {
-    1:["Vol Paris → San José"], 4:["Colin : inscription plongée"], 5:["Colin : plongée en piscine"],
-    6:["Colin : 2 plongées en mer"], 7:["Colin : brevet Open Water"], 9:["Arrivée de la famille"],
+    1:["Vol Paris → San José"], 9:["Arrivée de la famille", "Colin : inscription plongée"],
+    10:["Colin : plongée en piscine"], 11:["Colin : 2 plongées en mer"], 12:["Colin : brevet Open Water"],
     17:["Pont aux crocodiles de Tárcoles"], 22:["Vol retour"]
   };
   function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
@@ -1667,16 +1701,18 @@ window.FIREBASE_CONFIG = {
       { id:"a5", label:"Visite café ou cacao", note:"estimation", pa:40, pc:0, na:3, nc:0, on:false }
     ]},
     { g:"Guanacaste · à trois", items:[
-      { id:"a6", label:"Brevet Open Water de Colin", note:"SSI chez Rich Coast ; PADI du même ordre", pa:560, pc:0, na:1, nc:0, on:true },
-      { id:"a7", label:"Parents : journée Rincón de la Vieja", note:"estimation, déjeuner et sources chaudes compris", pa:140, pc:0, na:2, nc:0, on:true },
-      { id:"a8", label:"Parents : catamaran et snorkeling", note:"estimation", pa:100, pc:0, na:2, nc:0, on:false },
+      { id:"a7", label:"Rincón : cheval jusqu'aux Pailas", note:"Hacienda Guachipelín, dès 4 ans", pa:70, pc:0, na:3, nc:0, on:true },
+      { id:"a11", label:"Rincón : entrée du parc", note:"billets en ligne", pa:16.95, pc:0, na:3, nc:0, on:true },
+      { id:"a12", label:"Sources chaudes de Río Negro", note:"enfant 15 $", pa:20, pc:15, na:3, nc:0, on:false },
+      { id:"a8", label:"Catamaran et snorkeling", note:"estimation", pa:100, pc:0, na:3, nc:0, on:false },
       { id:"a9", label:"Río Celeste : entrée du parc", note:"enfant 5 $", pa:12, pc:5, na:3, nc:0, on:true },
       { id:"a10", label:"Río Celeste : guide naturaliste", note:"facultatif, entrée comprise", pa:55, pc:0, na:3, nc:0, on:false }
     ]},
     { g:"Guanacaste · à sept", items:[
+      { id:"a6", label:"Brevet Open Water de Colin", note:"SSI chez Rich Coast ; PADI du même ordre", pa:560, pc:0, na:1, nc:0, on:true },
       { id:"b1", label:"Palo Verde en bateau", note:"opérateur d'Ortega ; tarif enfant estimé", pa:100, pc:50, na:5, nc:1, on:true },
-      { id:"b2", label:"Rincón : cheval jusqu'aux Pailas", note:"dès 4 ans", pa:70, pc:60, na:3, nc:0, on:true },
-      { id:"b3", label:"Rincón : entrée du parc", note:"enfant 5,65 $", pa:16.95, pc:5.65, na:3, nc:0, on:true },
+      { id:"b2", label:"Cheval au Rincón, sœur et beau-frère", note:"pendant que les grands-parents gardent les filles", pa:70, pc:60, na:2, nc:0, on:true },
+      { id:"b3", label:"Rincón : entrée du parc", note:"enfant 5,65 $", pa:16.95, pc:5.65, na:2, nc:0, on:true },
       { id:"b4", label:"Catamaran au coucher du soleil", note:"estimation", pa:100, pc:0, na:3, nc:0, on:false }
     ]},
     { g:"Arenal · à sept", items:[
@@ -1695,12 +1731,12 @@ window.FIREBASE_CONFIG = {
   var LODGE = [
     { id:"l1", label:"1 · Alajuela ou Atenas", n:1, p:95 },
     { id:"l2", label:"2 · Monteverde", n:2, p:125 },
-    { id:"l3", label:"3 · Playas del Coco", n:5, p:140 },
+    { id:"l3", label:"3 · Au pied du Rincón de la Vieja", n:5, p:125 },
     { id:"l4", label:"4 · Playa Hermosa, 4 chambres", n:4, p:450 },
     { id:"l5", label:"5 · Arenal, 4 chambres", n:4, p:350 },
     { id:"l6", label:"6 · Manuel Antonio, 4 chambres", n:5, p:550 }
   ];
-  var FIELDS = { fee:15, car1:85, car2:95, fuel:450, food:40, fl1:900, fl2:0, rate:0.89 };
+  var FIELDS = { fee:15, car1:85, car2:95, fuel:400, food:40, fl1:900, fl2:0, rate:0.89 };
   var ADULT_DAYS = 3*8 + 5*13;
 
   // lien activité du programme → lignes du budget
