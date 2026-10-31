@@ -486,6 +486,28 @@ html.sheet-open .back-btn{display:none}
 .acct[data-req]:not([data-req=""])::after{content:" •"; color:var(--sun)}
 .choicebar .linkish{font-size:inherit}
 .legend .hint{color:var(--muted)}
+.tl-body button.tl-title{display:block; background:none; border:0; padding:0; margin:0; text-align:left; cursor:pointer; font-family:var(--f-display); font-weight:800; font-size:1.1rem; color:var(--ink); line-height:1.2}
+.tl-body button.tl-title:hover{color:var(--accent)}
+.tl-body button.tl-title:focus-visible, .tl-more:focus-visible, button.chip:focus-visible{outline:3px solid var(--accent-bright); outline-offset:2px; border-radius:8px}
+.tl-more{background:var(--paper); border:1px dashed color-mix(in srgb, var(--accent) 50%, transparent); border-radius:999px; padding:4px 12px; font:inherit; font-size:.85rem; font-style:normal; font-weight:600; color:var(--accent); cursor:pointer; touch-action:manipulation}
+.tl-more::after{content:" →"}
+.tl-more:hover{border-style:solid; border-color:var(--accent)}
+button.chip.fixed:hover{border-color:var(--accent)}
+.alt-desc{flex-basis:100%; font-size:.86rem; color:var(--muted); line-height:1.4}
+.day-alt .alt-open{flex-basis:100%}
+.btn.sm.on{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn[aria-disabled="true"]{opacity:.6; cursor:not-allowed}
+.day-fixed{margin:0; padding-left:1.1em; display:grid; gap:4px}
+.day-nav{display:flex; justify-content:space-between; gap:8px; margin-top:4px}
+.diag{font-size:.84rem; color:var(--muted); border-top:1px solid var(--line); padding-top:10px; margin-top:6px}
+.diag summary{cursor:pointer; font-weight:600}
+.diag ul{margin:8px 0 0; padding-left:1.1em; display:grid; gap:3px}
+.ver{opacity:.75}
+.savepill{position:fixed; right:max(14px, env(safe-area-inset-right,0px)); bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:65; font-family:var(--f-display); font-weight:700; font-size:.84rem; padding:9px 14px; border-radius:999px; background:var(--paper); color:var(--ink); border:1px solid var(--line); box-shadow:0 6px 20px rgba(0,0,0,.15); opacity:0; transform:translateY(10px); transition:opacity .2s, transform .2s; pointer-events:none; max-width:70vw}
+.savepill.on{opacity:1; transform:none}
+.savepill.ok{background:#E7F7EE; border-color:#9FD8B6; color:#11683A}
+.savepill.bad{background:#FDECEA; border-color:#E8B4AA; color:#A12D1C}
+@media (max-width: 640px){ .savepill{bottom:calc(70px + env(safe-area-inset-bottom,0px))} }
 
 /* Sunshine : soleil, terre cuite et bougainvillier */
 html[data-scn="s"]{
@@ -1927,18 +1949,18 @@ window.FIREBASE_CONFIG = {
         html += '<li class="tl-stage" data-r="' + s.r + '"><span class="tl-date"></span><span class="tl-axis"><span class="tl-thumb" style="background-image:url(&quot;' + esc(imgSrc(s.img, 330)) + '&quot;)"></span></span><div class="tl-body"><span class="eyebrow">' + esc(s.eyebrow) + '</span><b>' + esc(s.title) + '</b><span class="tl-sub">' + esc(s.sub) + '</span></div></li>';
       } else {
         var n = s.n, d = sc.days[n], c = CALC[n], wmap = warnIds(n);
-        var chips = (d.fixed || []).map(function(t){ return '<li class="chip fixed">' + esc(t) + '</li>'; });
+        var chips = (d.fixed || []).map(function(t){ return '<li><button type="button" class="chip fixed" data-day="' + n + '">' + esc(t) + '</button></li>'; });
         var openHere = 0;
         dayList(n).forEach(function(x){
           var stt = st(x.id), warn = wmap[x.id] ? ' <span class="wflag">⚠</span>' : '';
           if (stt === "oui") chips.push('<li><button type="button" class="chip ' + (x.lock ? "fixed lockc" : "yes") + '" data-open="' + esc(x.id) + '" data-drag="' + esc(x.id) + '">' + esc(x.s) + warn + '</button></li>');
           else if (stt === "") { openHere++; if (showOpen) chips.push('<li><button type="button" class="chip open" data-open="' + esc(x.id) + '" data-drag="' + esc(x.id) + '">' + esc(x.s) + warn + '</button></li>'); }
         });
-        var body = '<span class="tl-d2">' + fmt(dayDate(n)) + '</span><a class="tl-title" href="#j' + n + '"><span class="dn">J' + n + '</span>' + esc(d.title) + '</a>';
+        var body = '<span class="tl-d2">' + fmt(dayDate(n)) + '</span><button type="button" class="tl-title" data-day="' + n + '"><span class="dn">J' + n + '</span>' + esc(d.title) + '</button>';
         body += '<span class="tl-meta">' + esc(d.region) + ' · ' + esc(driveText(c)) + '</span>';
         if (chips.length) body += '<ul class="chips">' + chips.join("") + '</ul>';
-        else body += '<p class="tl-empty">' + (openHere ? openHere + (openHere > 1 ? " options à décider" : " option à décider") : "Journée libre") + '</p>';
-        if (!showOpen && openHere && chips.length) body += '<p class="tl-empty">+ ' + openHere + (openHere > 1 ? " options à décider" : " option à décider") + '</p>';
+        else body += '<p class="tl-empty"><button type="button" class="tl-more" data-day="' + n + '">' + (openHere ? openHere + (openHere > 1 ? " options à décider" : " option à décider") : "Journée libre") + '</button></p>';
+        if (!showOpen && openHere && chips.length) body += '<p class="tl-empty"><button type="button" class="tl-more" data-day="' + n + '">+ ' + openHere + (openHere > 1 ? " options à décider" : " option à décider") + '</button></p>';
         c.warns.forEach(function(w){ body += '<p class="tl-warn" data-open="' + esc(w.id || "") + '">⚠ ' + esc(w.t) + '</p>'; });
         html += '<li class="tl-day' + (fam() && n === 9 ? " star" : "") + '" data-r="' + d.r + '" data-drop="' + n + '"><span class="tl-date">' + fmt(dayDate(n)) + '</span><span class="tl-axis"></span><div class="tl-body">' + body + '</div></li>';
       }
@@ -2279,6 +2301,7 @@ window.FIREBASE_CONFIG = {
     renderRecap(COUNTS); renderMap(); renderKm();
     document.documentElement.toggleAttribute("data-edit", canEdit());
     if (SHEET.kind === "item" && SHEET.id) { if (ITEMS[SHEET.id]) openItem(SHEET.id, true); else closeSheet(); }
+    else if (SHEET.kind === "day" && SHEET.id) openDay(SHEET.id, true);
   }
   function renderRecapOnly(){ renderRecap(COUNTS); }
 
@@ -2290,8 +2313,26 @@ window.FIREBASE_CONFIG = {
     if (MODE === "shared" && FB.choices){
       var body = { choices: {}, updated: firebase.firestore.FieldValue.serverTimestamp() };
       Object.keys(patch).forEach(function(id){ body.choices[id] = patch[id] || firebase.firestore.FieldValue.delete(); });
-      FB.choices.set(body, { merge:true }).catch(writeErr);
+      track(FB.choices.set(body, { merge:true }));
     }
+  }
+  // indicateur d'enregistrement (en bas à droite)
+  var SAVE = { n:0, last:null, t:null, el:null };
+  function savePill(txt, cls){
+    if (!SAVE.el){ SAVE.el = document.createElement("div"); SAVE.el.className = "savepill"; SAVE.el.setAttribute("role", "status"); SAVE.el.setAttribute("aria-live", "polite"); document.body.appendChild(SAVE.el); }
+    SAVE.el.textContent = txt; SAVE.el.className = "savepill on " + (cls || "");
+    clearTimeout(SAVE.t);
+    if (cls === "ok") SAVE.t = setTimeout(function(){ SAVE.el.className = "savepill"; }, 2600);
+  }
+  function track(p){
+    SAVE.n++; savePill("Enregistrement…", "busy");
+    var slow = setTimeout(function(){ if (SAVE.n) savePill("En attente du réseau… gardé sur l'appareil", "busy"); }, 8000);
+    p.then(function(){
+      clearTimeout(slow); SAVE.n = Math.max(0, SAVE.n - 1);
+      SAVE.last = new Date().toLocaleTimeString("fr-FR", { hour:"2-digit", minute:"2-digit", second:"2-digit" });
+      if (!SAVE.n) savePill("✓ Enregistré pour toute la famille", "ok");
+    }).catch(function(e){ clearTimeout(slow); SAVE.n = Math.max(0, SAVE.n - 1); savePill("✗ Non enregistré", "bad"); SAVE.t = setTimeout(function(){ SAVE.el.className = "savepill"; }, 6000); writeErr(e); });
+    return p;
   }
   function applyPatch(target, patch){
     Object.keys(patch).forEach(function(k){
@@ -2317,13 +2358,14 @@ window.FIREBASE_CONFIG = {
     if (MODE === "shared" && FB.edits){
       var body = { scn: {}, updated: firebase.firestore.FieldValue.serverTimestamp() };
       body.scn[SCN] = toFs(patch);
-      FB.edits.set(body, { merge:true }).catch(writeErr);
+      track(FB.edits.set(body, { merge:true }));
     }
     return true;
   }
   function writeErr(e){
     var code = e && e.code;
-    toast(code === "permission-denied" ? "Modification refusée : il faut un compte autorisé par l'admin." : "La modification n'a pas pu être enregistrée (" + esc(code || "erreur") + ").");
+    if (code === "permission-denied") toast(canEdit() ? "Modification refusée par Firebase. " + rulesHelp(code) : "Modification refusée : il faut un compte autorisé par l'admin.");
+    else toast("La modification n'a pas pu être enregistrée (" + esc(code || "erreur") + ").");
   }
   function moveItem(id, n, beforeId, quiet){
     var x = ITEMS[id]; if (!x || !canEdit()) { if (!canEdit()) askLogin(); return; }
@@ -2345,8 +2387,10 @@ window.FIREBASE_CONFIG = {
   var SHEET = { kind:null, id:null };
   function openSheet(html, kind, id, keep){
     var sh = $("sheet");
+    var moved = !sh.hidden && (SHEET.kind !== kind || SHEET.id !== (id || null));
     $("sheet-body").innerHTML = html;
     SHEET.kind = kind; SHEET.id = id || null;
+    if (moved){ var pn = sh.querySelector(".sheet-panel"); if (pn) pn.scrollTop = 0; }
     if (sh.hidden){
       sh.hidden = false; document.documentElement.classList.add("sheet-open");
       requestAnimationFrame(function(){ sh.classList.add("on"); });
@@ -2409,7 +2453,7 @@ window.FIREBASE_CONFIG = {
       h += '<div class="mv-row"><label for="mv-day">Déplacer au</label><select id="mv-day">' + dayOptions(n) + '</select><button type="button" class="btn" id="mv-go">Déplacer</button>' +
         (!x.custom && x.day !== x.d ? '<button type="button" class="btn" data-bring="' + esc(id) + '" data-to="' + x.d + '">Remettre au J' + x.d + '</button>' : '') + '</div>';
     } else h += '<p class="small">Pour modifier : <button type="button" class="linkish" data-login>se connecter</button>.</p>';
-    h += '<p class="sh-links"><a href="#j' + n + '" data-close-nav>Voir le J' + n + ' dans le programme</a> · <a href="#apercu" data-close-nav>Voir sur la carte</a></p>';
+    h += '<p class="sh-links"><button type="button" class="linkish" data-day="' + n + '">Toute la journée du J' + n + '</button> · <a href="#j' + n + '" data-close-nav>Voir dans le programme</a> · <a href="#apercu" data-close-nav>Voir sur la carte</a></p>';
     // alternatives
     var same = dayList(n).filter(function(y){ return y.id !== id; });
     var near = Object.keys(ITEMS).map(function(k){ return ITEMS[k]; }).filter(function(y){
@@ -2423,6 +2467,30 @@ window.FIREBASE_CONFIG = {
     if (canEdit()) h += '<p><button type="button" class="btn" data-add="' + n + '">+ Ajouter une activité au J' + n + '</button></p>';
     if (x.custom && canEdit()) h += '<p class="sh-custom"><button type="button" class="btn" data-edit-custom="' + esc(id) + '">Modifier cet ajout</button> <button type="button" class="btn danger" data-del-custom="' + esc(id) + '">Supprimer</button></p>';
     openSheet(h, "item", id, keep);
+  }
+  // fiche d'une journée entière (depuis le récap)
+  function dayRow(y){
+    var s = st(y.id), tag = y.lock ? '<span class="tag fixe">prévu</span>' : '<span class="chip ' + (s === "oui" ? "yes" : s === "non" ? "no" : "open") + '">' + (s === "oui" ? "retenue" : s === "non" ? "écartée" : "à décider") + '</span>';
+    var acts = "";
+    if (!y.lock) acts = '<span class="alt-acts"><button type="button" class="btn sm' + (s === "oui" ? " on" : "") + '" data-qset="' + esc(y.id) + '" data-v="oui"' + (canEdit() ? "" : ' aria-disabled="true"') + '>✓ On le fait</button><button type="button" class="btn sm' + (s === "non" ? " on" : "") + '" data-qset="' + esc(y.id) + '" data-v="non"' + (canEdit() ? "" : ' aria-disabled="true"') + '>✗ Pas cette fois</button></span>';
+    var txt = String(y.h || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    if (txt.length > 150) txt = txt.slice(0, 147).replace(/\s+\S*$/, "") + "…";
+    return '<li class="alt day-alt"><button type="button" class="alt-open" data-open="' + esc(y.id) + '"><span class="who ' + y.wc + '">' + esc(y.w) + '</span> <b>' + esc(y.s) + '</b>' + (txt ? '<span class="alt-desc">' + esc(txt) + '</span>' : '') + '</button>' + tag + acts + '</li>';
+  }
+  function openDay(n, keep){
+    var sc = SC(), d = sc.days[n]; if (!d) return;
+    var c = CALC[n], base = PL[d.base], list = dayList(n);
+    var h = '<p class="eyebrow">J' + n + ' · ' + fmt(dayDate(n)) + ' · ' + esc(d.region) + '</p><h3 id="sheet-title">' + esc(d.title) + '</h3>';
+    h += '<dl class="kv"><dt>Trajet</dt><dd>' + esc(driveText(c)) + '</dd><dt>Nuit</dt><dd>' + (n < 22 ? esc(base.n) : "vol retour") + '</dd></dl>';
+    if ((d.fixed || []).length) h += '<h4>Au programme</h4><ul class="day-fixed">' + d.fixed.map(function(t){ return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>';
+    c.warns.forEach(function(w){ h += '<p class="alert"' + (w.id && ITEMS[w.id] ? ' data-open="' + esc(w.id) + '"' : '') + '>⚠ ' + esc(w.t) + '</p>'; });
+    h += '<h4>Les activités du jour</h4>';
+    h += list.length ? '<p class="small">Touchez une activité pour voir sa fiche, ses alternatives et la déplacer.</p><ul class="alts">' + list.map(dayRow).join("") + '</ul>' : '<p class="small">Pas d\'activité à choisir ce jour-là.</p>';
+    h += canEdit() ? '<p><button type="button" class="btn" data-add="' + n + '">+ Ajouter une activité au J' + n + '</button></p>'
+                   : '<p class="small">Pour cocher, déplacer ou ajouter : <button type="button" class="linkish" data-login>se connecter</button>.</p>';
+    h += '<p class="sh-links"><a href="#j' + n + '" data-close-nav>Voir le J' + n + ' dans le programme</a> · <a href="#apercu" data-close-nav>Voir sur la carte</a></p>';
+    h += '<p class="day-nav">' + (n > 1 ? '<button type="button" class="btn sm" data-day="' + (n - 1) + '">← J' + (n - 1) + '</button>' : '<span></span>') + (n < 22 ? '<button type="button" class="btn sm" data-day="' + (n + 1) + '">J' + (n + 1) + ' →</button>' : '') + '</p>';
+    openSheet(h, "day", n, keep);
   }
   // formulaire d'ajout ou de modification
   var FORM = { lat:null, lon:null };
@@ -2491,7 +2559,7 @@ window.FIREBASE_CONFIG = {
     t.innerHTML = '<span>' + msg + '</span>' + (undo ? '<button type="button" class="linkish" id="toast-undo">Annuler</button>' : '');
     t.hidden = false; t.classList.add("on");
     if (undo) $("toast-undo").addEventListener("click", function(){ undo(); t.classList.remove("on"); });
-    clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove("on"); setTimeout(function(){ t.hidden = true; }, 300); }, undo ? 7000 : 4000);
+    clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove("on"); setTimeout(function(){ t.hidden = true; }, 300); }, undo ? 7000 : Math.min(12000, Math.max(4000, String(msg).replace(/<[^>]+>/g, "").length * 50)));
   }
 
   /* ---------- Navigation : revenir là d'où l'on vient ---------- */
@@ -2642,7 +2710,12 @@ window.FIREBASE_CONFIG = {
       if (patchEdits(dp)) { closeSheet(); toast("« " + esc(keep.t) + " » supprimée.", function(){ var rp = { add:{} }; rp.add[cid] = keep; if (mvk){ rp.mv = {}; rp.mv[cid] = mvk; } patchEdits(rp); }); }
       return;
     }
-    if ((el = t.closest("[data-open]"))) { var oid = el.getAttribute("data-open"); if (oid && ITEMS[oid]) openItem(oid, SHEET.kind === "item"); return; }
+    if ((el = t.closest("[data-qset]"))) {
+      var qid = el.getAttribute("data-qset"), qv = el.getAttribute("data-v"), qp = {}; qp[qid] = (CH[qid] || "") === qv ? "" : qv; setChoices(qp); return;
+    }
+    if ((el = t.closest("[data-day]"))) { var dn = +el.getAttribute("data-day"); if (dn >= 1 && dn <= 22) openDay(dn, !!SHEET.kind); return; }
+    if ((el = t.closest("[data-open]"))) { var oid = el.getAttribute("data-open"); if (oid && ITEMS[oid]) openItem(oid, SHEET.kind === "item" || SHEET.kind === "day"); return; }
+    if ((el = t.closest("[data-claim]"))) { claimAdmin(); return; }
     if ((el = t.closest("[data-login]"))) { openAccount(); return; }
     if ((el = t.closest("#acct-btn"))) { openAccount(); return; }
   });
@@ -2657,14 +2730,40 @@ window.FIREBASE_CONFIG = {
     "auth/wrong-password": "Mot de passe incorrect.", "auth/invalid-credential": "E-mail ou mot de passe incorrect.",
     "auth/invalid-login-credentials": "E-mail ou mot de passe incorrect.", "auth/email-already-in-use": "Un compte existe déjà avec cette adresse : connectez-vous.",
     "auth/weak-password": "Mot de passe trop court : 6 caractères minimum.", "auth/too-many-requests": "Trop d'essais : réessayez dans quelques minutes.",
-    "auth/network-request-failed": "Pas de connexion internet.", "auth/operation-not-allowed": "La connexion par e-mail n'est pas encore activée dans Firebase (voir les étapes de mise en place)."
+    "auth/network-request-failed": "Pas de connexion internet.",
+    "auth/operation-not-allowed": "La connexion par e-mail n'est pas encore activée dans Firebase : console Firebase → Authentication → Mode de connexion → Adresse e-mail/Mot de passe → Activer → Enregistrer.",
+    "auth/configuration-not-found": "Firebase Authentication n'est pas encore démarré : console Firebase → Authentication → Commencer, puis activez « Adresse e-mail/Mot de passe ».",
+    "auth/admin-restricted-operation": "La création de compte est bloquée dans Firebase : Authentication → Paramètres → Actions de l'utilisateur → cochez « Activer la création ».",
+    "auth/unauthorized-domain": "Ce site n'est pas autorisé dans Firebase : Authentication → Paramètres → Domaines autorisés → ajoutez cocodub8.github.io.",
+    "auth/missing-password": "Écrivez un mot de passe (6 caractères minimum).", "auth/missing-email": "Écrivez votre adresse e-mail."
   };
+  var VERSION = "3.1 · 31 oct. 2026";
+  function rulesHelp(code){
+    return "Firebase refuse l'accès" + (code ? " (code : " + esc(code) + ")" : "") + ". Les nouvelles règles ne sont sans doute pas publiées : console Firebase → Firestore Database → onglet Règles → remplacez tout par les règles envoyées → Publier, puis rechargez cette page.";
+  }
   function askLogin(){
     if (MODE === "local") return;
-    if (AUTH.user) toast(AUTH.rolesMissing ? "Pas encore d'admin : ouvrez votre compte pour le devenir. <button type=\"button\" class=\"linkish\" data-login>Mon compte</button>" : "Votre accès attend la validation de l'admin.");
+    if (MODE === "error"){ toast("La base partagée ne répond pas" + (FB.err ? " (" + esc(FB.err) + ")" : "") + " : impossible d'enregistrer pour l'instant."); return; }
+    if (AUTH.user){
+      if (AUTH.role === "blocked") toast(rulesHelp(AUTH.rolesErr));
+      else if (AUTH.rolesMissing) toast("Le site n'a pas encore d'admin. <button type=\"button\" class=\"linkish\" data-claim>Devenir admin</button>");
+      else toast("Votre accès attend la validation de l'admin.");
+    }
     else toast("Pour modifier, il faut un compte autorisé. <button type=\"button\" class=\"linkish\" data-login>Se connecter</button>");
   }
-  function roleLabel(){ return { admin:"Admin", editor:"Peut modifier", pending:"En attente", none:"Lecture seule" }[AUTH.role] || ""; }
+  function claimAdmin(){
+    var u = AUTH.user; if (!u || !FB.roles) { openAccount(); return; }
+    var admins = {}; admins[u.uid] = who() || u.email;
+    toast("Un instant…");
+    FB.roles.set({ admins: admins, editors: {} }).then(function(){
+      toast("C'est fait : vous êtes admin. Vos changements sont maintenant enregistrés pour toute la famille.");
+      if (SHEET.kind === "account") openAccount();
+    }).catch(function(e){
+      var code = e && e.code;
+      toast(code === "permission-denied" ? rulesHelp(code) : "Impossible : " + esc(code || "erreur"));
+    });
+  }
+  function roleLabel(){ return { admin:"Admin", editor:"Peut modifier", pending:"En attente", none:"Lecture seule", blocked:"Accès bloqué" }[AUTH.role] || ""; }
   function updateAcct(){
     var b = $("acct-btn"); if (!b) return;
     b.hidden = MODE !== "shared";
@@ -2672,8 +2771,10 @@ window.FIREBASE_CONFIG = {
     b.dataset.role = AUTH.role;
     var bar = $("choicebar"), msg;
     if (MODE === "local") msg = "Mode hors ligne : vos modifications restent sur cet appareil.";
-    else if (MODE === "error") msg = "La base partagée ne répond pas : affichage du programme seul.";
-    else if (canEdit()) msg = "Connecté · " + roleLabel() + " : vos changements sont partagés avec toute la famille, en direct.";
+    else if (MODE === "error") msg = "La base partagée ne répond pas" + (FB.err ? " (code : " + esc(FB.err) + ")" : "") + " : affichage du programme seul, rien ne peut être enregistré.";
+    else if (canEdit()) msg = "Connecté · " + roleLabel() + " : chaque changement est enregistré pour toute la famille, en direct.";
+    else if (AUTH.user && AUTH.role === "blocked") msg = "Connecté, mais " + rulesHelp(AUTH.rolesErr);
+    else if (AUTH.user && AUTH.rolesMissing) msg = "Connecté · le site n'a pas encore d'admin. <button type=\"button\" class=\"linkish\" data-claim>Devenir admin</button> (Colin)";
     else if (AUTH.role === "pending") msg = "Demande envoyée : l'admin doit valider votre accès pour que vous puissiez modifier.";
     else msg = "Lecture seule : vous voyez les choix de la famille. <button type=\"button\" class=\"linkish\" data-login>Se connecter pour modifier</button>";
     bar.dataset.mode = canEdit() ? "shared" : (MODE === "error" ? "error" : "readonly");
@@ -2690,12 +2791,14 @@ window.FIREBASE_CONFIG = {
         '<p class="form-msg" id="a-msg" role="alert"></p><p class="btns"><button type="submit" class="btn primary" data-act="in">Se connecter</button><button type="submit" class="btn" data-act="up">Créer un compte</button><button type="button" class="linkish" id="a-reset">Mot de passe oublié</button></p></form>';
     } else {
       h = '<p class="eyebrow">Compte</p><h3 id="sheet-title">' + esc(who()) + '</h3><p class="small">' + esc(u.email || "") + ' · <b>' + roleLabel() + '</b></p>';
-      if (AUTH.rolesMissing) h += '<div class="callout teal"><p><b>Pas encore d\'admin.</b> Le premier compte qui le demande devient l\'administrateur du site. Si c\'est vous, Colin :</p><p><button type="button" class="btn primary" id="a-claim">Devenir admin</button></p></div>';
+      if (AUTH.role === "blocked") h += '<div class="callout"><p><b>Accès bloqué par Firebase.</b> ' + rulesHelp(AUTH.rolesErr) + '</p></div>';
+      else if (AUTH.rolesMissing) h += '<div class="callout teal"><p><b>Pas encore d\'admin.</b> Le premier compte qui le demande devient l\'administrateur du site. Si c\'est vous, Colin :</p><p><button type="button" class="btn primary" id="a-claim" data-claim>Devenir admin</button></p></div>';
       else if (AUTH.role === "pending") h += '<p>Votre demande est partie : l\'admin la verra dans son panneau. Rechargez la page une fois validé.</p>';
       else if (AUTH.role === "editor") h += '<p>Vous pouvez cocher, déplacer et ajouter des activités dans les trois scénarios.</p>';
       if (AUTH.role === "admin") h += adminHTML();
       h += '<p class="btns"><button type="button" class="btn" id="a-out">Se déconnecter</button></p>';
     }
+    h += diagHTML();
     openSheet(h, "account", null, SHEET.kind === "account");
     var f = $("aform");
     if (f){
@@ -2707,8 +2810,8 @@ window.FIREBASE_CONFIG = {
         m.textContent = act === "up" ? "Création du compte…" : "Connexion…";
         var p = act === "up" ? FB.auth.createUserWithEmailAndPassword(em, pw).then(function(cred){ return nm ? cred.user.updateProfile({ displayName: nm }).then(function(){ AUTH.user = FB.auth.currentUser; }) : null; })
                              : FB.auth.signInWithEmailAndPassword(em, pw);
-        p.then(function(){ closeSheet(); toast(act === "up" ? "Compte créé. Touchez votre nom en haut pour voir votre accès." : "Connecté."); })
-         .catch(function(e){ m.textContent = ERR[e && e.code] || ("Erreur : " + ((e && e.code) || "inconnue")); });
+        p.then(function(){ toast(act === "up" ? "Compte créé." : "Connecté."); openAccount(); })
+         .catch(function(e){ m.textContent = ERR[e && e.code] || ("Erreur : " + ((e && e.code) || "inconnue") + (e && e.message ? " · " + e.message : "")); });
       });
       $("a-reset").addEventListener("click", function(){
         var em = f.email.value.trim(), m = $("a-msg");
@@ -2718,11 +2821,16 @@ window.FIREBASE_CONFIG = {
       });
     }
     if ($("a-out")) $("a-out").addEventListener("click", function(){ FB.auth.signOut(); closeSheet(); });
-    if ($("a-claim")) $("a-claim").addEventListener("click", function(){
-      var admins = {}; admins[u.uid] = who() || u.email;
-      FB.roles.set({ admins: admins, editors: {} }).then(function(){ toast("Vous êtes admin."); }).catch(function(e){ toast("Impossible : " + esc(e && e.code)); });
-    });
     bindAdmin();
+  }
+  function diagHTML(){
+    var base = MODE === "shared" ? "connectée" : MODE === "error" ? "erreur" + (FB.err ? " (" + FB.err + ")" : "") : "hors ligne";
+    var acc = AUTH.user ? (AUTH.user.email || "connecté") : "non connecté";
+    var roles = !AUTH.user ? "—" : AUTH.rolesErr ? "refusés (" + AUTH.rolesErr + ")" : AUTH.rolesMissing ? "pas encore d'admin" : AUTH.roles ? "ok" : "lecture…";
+    var last = SAVE.last ? SAVE.last : "aucun depuis l'ouverture";
+    return '<details class="diag"><summary>État technique (à envoyer en cas de souci)</summary><ul>' +
+      '<li>Version du site : <b>' + esc(VERSION) + '</b></li><li>Base partagée : ' + esc(base) + '</li><li>Compte : ' + esc(acc) + ' · ' + esc(roleLabel()) + '</li>' +
+      '<li>Rôles : ' + esc(roles) + '</li><li>Dernier enregistrement : ' + esc(last) + '</li></ul></details>';
   }
   function adminHTML(){
     var r = AUTH.roles || { admins:{}, editors:{} }, h = '<h4>Demandes d\'accès</h4>';
@@ -2756,17 +2864,18 @@ window.FIREBASE_CONFIG = {
   function computeRole(){
     var u = AUTH.user, r = AUTH.roles;
     if (!u){ AUTH.role = "none"; return; }
-    if (r && r.admins && r.admins[u.uid]) AUTH.role = "admin";
+    if (AUTH.rolesErr) AUTH.role = "blocked";
+    else if (r && r.admins && r.admins[u.uid]) AUTH.role = "admin";
     else if (r && r.editors && r.editors[u.uid]) AUTH.role = "editor";
     else AUTH.role = AUTH.rolesMissing ? "none" : "pending";
   }
   function onAuth(u){
     FB.unsub.forEach(function(f){ try { f(); } catch(e){} }); FB.unsub = [];
-    AUTH.user = u; AUTH.roles = null; AUTH.rolesMissing = false; AUTH.requests = []; AUTH.requested = false; FB.reqOn = false;
+    AUTH.user = u; AUTH.roles = null; AUTH.rolesMissing = false; AUTH.rolesErr = null; AUTH.requests = []; AUTH.requested = false; FB.reqOn = false;
     computeRole(); updateAcct(); refresh();
     if (!u) return;
     FB.unsub.push(FB.roles.onSnapshot(function(s){
-      AUTH.rolesMissing = !s.exists; AUTH.roles = s.exists ? s.data() : null;
+      AUTH.rolesErr = null; AUTH.rolesMissing = !s.exists; AUTH.roles = s.exists ? s.data() : null;
       computeRole(); updateAcct(); refresh();
       if (AUTH.role === "pending" && !AUTH.requested){
         AUTH.requested = true;
@@ -2781,7 +2890,7 @@ window.FIREBASE_CONFIG = {
         }, function(){}));
       }
       if (SHEET.kind === "account") openAccount();
-    }, function(){ AUTH.rolesMissing = false; computeRole(); updateAcct(); }));
+    }, function(e){ AUTH.rolesMissing = false; AUTH.rolesErr = (e && e.code) || "erreur"; computeRole(); updateAcct(); refresh(); if (SHEET.kind === "account") openAccount(); }));
   }
   function connect(){
     var cfg = window.FIREBASE_CONFIG;
@@ -2799,7 +2908,7 @@ window.FIREBASE_CONFIG = {
     MODE = "shared"; updateAcct();
     FB.choices.onSnapshot(function(s){
       CH = Object.assign({}, (s.exists && s.data().choices) || {}); store.choices = Object.assign({}, CH); save(); refresh();
-    }, function(){ MODE = "error"; updateAcct(); });
+    }, function(e){ MODE = "error"; FB.err = (e && e.code) || "erreur"; updateAcct(); refresh(); });
     FB.edits.onSnapshot(function(s){
       ED = JSON.parse(JSON.stringify((s.exists && s.data().scn) || {})); store.ed = ED; save(); refresh();
     }, function(){});
@@ -2845,14 +2954,19 @@ window.FIREBASE_CONFIG = {
   /* ---------- Démarrage ---------- */
   var READY = false;
   document.getElementById("hero-dates").textContent = fmt(dayDate(1)) + " → " + fmt(dayDate(22), true);
-  (function(){ var t = $("tl-open"); if (t) t.addEventListener("change", renderRecapOnly); })();
+  (function(){
+    var t = $("tl-open"); if (!t) return;
+    if (store.tlOpen) t.checked = true;
+    t.addEventListener("change", function(){ store.tlOpen = t.checked; save(); renderRecapOnly(); });
+    var f = document.querySelector("footer .wrap"); if (f) f.insertAdjacentHTML("beforeend", ' <span class="ver">Version ' + esc(VERSION) + '.</span>');
+  })();
   buildBud(); renderActs(); bindBudget();
   applyScn(SCN, false);
   READY = true;
   refresh(); updateAcct();
   connect();
   if (location.hash){ var tgt = document.getElementById(location.hash.slice(1)); if (tgt) setTimeout(function(){ tgt.scrollIntoView(); }, 50); }
-  window.__CR = { refresh: refresh, ITEMS: function(){ return ITEMS; }, CALC: function(){ return CALC; }, ED: function(){ return ED; }, CH: function(){ return CH; }, moveItem: moveItem, openItem: openItem, scn: function(){ return SCN; } };
+  window.__CR = { refresh: refresh, ITEMS: function(){ return ITEMS; }, CALC: function(){ return CALC; }, ED: function(){ return ED; }, CH: function(){ return CH; }, moveItem: moveItem, openItem: openItem, openDay: openDay, scn: function(){ return SCN; } };
 })();
 </script>
 
